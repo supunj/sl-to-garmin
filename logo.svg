@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <title>sl-to-garmin logo</title>
+  <desc>Sri Lanka island with topo contour lines, a route and a location pin inside an ocean-blue badge.</desc>
+  <defs>
+    <clipPath id="island-clip">
+      <path d="M104 24 C97 30 91 42 87 58 C80 82 74 108 72 134 C70 160 76 186 90 202 C100 214 112 220 122 218 C138 215 152 202 160 184 C170 162 174 138 172 114 C170 90 162 68 150 54 C138 40 122 30 104 24 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ocean badge -->
+  <circle cx="120" cy="120" r="118" fill="#0d3b66"/>
+  <g fill="none" stroke="#155a8a" stroke-width="3" stroke-linecap="round">
+    <path d="M18 150 q10 -8 20 0 q10 8 20 0"/>
+    <path d="M186 90 q10 -8 20 0 q10 8 20 0"/>
+    <path d="M176 186 q8 -6 16 0 q8 6 16 0"/>
+  </g>
+
+  <!-- Jaffna islets -->
+  <circle cx="92" cy="16" r="3.5" fill="#2e9e6b"/>
+  <circle cx="83" cy="22" r="2.5" fill="#2e9e6b"/>
+
+  <!-- Sri Lanka island -->
+  <path d="M104 24 C97 30 91 42 87 58 C80 82 74 108 72 134 C70 160 76 186 90 202 C100 214 112 220 122 218 C138 215 152 202 160 184 C170 162 174 138 172 114 C170 90 162 68 150 54 C138 40 122 30 104 24 Z"
+        fill="#2e9e6b" stroke="#1c6b47" stroke-width="3"/>
+
+  <!-- topo contours over the central highlands -->
+  <g clip-path="url(#island-clip)" fill="none" stroke="#a8e0c0" stroke-width="2.5" stroke-linecap="round">
+    <path d="M80 152 C80 128 96 112 114 112 C134 112 150 128 150 150 C150 172 134 188 114 188 C96 188 80 172 80 152 Z"/>
+    <path d="M93 151 C93 136 102 126 115 126 C128 126 138 137 138 150 C138 164 128 174 115 174 C103 174 93 164 93 151 Z"/>
+    <path d="M105 150 C105 143 109 139 115 139 C121 139 126 144 126 150 C126 157 121 161 115 161 C109 161 105 156 105 150 Z"/>
+  </g>
+
+  <!-- route from the coast into the hills -->
+  <path d="M84 198 C96 188 100 180 105 170 C109 162 112 156 114 150"
+        fill="none" stroke="#ffd449" stroke-width="5" stroke-dasharray="9 7" stroke-linecap="round"/>
+
+  <!-- location pin -->
+  <path d="M115 124 C106 124 99 131 99 140 C99 151 115 165 115 165 C115 165 131 151 131 140 C131 131 124 124 115 124 Z"
+        fill="#ff5a5a" stroke="#c23737" stroke-width="2"/>
+  <circle cx="115" cy="140" r="5.5" fill="#ffffff"/>
+
+  <!-- badge ring -->
+  <circle cx="120" cy="120" r="118" fill="none" stroke="#092a49" stroke-width="4"/>
+</svg>

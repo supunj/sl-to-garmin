@@ -1,5 +1,9 @@
 # sl-to-garmin
 
+<p align="center">
+  <img src="logo.svg" alt="sl-to-garmin logo — Sri Lanka with topo contours, a route and a location pin" width="200">
+</p>
+
 Builds a multi-layer OpenStreetMap topo map of Sri Lanka for **Garmin Drive**
 GPS devices (Drive 52/66 family), plus `.gpi` POI alert files.
 
@@ -157,6 +161,7 @@ using `icons/drive66/police.bmp` as the icon.
 
 ```
 ├── build_map.sh / build_gpi.sh / hgt2osm.sh / download_data.sh / cleanse_data.sh / db.sh / assemble_typ.sh
+├── logo.svg                 # project logo (shown at the top of this file)
 ├── lib/common.sh          # shared setup + mkgmap/osmosis/splitter wrappers
 ├── config/                # build.conf (all knobs), tags.conf (POI categories)
 ├── arg/                   # mkgmap option files, one per layer
