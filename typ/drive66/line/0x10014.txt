@@ -1,0 +1,11 @@
+[_line]
+Type=0x10014
+UseOrientation=N
+LineWidth=4
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #BD9541"
+"2 c #FFFFFF"
+String1=0x01,Secondary
+ExtendedLabels=N
+[end]

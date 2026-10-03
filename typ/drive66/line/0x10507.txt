@@ -1,0 +1,14 @@
+[_line]
+Type=0x10507
+;GRMN_TYPE: Marine Restricted Area Outlines/RESTR_RESTRICTED/Restricted area outline/Non NT, NT
+UseOrientation=N
+Xpm="32 3 2  1"
+"! c #FF6520"
+"  c none"
+"!     !!!     !!!     !!!     !!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!     !!!     !!!     !!!     !!"
+;12345678901234567890123456789012
+String1=0x04,Drag-lift
+ExtendedLabels=N
+[end]

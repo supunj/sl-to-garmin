@@ -1,0 +1,19 @@
+[_point]
+Type=0x066
+SubType=0x17
+;GRMN_TYPE: Geographical Named Points of Interest - Land Related/VALLEY/Valley/Non NT, NT
+String1=0x00,Powertower
+String2=0x01,pylon
+ExtendedLabels=N
+DayXpm="7 7 2 1"   Colormode=16
+"!	c #878686"
+"  	c none"
+"!!!!!!!"
+"!!   !!"
+"! ! ! !"
+"!  !  !"
+"! ! ! !"
+"!!   !!"
+"!!!!!!!"
+;1234567
+[end]

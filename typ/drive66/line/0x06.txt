@@ -1,0 +1,16 @@
+[_line]
+Type=0x06
+;GRMN_TYPE: Roads/RESIDENTIAL/Residential street, these are typically the most numerous roads in a detailed city map and do not show up until the user is zoomed in quite far/Non NT, NT
+UseOrientation=N
+LineWidth=1
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #FFFFFF"
+"2 c #4F4F4F"
+String1=0x00,Minorhighway
+ExtendedLabels=Y
+FontStyle=Default
+CustomColor=DayAndNight
+DaycustomColor:#000000
+NightcustomColor:#808080
+[end]

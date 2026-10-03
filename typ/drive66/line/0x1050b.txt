@@ -1,0 +1,16 @@
+[_line]
+Type=0x1050b
+UseOrientation=N
+Xpm="32 6 2  1"
+"! c #BD306A"
+"  c none"
+"                                "
+"                                "
+"!!!!!!   !!!!!   !!!!!   !!!!!  "
+"!!!!!!   !!!!!   !!!!!   !!!!!  "
+"                                "
+"                                "
+;12345678901234567890123456789012
+String1=0x04,Private
+ExtendedLabels=N
+[end]

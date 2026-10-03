@@ -77,20 +77,27 @@ run_splitter() {
     )
 }
 
-# compile_typ — compile the configured TYP file into $BUILD_DIR/<style>.typ.
-# No-op for the built-in default style (test/build_map_default.sh).
+# compile_typ — compile the TYP into $BUILD_DIR/<style>.typ. The TYP text is
+# assembled from the segment tree by assemble_typ.sh unless TYP_FILE points at
+# a ready-made file. No-op for the built-in default style
+# (test/build_map_default.sh).
 compile_typ() {
-    if [ "$STYLE" = default ] || [ -z "${TYP_FILE:-}" ]; then
+    if [ "$STYLE" = default ]; then
         log "Style '$STYLE' has no TYP — skipping TYP compilation"
         return
     fi
-    need_file "$TYP_FILE"
-    log "Compiling TYP: $TYP_FILE"
+    local typ_txt="${TYP_FILE:-}"
+    if [ -z "$typ_txt" ]; then
+        typ_txt="$BUILD_DIR/$STYLE.txt"
+        "$PROJECT_ROOT/assemble_typ.sh" "$typ_txt"
+    fi
+    need_file "$typ_txt"
+    log "Compiling TYP: $typ_txt"
     (
         cd "$BUILD_DIR"
         "$JAVA_CMD" -cp "$MKGMAP_JAR" \
             uk.me.parabola.mkgmap.main.TypCompiler \
-            "$TYP_FILE" "$STYLE.typ"
+            "$typ_txt" "$STYLE.typ"
     )
 }
 
@@ -107,7 +114,7 @@ merge_layer() {
     [ ${#imgs[@]} -gt 0 ] || die "merge_layer: no .img files in $LAYERS_DIR"
 
     local typ_args=()
-    if [ -n "${TYP_FILE:-}" ] && [ -f "$BUILD_DIR/$STYLE.typ" ]; then
+    if [ -f "$BUILD_DIR/$STYLE.typ" ]; then
         typ_args=("$BUILD_DIR/$STYLE.typ")
     fi
 

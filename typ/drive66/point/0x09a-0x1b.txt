@@ -1,0 +1,19 @@
+[_point]
+Type=0x09a
+SubType=0x1b
+String1=0x01,Anciennegare
+String2=0x00,Disusedstation
+ExtendedLabels=N
+DayXpm="8 8 2 1"   Colormode=16
+"!	c #A0A2A1"
+"  	c none"
+"        "
+" !!!!!! "
+" !!!!!! "
+" !!!!!! "
+" !!!!!! "
+" !!!!!! "
+" !!!!!! "
+"        "
+;12345678
+[end]

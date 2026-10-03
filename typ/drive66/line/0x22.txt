@@ -1,0 +1,14 @@
+[_line]
+Type=0x22
+;GRMN_TYPE: Contour Lines/MAJOR_CONTOUR/Major contour (should be used for about every 10th contour line)/Non NT
+UseOrientation=Y
+Xpm="32 1 4  1"
+"! c #396500"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! "
+;12345678901234567890123456789012
+String1=0x04,Contour_major
+ExtendedLabels=N
+[end]

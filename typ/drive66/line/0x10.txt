@@ -1,0 +1,17 @@
+[_line]
+Type=0x10
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_4/Routable customizable line/Non NT, NT
+UseOrientation=N
+Xpm="32 4 4  1"
+"! c #0000FF"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"!!!!    !!!!    !!!!    !!!!    "
+"!!!!    !!!!    !!!!    !!!!    "
+"!!!!    !!!!    !!!!    !!!!    "
+"!!!!    !!!!    !!!!    !!!!    "
+;12345678901234567890123456789012
+String1=0x00,cyclepath
+ExtendedLabels=N
+[end]

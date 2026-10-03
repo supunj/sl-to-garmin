@@ -1,0 +1,12 @@
+[_line]
+Type=0x08
+;GRMN_TYPE: Roads/LOW_SPEED_RAMP/Highway ramp which is to be driven at low speeds/Non NT, NT
+UseOrientation=Y
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #BD9541"
+"2 c #000000"
+String1=0x04,Ramp
+ExtendedLabels=N
+[end]

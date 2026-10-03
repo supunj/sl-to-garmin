@@ -1,0 +1,9 @@
+[_line]
+Type=0x11002
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_LINE_67/Non-routable customizable line/Non NT, NT
+UseOrientation=Y
+LineWidth=3
+Xpm="0 0 1 0"
+"1 c #006541"
+ExtendedLabels=N
+[end]

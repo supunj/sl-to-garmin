@@ -1,0 +1,11 @@
+[_line]
+Type=0x10505
+UseOrientation=Y
+Xpm="32 1 2  1"
+"! c #7BCAFF"
+"  c none"
+"!!!!    !!!!    !!!!    !!!!    "
+;12345678901234567890123456789012
+String1=0x04,Wadi
+ExtendedLabels=N
+[end]

@@ -1,0 +1,17 @@
+[_line]
+Type=0x34
+UseOrientation=N
+Xpm="32 5 4  1"
+"! c #000000"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"  !  !     !  !     !  !     !  "
+"  !  !     !  !     !  !     !  "
+"  !  !     !  !     !  !     !  "
+"  !  !     !  !     !  !     !  "
+"  !  !     !  !     !  !     !  "
+;12345678901234567890123456789012
+String1=0x00,embankment
+ExtendedLabels=N
+[end]

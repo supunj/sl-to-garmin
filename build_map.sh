@@ -8,9 +8,12 @@
 #   sl-contour.img  contour lines (cached in data/cache/)
 #   sl-road.img     roads, POIs, routing + address index (_mdr.img / .mdx)
 #
-# Usage: ./build_map.sh [--pg-cleanse] [--pg-experiments] [--skip-contours]
-#                       [--keep-build-dir] [-h|--help]
+# Usage: ./build_map.sh [--device <type>] [--pg-cleanse] [--pg-experiments]
+#                       [--skip-contours] [--keep-build-dir] [-h|--help]
 #
+#   --device <type>  Garmin device family to build for (default: drive66);
+#                    selects the mkgmap style (style/<type>/) and the TYP
+#                    segment tree (typ/<type>/); overrides $DEVICE/$STYLE
 #   --pg-cleanse       round-trip the OSM extract through PostGIS first
 #                      (cleanse_data.sh) and build from the cleansed PBF
 #   --pg-experiments   also run pg/experiments/*.sql (implies --pg-cleanse)
@@ -30,11 +33,17 @@ MAPNAME_ADMIN=53130002
 MAPNAME_CONTOUR=53130003
 MAPNAME_ROAD=53130004
 
-usage() { sed -n '2,20p' "$0"; exit "${1:-0}"; }
+usage() { sed -n '2,21p' "$0"; exit "${1:-0}"; }
 
 parse_args() {
     while [ $# -gt 0 ]; do
         case "$1" in
+            --device)
+                [ $# -ge 2 ] || die "--device requires a device type (e.g. drive66)"
+                DEVICE="$2"
+                STYLE="$DEVICE"
+                TYP_SRC_DIR="$PROJECT_ROOT/typ/$DEVICE"
+                shift ;;
             --pg-cleanse)     PG_CLEANSE=1 ;;
             --pg-experiments) PG_EXPERIMENTS=1; PG_CLEANSE=1 ;;
             --skip-contours)  SKIP_CONTOURS=1 ;;
@@ -51,6 +60,14 @@ check_prerequisites() {
     need_file "$MKGMAP_JAR"
     need_file "$SPLITTER_JAR"
     [ -x "$OSMOSIS" ] || die "osmosis not executable: $OSMOSIS"
+    if [ "$STYLE" != default ]; then
+        [ -d "$STYLE_DIR/$STYLE" ] \
+            || die "no style for device '$DEVICE': $STYLE_DIR/$STYLE"
+        if [ -z "${TYP_FILE:-}" ]; then
+            [ -d "$TYP_SRC_DIR" ] \
+                || die "no TYP segment tree for device '$DEVICE': $TYP_SRC_DIR"
+        fi
+    fi
     if [ "$PG_CLEANSE" = 1 ]; then
         need_cmd psql
         need_cmd createdb

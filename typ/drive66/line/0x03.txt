@@ -1,0 +1,13 @@
+[_line]
+Type=0x03
+;GRMN_TYPE: Roads/OTHER_HWY/Other highway road, akin to a state highway in the US/Non NT, NT
+UseOrientation=N
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #DE0975"
+"2 c #000000"
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

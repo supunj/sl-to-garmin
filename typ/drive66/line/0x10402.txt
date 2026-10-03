@@ -1,0 +1,9 @@
+[_line]
+Type=0x10402
+UseOrientation=Y
+LineWidth=9
+Xpm="0 0 1 0"
+"1 c #BDCAFF"
+String1=0x04,Motorway tunnel
+ExtendedLabels=N
+[end]

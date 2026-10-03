@@ -1,0 +1,12 @@
+[_line]
+Type=0x09
+;GRMN_TYPE: Roads/HIGH_SPEED_RAMP, RAMP/Highway ramp which is to be driven at high speeds/Non NT, NT
+UseOrientation=Y
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #95FF67"
+"2 c #000000"
+String1=0x04,High-speed ramp
+ExtendedLabels=N
+[end]

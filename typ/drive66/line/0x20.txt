@@ -1,0 +1,14 @@
+[_line]
+Type=0x20
+;GRMN_TYPE: Contour Lines/MINOR_CONTOUR/Minor land-based contour line/Non NT
+UseOrientation=Y
+Xpm="32 1 4  1"
+"! c #A4A4A4"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! "
+;12345678901234567890123456789012
+String1=0x04,Contour_minor
+ExtendedLabels=N
+[end]

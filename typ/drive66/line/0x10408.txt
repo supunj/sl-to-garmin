@@ -1,0 +1,9 @@
+[_line]
+Type=0x10408
+UseOrientation=N
+LineWidth=9
+Xpm="0 0 1 0"
+"1 c #BDFFB4"
+String1=0x04,Trunk tunnel
+ExtendedLabels=N
+[end]

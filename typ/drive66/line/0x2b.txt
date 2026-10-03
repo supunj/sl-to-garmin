@@ -1,0 +1,14 @@
+[_line]
+Type=0x2b
+;GRMN_TYPE: Misc. Line Types/MARINE_HAZARD/Marine Hazard Line/Non NT
+UseOrientation=Y
+Xpm="32 3 2  1"
+"! c #FF6520"
+"# c #000000"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+;12345678901234567890123456789012
+String1=0x04,Cableway
+ExtendedLabels=N
+[end]

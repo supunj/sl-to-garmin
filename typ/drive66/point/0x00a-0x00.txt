@@ -1,0 +1,16 @@
+[_point]
+Type=0x00a
+SubType=0x00
+;GRMN_TYPE: Political Entities/CITY_10K/City with the range of (10, 20] thousand inhabitants/Non NT
+String1=0x00,city a0
+ExtendedLabels=Y
+FontStyle=Default
+CustomColor=DayAndNight
+DaycustomColor:#FF0000
+NightcustomColor:#808080
+DayXpm="1 1 2 1"   Colormode=16
+"!	c #008000"
+"  	c none"
+" "
+;1
+[end]

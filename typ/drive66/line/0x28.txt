@@ -1,0 +1,17 @@
+[_line]
+Type=0x28
+;GRMN_TYPE: Misc. Line Types/PIPELINE/Oil or water pipeline/Non NT
+UseOrientation=N
+String1=0x00,pipeline
+ExtendedLabels=N
+Xpm="32 7 2  1"
+"0 c #000000"
+"  c none"
+"                                "
+"       000   0   000   00       "
+"       0 0   0   0 0   0        "
+"00 00  000   0   000   00  0 00 "
+"       0     0   0     0        "
+"       0     0   0     00       "
+"                                "
+[end]

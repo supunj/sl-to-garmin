@@ -1,0 +1,17 @@
+[_line]
+Type=0x29
+;GRMN_TYPE: Misc. Line Types/POWERLINE/Powerline/Non NT
+UseOrientation=N
+Xpm="32 4 4  1"
+"! c #626262"
+"  c none"
+"3 c #FFFFFF"
+"4 c #000000"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"  !                             "
+" ! !                            "
+"!   !                           "
+;12345678901234567890123456789012
+String1=0x04,Power line
+ExtendedLabels=N
+[end]

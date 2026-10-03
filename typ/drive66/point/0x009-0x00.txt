@@ -1,0 +1,11 @@
+[_point]
+Type=0x009
+SubType=0x00
+;GRMN_TYPE: Political Entities/CITY_20K/City with the range of (20, 50] thousand inhabitants/Non NT
+ExtendedLabels=N
+DayXpm="1 1 2 1"   Colormode=16
+"!	c #004080"
+"  	c none"
+" "
+;1
+[end]

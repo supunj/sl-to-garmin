@@ -1,0 +1,19 @@
+[_point]
+Type=0x012
+SubType=0x03
+String1=0x00,railway halt
+ExtendedLabels=Y
+FontStyle=Default
+CustomColor=DayAndNight
+DaycustomColor:#3900D5
+NightcustomColor:#808080
+DayXpm="5 5 2 1"   Colormode=16
+"!	c #00006A"
+"  	c none"
+"!!!!!"
+"!   !"
+"!   !"
+"!   !"
+"!!!!!"
+;12345
+[end]

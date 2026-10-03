@@ -1,0 +1,12 @@
+[_line]
+Type=0x11618
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_LINE_281/Non-routable customizable line/Non NT, NT
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #FC6DD2"
+"2 c #FCD8DB"
+String1=0x02,Raceway
+ExtendedLabels=N
+[end]

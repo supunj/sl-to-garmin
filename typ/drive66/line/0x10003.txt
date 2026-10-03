@@ -1,0 +1,11 @@
+[_line]
+Type=0x10003
+UseOrientation=N
+LineWidth=3
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #3965FF"
+"2 c #FFFFFF"
+String1=0x04,Motorway link
+ExtendedLabels=N
+[end]

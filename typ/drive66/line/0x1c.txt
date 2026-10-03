@@ -1,0 +1,16 @@
+[_line]
+Type=0x1c
+;GRMN_TYPE: Political Borders/MJR_PLTCL_BDRY/Major political boundary (typically used for state, provincial borders)/Non NT
+UseOrientation=N
+Xpm="32 2 4  1"
+"! c #A752A3"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"!!!!!!!!   !!   !!!!!!!!   !!   "
+"!!!!!!!!   !!   !!!!!!!!   !!   "
+;12345678901234567890123456789012
+String1=0x00,Boundary
+String2=0x01,Frontière communale
+ExtendedLabels=N
+[end]

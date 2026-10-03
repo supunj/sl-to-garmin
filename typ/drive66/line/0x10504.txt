@@ -1,0 +1,11 @@
+[_line]
+Type=0x10504
+UseOrientation=N
+LineWidth=2
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #A4A4A4"
+"2 c #FFFFFF"
+String1=0x04,Ditch
+ExtendedLabels=N
+[end]

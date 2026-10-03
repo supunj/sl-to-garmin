@@ -3,9 +3,12 @@
 #
 # For each line of config/tags.conf (format: category:key.value,key.value
 # [:extra_gpsbabel_options]), extract matching nodes and convert them to
-# build/gpi/<category>.gpi with icons/<category>.bmp as the bitmap.
+# build/gpi/<category>.gpi with icons/<device>/<category>.bmp as the bitmap.
 #
-# Usage: ./build_gpi.sh
+# Usage: ./build_gpi.sh [--device <type>] [-h|--help]
+#
+#   --device <type>  Garmin device family to build for (default: drive66);
+#                    selects the icon set (icons/<type>/); overrides $DEVICE
 
 source "$(dirname "$(readlink -f "$0")")/lib/common.sh"
 
@@ -13,6 +16,24 @@ TAGS_CONF="$PROJECT_ROOT/config/tags.conf"
 POI_DIR="$BUILD_DIR/poi"
 GPI_DIR="$BUILD_DIR/gpi"
 NODES_PBF="$POI_DIR/poi-nodes.osm.pbf"
+ICON_DIR="$PROJECT_ROOT/icons/$DEVICE"
+
+usage() { sed -n '2,11p' "$0"; exit "${1:-0}"; }
+
+parse_args() {
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            --device)
+                [ $# -ge 2 ] || die "--device requires a device type (e.g. drive66)"
+                DEVICE="$2"
+                ICON_DIR="$PROJECT_ROOT/icons/$DEVICE"
+                shift ;;
+            -h|--help)        usage 0 ;;
+            *)                echo "unknown option: $1" >&2; usage 1 ;;
+        esac
+        shift
+    done
+}
 
 # Pull every node out of the extract once; per-category filters then read
 # this much smaller file.
@@ -29,7 +50,7 @@ extract_nodes() {
 # build_one_gpi <category> <key.value,key.value,...> [extra gpsbabel opts]
 build_one_gpi() {
     local category="$1" keys="$2" extra="${3:-}"
-    local icon="$PROJECT_ROOT/icons/$category.bmp"
+    local icon="$ICON_DIR/$category.bmp"
     local osm_file="$POI_DIR/$category.osm"
     need_file "$icon"
 
@@ -51,9 +72,11 @@ build_one_gpi() {
 }
 
 main() {
+    parse_args "$@"
     need_file "$TAGS_CONF"
     need_cmd gpsbabel
     [ -x "$OSMOSIS" ] || die "osmosis not executable: $OSMOSIS"
+    [ -d "$ICON_DIR" ] || die "no icon set for device '$DEVICE': $ICON_DIR"
     mkdir -p "$POI_DIR" "$GPI_DIR"
     extract_nodes
     local line category keys extra

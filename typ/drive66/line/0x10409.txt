@@ -1,0 +1,16 @@
+[_line]
+Type=0x10409
+;GRMN_TYPE: Marine Obstruction Area Outlines/OBSTR_DANGER/Danger area outline/Non NT, NT
+UseOrientation=Y
+Xpm="32 5 2  1"
+"! c #000000"
+"  c none"
+"!!!!    !!!!    !!!!    !!!!    "
+"                                "
+"                                "
+"                                "
+"    !!!!    !!!!    !!!!    !!!!"
+;12345678901234567890123456789012
+String1=0x04,Tunnel
+ExtendedLabels=N
+[end]

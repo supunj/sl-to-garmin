@@ -1,0 +1,11 @@
+[_line]
+Type=0x10009
+UseOrientation=N
+LineWidth=2
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #FFCA6A"
+"2 c #515151"
+String1=0x04,Minor link
+ExtendedLabels=N
+[end]

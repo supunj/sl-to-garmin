@@ -1,0 +1,13 @@
+[_line]
+Type=0x0b
+;GRMN_TYPE: Roads/MAJOR_CONNECTOR/Major highway connector/Non NT, NT
+UseOrientation=N
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #BF9FFF"
+"2 c #000000"
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]

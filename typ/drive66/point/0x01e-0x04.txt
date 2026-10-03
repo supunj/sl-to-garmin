@@ -1,0 +1,15 @@
+[_point]
+Type=0x01e
+SubType=0x04
+String1=0x00,address
+ExtendedLabels=Y
+FontStyle=Default
+CustomColor=DayAndNight
+DaycustomColor:#7B308B
+NightcustomColor:#808080
+DayXpm="1 1 2 1"   Colormode=16
+"!	c #004080"
+"  	c none"
+" "
+;1
+[end]

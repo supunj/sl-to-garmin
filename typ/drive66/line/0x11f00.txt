@@ -1,0 +1,16 @@
+[_line]
+Type=0x11f00
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_LINE_545/Non-routable customizable line/Non NT, NT
+UseOrientation=N
+LineWidth=1
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #D7F7F7"
+"2 c #08B7E9"
+"3 c #2BBAFF"
+"4 c #FFFFFF"
+String1=0x00,River
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

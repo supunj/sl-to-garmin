@@ -90,12 +90,13 @@ Optional:
 ### Build the map
 
 ```sh
-./build_map.sh [--pg-cleanse] [--pg-experiments] [--skip-contours]
-               [--keep-build-dir]
+./build_map.sh [--device <type>] [--pg-cleanse] [--pg-experiments]
+               [--skip-contours] [--keep-build-dir]
 ```
 
 | Flag | Effect |
 |---|---|
+| `--device <type>` | Garmin device family to build for (default: `drive66`); selects the style (`style/<type>/`) and TYP segment tree (`typ/<type>/`) |
 | `--pg-cleanse` | Round-trip the extract through PostGIS first (see below) and build from the cleansed PBF |
 | `--pg-experiments` | Also run `pg/experiments/*.sql` (implies `--pg-cleanse`) |
 | `--skip-contours` | Do not build the contour layer |
@@ -108,7 +109,8 @@ Optional:
 | `./download_data.sh [--force]` | Fetch the Geofabrik extract into `data/osm/` |
 | `./cleanse_data.sh [--experiments] [--keep-db]` | Run the PostGIS cleansing stage standalone |
 | `./db.sh [start\|stop\|status\|rm\|purge]` | Run PostgreSQL/PostGIS + pgAdmin in podman (cleanse-stage database) |
-| `./build_gpi.sh` | Build `.gpi` POI alert files into `build/gpi/` from `config/tags.conf` |
+| `./build_gpi.sh [--device <type>]` | Build `.gpi` POI alert files into `build/gpi/` from `config/tags.conf`, using `icons/<device>/` bitmaps |
+| `./assemble_typ.sh [output]` | Assemble `build/<style>.txt` from the TYP segment tree under `typ/` (run automatically by `build_map.sh`) |
 | `./hgt2osm.sh` | Regenerate contours from SRTM tiles: phyghtmap per tile into `build/contours/` (temporary), then merged with osmosis into `data/osm/sl-contours.osm.pbf` |
 | `test/build_test_map.sh` | Build the type-grid test map (style development) |
 | `test/build_map_default.sh` | Full build with mkgmap's built-in default style, no TYP — comparison/testing only; output goes to `build-default/` |
@@ -127,7 +129,9 @@ environment variables:
 |---|---|---|
 | `FID` / `PID` | `53130` / `1` | Garmin family/product IDs |
 | `SERIES_NAME` / `AREA_NAME` | `sl-topo` / `sl` | Map names shown on device |
-| `STYLE` / `TYP_FILE` | `drive66` / `typ/drive66.txt` | mkgmap style and TYP (Drive-only) |
+| `DEVICE` | `drive66` | Garmin device family; derives `STYLE` and `TYP_SRC_DIR` (`--device` overrides) |
+| `STYLE` | `$DEVICE` | mkgmap style (`style/<style>/`) |
+| `TYP_FILE` / `TYP_SRC_DIR` | *(empty)* / `typ/$DEVICE` | TYP text file to compile; empty = assemble `build/<style>.txt` from the segment tree (`common`, `polygon`, `line`, `point` subdirs) via `assemble_typ.sh` |
 | `DATA_DIR` | `./data` | Source data root — point elsewhere to keep big files off the project disk |
 | `BUILD_DIR` | `./build` | Artifact root (wiped each build) |
 | `SOURCE_MAP_NAME` | `sri-lanka-latest.osm.pbf` | Raw extract filename |
@@ -147,18 +151,20 @@ category:key.value,key.value,...[:extra_gpsbabel_options]
 
 Example: `police:amenity.police:alerts=1,proximity=3km` builds
 `build/gpi/police.gpi` from `amenity=police` nodes, with proximity alerts,
-using `icons/police.bmp` as the icon.
+using `icons/drive66/police.bmp` as the icon.
 
 ## Directory layout
 
 ```
-├── build_map.sh / build_gpi.sh / hgt2osm.sh / download_data.sh / cleanse_data.sh / db.sh
+├── build_map.sh / build_gpi.sh / hgt2osm.sh / download_data.sh / cleanse_data.sh / db.sh / assemble_typ.sh
 ├── lib/common.sh          # shared setup + mkgmap/osmosis/splitter wrappers
 ├── config/                # build.conf (all knobs), tags.conf (POI categories)
 ├── arg/                   # mkgmap option files, one per layer
 ├── style/drive66/         # the mkgmap style (Garmin Drive only)
-├── typ/drive66.txt        # the TYP file source
-├── icons/                 # POI bitmaps for build_gpi.sh
+├── typ/drive66/           # TYP source as segments for the device: common/common.txt
+│                          # plus one file per section in polygon/, line/, point/
+│                          # (assemble_typ.sh joins them into build/<style>.txt)
+├── icons/drive66/         # POI bitmaps for build_gpi.sh (per device)
 ├── tools/                 # vendored mkgmap / splitter / osmosis
 ├── pg/
 │   ├── cleanse/           # vetted cleansing rules, run in filename order

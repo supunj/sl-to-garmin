@@ -1,0 +1,11 @@
+[_line]
+Type=0x10500
+UseOrientation=Y
+LineWidth=2
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #626262"
+"2 c #626262"
+String1=0x04,Coastline
+ExtendedLabels=N
+[end]

@@ -1,0 +1,8 @@
+[_polygon]
+Type=0x3d
+;GRMN_TYPE: Water Areas/LAKE_30MI, LARGE_LAKE/Large lake, typically between 30 and 500 sq mi in area/Non NT
+String1=0x04,Swimming pool
+ExtendedLabels=N
+Xpm="0 0 1 0"
+"1 c #21DADA"
+[end]

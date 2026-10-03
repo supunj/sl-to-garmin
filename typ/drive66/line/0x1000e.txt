@@ -1,0 +1,11 @@
+[_line]
+Type=0x1000e
+UseOrientation=N
+LineWidth=7
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #BD656A"
+"2 c #525252"
+String1=0x04,Primary road
+ExtendedLabels=N
+[end]

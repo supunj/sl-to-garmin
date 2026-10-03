@@ -1,0 +1,12 @@
+[_line]
+Type=0x18
+;GRMN_TYPE: Water Features/STREAM/Small stream or creek/Non NT
+UseOrientation=Y
+LineWidth=1
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #7BCAFF"
+"2 c #000000"
+String1=0x04,Stream
+ExtendedLabels=N
+[end]

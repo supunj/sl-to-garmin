@@ -1,0 +1,22 @@
+[_line]
+Type=0x1a
+;GRMN_TYPE: Roads/INTERNATIONAL_FERRY/Major water or rail ferry/Non NT, NT
+UseOrientation=N
+Xpm="32 4 4  1"
+"! c #00CBCB"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"       !!!!        !!!!         "
+"      !!!!!!      !!!!!!        "
+"     !!!!!!!     !!!!!!!        "
+"       !!!!        !!!!         "
+;12345678901234567890123456789012
+String1=0x00,ferry
+String2=0x01,Ferry
+ExtendedLabels=Y
+FontStyle=NormalFont
+CustomColor=DayAndNight
+DaycustomColor:#3900FF
+NightcustomColor:#808080
+[end]

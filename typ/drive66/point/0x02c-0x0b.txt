@@ -1,0 +1,29 @@
+[_point]
+Type=0x02c
+SubType=0x0b
+;GRMN_TYPE: Business - Attractions/PLACE_OF_WORSHIP/Religious place of worship/Non NT
+String1=0x01,Lieudeculte
+String2=0x00,Placeofworship
+ExtendedLabels=N
+DayXpm="16 16 3 1"   Colormode=16
+"!	c #000C0D"
+"#	c #808080"
+"  	c none"
+"                "
+"                "
+"                "
+"   !!!!!!!!!!   "
+"   !!!!!!!!!!   "
+"   !!######!!   "
+"   !!######!!   "
+"   !!######!!   "
+"   !!######!!   "
+"   !!######!!   "
+"   !!######!!   "
+"   !!!!!!!!!!   "
+"   !!!!!!!!!!   "
+"                "
+"                "
+"                "
+;1234567890123456
+[end]

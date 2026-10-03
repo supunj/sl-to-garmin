@@ -1,0 +1,11 @@
+[_line]
+Type=0x10008
+UseOrientation=N
+LineWidth=7
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #39CA6A"
+"2 c #525252"
+String1=0x04,Trunk road
+ExtendedLabels=N
+[end]

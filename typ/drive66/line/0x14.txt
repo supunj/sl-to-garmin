@@ -1,0 +1,17 @@
+[_line]
+Type=0x14
+;GRMN_TYPE: Misc. Line Types/RAILROAD/Railroad/Non NT
+UseOrientation=N
+Xpm="32 4 4  1"
+"! c #101010"
+"# c #FFFFFF"
+"3 c #FFFFFF"
+"4 c #28D434"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!########!!!!!!!!########"
+"!!!!!!!!########!!!!!!!!########"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+;12345678901234567890123456789012
+String1=0x04,Railway
+ExtendedLabels=N
+[end]

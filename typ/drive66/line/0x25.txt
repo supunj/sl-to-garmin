@@ -1,0 +1,12 @@
+[_line]
+Type=0x25
+;GRMN_TYPE: Contour Lines/MAJOR_BATHY_CONTOUR/Major bathymetric, or depth, contour (should be used for about every 10th contour line)/Non NT
+UseOrientation=N
+LineWidth=1
+Xpm="0 0 1 0"
+"1 c #008000"
+String1=0x04,hedgeorwall
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

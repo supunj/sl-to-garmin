@@ -1,0 +1,16 @@
+[_line]
+Type=0x0c
+;GRMN_TYPE: Roads/ROUNDABOUT/Roundabout/Non NT, NT
+UseOrientation=N
+Xpm="32 3 4  1"
+"! c #C0C0C0"
+"# c #804040"
+"3 c #FFFFFF"
+"4 c #0000FF"
+"################################"
+"!!!!#!!!!!!!!#!!!!!!!!#!!!!!#!!!"
+"!!!!#!!!!!!!!#!!!!!!!!#!!!!!#!!!"
+;12345678901234567890123456789012
+String1=0x00,manmadeanything
+ExtendedLabels=N
+[end]

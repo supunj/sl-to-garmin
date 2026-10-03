@@ -1,0 +1,22 @@
+[_point]
+Type=0x011
+SubType=0x00
+String1=0x00,city
+ExtendedLabels=N
+DayXpm="12 12 2 1"   Colormode=16
+"!	c #008040"
+"  	c none"
+"            "
+"            "
+"            "
+"            "
+"     !!     "
+"    !!!!    "
+"    !!!!    "
+"     !!     "
+"            "
+"            "
+"            "
+"            "
+;123456789012
+[end]

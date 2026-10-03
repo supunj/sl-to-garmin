@@ -1,0 +1,10 @@
+[_line]
+Type=0x33
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #C99494"
+"2 c #000000"
+ExtendedLabels=N
+[end]

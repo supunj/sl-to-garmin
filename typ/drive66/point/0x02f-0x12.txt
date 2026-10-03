@@ -1,0 +1,30 @@
+[_point]
+Type=0x02f
+SubType=0x12
+;GRMN_TYPE: Business - Services/COMMUNICATION_SERVICES/Communication services/Non NT
+String1=0x00,tower
+ExtendedLabels=N
+DayXpm="12 18 3 1"   Colormode=16
+"!	c #FFFFFF"
+"#	c #333333"
+"  	c none"
+" !        ! "
+"!#!!    !!#!"
+"!#!#!  !#!#!"
+"!#!#!!!!#!#!"
+"!#!#!##!#!#!"
+"!#!#!##!#!#!"
+"!#!!!##!!!#!"
+"!#!!!##!!!#!"
+" !  !##!  ! "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+"    !##!    "
+;123456789012
+[end]

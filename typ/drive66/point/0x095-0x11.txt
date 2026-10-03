@@ -1,0 +1,18 @@
+[_point]
+Type=0x095
+SubType=0x11
+String1=0x00,Spring
+String2=0x01,Source
+ExtendedLabels=N
+DayXpm="5 7 2 1"   Colormode=16
+"!	c #0080FF"
+"  	c none"
+"!!!!!"
+"!   !"
+"! !!!"
+"!   !"
+"!!! !"
+"!   !"
+"!!!!!"
+;12345
+[end]

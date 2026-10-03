@@ -1,0 +1,13 @@
+[_line]
+Type=0x00
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #ECEF24"
+"2 c #5F5F5F"
+String1=0x00,Road
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

@@ -1,0 +1,13 @@
+[_line]
+Type=0x1b
+;GRMN_TYPE: Roads/FERRY/Water or rail ferry/Non NT, NT
+UseOrientation=N
+Xpm="32 1 2  1"
+"! c #0000FF"
+"  c none"
+"!!!!!!!!        !!!!!!!!        "
+;12345678901234567890123456789012
+String1=0x02,F?hre
+String2=0x04,ferry
+ExtendedLabels=N
+[end]

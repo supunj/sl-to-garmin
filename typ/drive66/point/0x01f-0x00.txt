@@ -1,0 +1,16 @@
+[_point]
+Type=0x01f
+SubType=0x00
+;GRMN_TYPE: Political Entities/COUNTY/County or parish center/Non NT, NT
+String1=0x00,hamlet
+ExtendedLabels=Y
+FontStyle=LargeFont
+CustomColor=DayAndNight
+DaycustomColor:#7B3041
+NightcustomColor:#808080
+DayXpm="1 1 2 1"   Colormode=16
+"!	c #008040"
+"  	c none"
+" "
+;1
+[end]

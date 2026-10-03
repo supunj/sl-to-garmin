@@ -1,0 +1,9 @@
+[_line]
+Type=0x30
+UseOrientation=N
+LineWidth=2
+Xpm="0 0 2 0"
+"1 c #666666"
+"2 c #FF9500"
+ExtendedLabels=N
+[end]

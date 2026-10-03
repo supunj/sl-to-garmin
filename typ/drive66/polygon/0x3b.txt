@@ -1,0 +1,6 @@
+[_polygon]
+Type=0x3b
+ExtendedLabels=N
+Xpm="0 0 1 0"
+"1 c #28C4D0"
+[end]

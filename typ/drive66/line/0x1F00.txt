@@ -1,0 +1,16 @@
+[_line]
+Type=0x1F00
+String1=0x00,River
+UseOrientation=N
+LineWidth=1
+BorderWidth=1
+ExtendedLabels=Y
+FontStyle=Large
+CustomColor=DayAndNight
+DaycustomColor: #0000FF
+Xpm="0 0 4 0"
+"0 c #D7F7F7"
+"1 c #08B7E9"
+"2 c #2BBAFF"
+"3 c #FFFFFF"
+[end]

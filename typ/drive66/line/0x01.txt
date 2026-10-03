@@ -1,0 +1,12 @@
+[_line]
+Type=0x01
+;GRMN_TYPE: Roads/INTERSTATE, MAJOR_HWY/Primary, divided, limited-access highway, akin to an interstate in the US/Non NT, NT
+UseOrientation=Y
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #08B7E9"
+"2 c #000000"
+String1=0x04,Motorway
+ExtendedLabels=N
+[end]

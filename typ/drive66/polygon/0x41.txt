@@ -1,0 +1,9 @@
+[_polygon]
+Type=0x41
+;GRMN_TYPE: Water Areas/LAKE_LT_1MI, SMALL_LAKE/Small lake, typically less than 5 sq mi in area/Non NT
+String1=0x01,Eau
+String2=0x00,Water
+ExtendedLabels=N
+Xpm="0 0 1 0"
+"1 c #55DDF4"
+[end]

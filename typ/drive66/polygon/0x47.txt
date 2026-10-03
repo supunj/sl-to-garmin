@@ -1,0 +1,11 @@
+[_polygon]
+Type=0x47
+;GRMN_TYPE: Water Areas/RIVER_GT_700FT/Major river greater or equal to 700 ft in width/Non NT
+String1=0x02,Fluss
+String2=0x04,river
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #72CEFF"
+[end]

@@ -1,0 +1,12 @@
+[_line]
+Type=0x2a
+;GRMN_TYPE: Misc. Line Types/MARINE_BOUNDARY/Marine Boundary Line/Non NT
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #8080FF"
+"2 c #FF8040"
+String1=0x00,citywall&&fence
+ExtendedLabels=N
+[end]

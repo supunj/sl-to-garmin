@@ -1,0 +1,10 @@
+[_line]
+Type=0x10101
+UseOrientation=Y
+LineWidth=6
+Xpm="0 0 2 0"
+"1 c #000000"
+"2 c #FFFFFF"
+String1=0x04,Bridge
+ExtendedLabels=N
+[end]

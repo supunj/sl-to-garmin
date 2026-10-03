@@ -1,0 +1,11 @@
+[_line]
+Type=0x07
+;GRMN_TYPE: Roads/ALLEY, DRIVEWAY/Alleyway, private driveway to residence/Non NT, NT
+UseOrientation=N
+LineWidth=1
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #E7E7E7"
+"2 c #808000"
+ExtendedLabels=N
+[end]

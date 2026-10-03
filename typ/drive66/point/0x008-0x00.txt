@@ -1,0 +1,16 @@
+[_point]
+Type=0x008
+SubType=0x00
+;GRMN_TYPE: Political Entities/CITY_50K, MEDIUM_CITY/Medium city center, typically 50K-1M inhabitants/Non NT
+String1=0x00,town
+ExtendedLabels=Y
+FontStyle=LargeFont
+CustomColor=DayAndNight
+DaycustomColor: #0000FF
+NightcustomColor: #808080
+DayXpm="1 1 2 1"   Colormode=16
+"!	c #0000FF"
+"  	c none"
+" "
+;1
+[end]

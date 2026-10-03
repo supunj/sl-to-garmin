@@ -1,0 +1,16 @@
+[_line]
+Type=0x26
+;GRMN_TYPE: Water Features/INTERMITTENT_STREAM/Intermittent or dry stream, creek, or ditch/Non NT
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #7DEFFF"
+"2 c #007795"
+"3 c #007795"
+"4 c #7DEFFF"
+String1=0x00,Canal
+ExtendedLabels=Y
+FontStyle=NormalFont
+CustomColor=No
+[end]

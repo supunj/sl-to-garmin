@@ -1,0 +1,18 @@
+[_line]
+Type=0x19
+;GRMN_TYPE: Misc. Line Types/TIME_ZONE_BOUNDARY/Indicates the boundary of a time zone/Non NT
+UseOrientation=N
+Xpm="32 3 4  1"
+"! c #FF0000"
+"# c #FFB9B9"
+"3 c #FFFFFF"
+"4 c #28D434"
+"################################"
+"############!!!!!!!!!###########"
+"################################"
+;12345678901234567890123456789012
+String1=0x00,accessprivate
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

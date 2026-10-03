@@ -1,0 +1,12 @@
+[_polygon]
+Type=0x46
+;GRMN_TYPE: Water Areas/LARGE_RIVER/Major river, typically at least 700 ft in width/Non NT
+String1=0x00,Riverbank
+String2=0x01,Lit de Rivière
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#1D4DFF
+Xpm="0 0 1 0"
+"1 c #72CEFF"
+[end]

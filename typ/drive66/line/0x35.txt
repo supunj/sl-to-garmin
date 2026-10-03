@@ -1,0 +1,15 @@
+[_line]
+Type=0x35
+UseOrientation=N
+Xpm="32 3 4  1"
+"! c #8F8F8F"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"!!!!    !!!!    !!!!    !!!!    "
+"!!!!    !!!!    !!!!    !!!!    "
+"!!!!    !!!!    !!!!    !!!!    "
+;12345678901234567890123456789012
+String1=0x00,Disusedrailway
+ExtendedLabels=N
+[end]

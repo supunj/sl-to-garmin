@@ -1,0 +1,14 @@
+[_line]
+Type=0x05
+;GRMN_TYPE: Roads/COLLECTOR/Secondary city thoroughfare/Non NT, NT
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #F9FD2D"
+"2 c #0F0F0F"
+String1=0x00,Tertiaryroad
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

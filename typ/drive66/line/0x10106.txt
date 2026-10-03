@@ -1,0 +1,19 @@
+[_line]
+Type=0x10106
+;GRMN_TYPE: Marine Lines/OVERHEAD_CABLE/Overhead cable/Non NT, NT
+UseOrientation=Y
+Xpm="32 8 2  1"
+"! c #000000"
+"  c none"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"                                "
+"                                "
+"                                "
+"                                "
+"                                "
+"                                "
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+;12345678901234567890123456789012
+String1=0x04,Bridge
+ExtendedLabels=N
+[end]

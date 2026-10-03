@@ -1,0 +1,28 @@
+[_line]
+Type=0x11701
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_LINE_290/Non-routable customizable line/Non NT, NT
+UseOrientation=N
+Xpm="32 12 4  1"
+"! c #5F5F5F"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"   !!!!!   !!!!!   !!!!!   !!!!!"
+"   !!!!!   !!!!!   !!!!!   !!!!!"
+"   !!!!!   !!!!!   !!!!!   !!!!!"
+"                                "
+"                                "
+"                                "
+"                                "
+"                                "
+"                                "
+"   !!!!!   !!!!!   !!!!!   !!!!!"
+"   !!!!!   !!!!!   !!!!!   !!!!!"
+"   !!!!!   !!!!!   !!!!!   !!!!!"
+;12345678901234567890123456789012
+String1=0x00,tunnel
+String2=0x01,Remontée mécanique
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
+[end]

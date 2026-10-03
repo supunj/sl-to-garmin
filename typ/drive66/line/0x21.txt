@@ -1,0 +1,14 @@
+[_line]
+Type=0x21
+;GRMN_TYPE: Contour Lines/INT_CONTOUR/Intermediate contour (should be used for about every 5th contour line)/Non NT
+UseOrientation=Y
+Xpm="32 1 4  1"
+"! c #FF6500"
+"  c none"
+"3 c #FFFFFF"
+"4 c none"
+"! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! "
+;12345678901234567890123456789012
+String1=0x04,Contour_medium
+ExtendedLabels=N
+[end]

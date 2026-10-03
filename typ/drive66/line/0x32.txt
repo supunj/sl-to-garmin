@@ -1,0 +1,10 @@
+[_line]
+Type=0x32
+UseOrientation=N
+LineWidth=2
+Xpm="0 0 2 0"
+"1 c #444444"
+"2 c #00FFB4"
+String1=0x00,Tramway
+ExtendedLabels=N
+[end]

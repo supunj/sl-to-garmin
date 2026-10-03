@@ -1,0 +1,11 @@
+[_line]
+Type=0x1000f
+UseOrientation=N
+LineWidth=2
+BorderWidth=0
+Xpm="0 0 2 0"
+"1 c #FFCA6A"
+"2 c #FFFFFF"
+String1=0x04,Minor road
+ExtendedLabels=N
+[end]

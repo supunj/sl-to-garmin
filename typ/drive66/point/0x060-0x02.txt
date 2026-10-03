@@ -1,0 +1,241 @@
+[_point]
+Type=0x060
+SubType=0x02
+ExtendedLabels=N
+DayXpm="24 24 210 2"   Colormode=32
+"!!	c #8CA1EE"  alpha=0
+"!#	c #3138A8"  alpha=0
+"!%	c #000EAF"  alpha=0
+"!?	c #0E1CD9"  alpha=0
+"!$	c #071CCB"  alpha=0
+"!*	c #0715D2"  alpha=0
+"!=	c #0715E0"  alpha=0
+"!1	c #0715CB"  alpha=0
+"!2	c #0715C4"  alpha=0
+"!3	c #0E1CC4"  alpha=0
+"!4	c #0E1C9A"  alpha=0
+"!5	c #7777D9"  alpha=0
+"!6	c #001CCB"  alpha=0
+"!7	c #0015D2"  alpha=0
+"!8	c #0007BD"  alpha=0
+"!9	c #2A31A1"  alpha=0
+"#!	c #D2E0FC"  alpha=0
+"##	c #E7F5FC"  alpha=0
+"#%	c #E7EEFC"  alpha=0
+"#?	c #EEF5FC"  alpha=0
+"#$	c #D9EEFC"  alpha=0
+"#*	c #4654AF"  alpha=0
+"#=	c #0E1CB6"  alpha=0
+"#1	c #0E1CBD"  alpha=0
+"#2	c #071593"  alpha=0
+"#3	c #000E9A"  alpha=0
+"#4	c #0007D9"  alpha=0
+"#5	c #071CAF"  alpha=0
+"#6	c #D2D2FC"  alpha=0
+"#7	c #F5EEFC"  alpha=0
+"#8	c #FCFCFC"  alpha=0
+"#9	c #FCF5FC"  alpha=0
+"%!	c #FCFCF5"  alpha=0
+"%#	c #FCF5F5"  alpha=0
+"%%	c #D2D9FC"  alpha=0
+"%?	c #000EA8"  alpha=0
+"%$	c #0000CB"  alpha=0
+"%*	c #151CC4"  alpha=0
+"%=	c #0E15CB"  alpha=0
+"%1	c #3F54AF"  alpha=0
+"%2	c #EEFCFC"  alpha=0
+"%3	c #F5FCFC"  alpha=0
+"%4	c #F5FCEE"  alpha=0
+"%5	c #EEFCEE"  alpha=0
+"%6	c #FCFCEE"  alpha=0
+"%7	c #F5FCF5"  alpha=0
+"%8	c #B6CBFC"  alpha=0
+"%9	c #151CD2"  alpha=0
+"?!	c #0015A1"  alpha=0
+"?#	c #7777D2"  alpha=0
+"?%	c #FCE7EE"  alpha=0
+"??	c #930E0E"  alpha=0
+"?$	c #A1071C"  alpha=0
+"?*	c #BD5B70"  alpha=0
+"?=	c #E7EEF5"  alpha=0
+"?1	c #E0F5F5"  alpha=0
+"?2	c #F5F5FC"  alpha=0
+"?3	c #E7F5F5"  alpha=0
+"?4	c #F5EEEE"  alpha=0
+"?5	c #0715D9"  alpha=0
+"?6	c #001593"  alpha=0
+"?7	c #0715EE"  alpha=0
+"?8	c #93B6FC"  alpha=0
+"?9	c #9A1C2A"  alpha=0
+"$!	c #B60707"  alpha=0
+"$#	c #FCC4CB"  alpha=0
+"$%	c #937070"  alpha=0
+"$?	c #FCF5EE"  alpha=0
+"$$	c #CB7E77"  alpha=0
+"$*	c #B66262"  alpha=0
+"$=	c #FCE0E7"  alpha=0
+"$1	c #FCEEEE"  alpha=0
+"$2	c #CB858C"  alpha=0
+"$3	c #AF6262"  alpha=0
+"$4	c #FCE7E7"  alpha=0
+"$5	c #FCEEF5"  alpha=0
+"$6	c #E0AFA8"  alpha=0
+"$7	c #A1625B"  alpha=0
+"$8	c #FCE7E0"  alpha=0
+"$9	c #FCFCE0"  alpha=0
+"*!	c #8593FC"  alpha=0
+"*#	c #1523EE"  alpha=0
+"*%	c #4D5BB6"  alpha=0
+"*?	c #545BAF"  alpha=0
+"*$	c #851515"  alpha=0
+"**	c #A10E07"  alpha=0
+"*=	c #FCF5E0"  alpha=0
+"*1	c #BD1C0E"  alpha=0
+"*2	c #9A070E"  alpha=0
+"*3	c #A1313F"  alpha=0
+"*4	c #FCD2C4"  alpha=0
+"*5	c #BD000E"  alpha=0
+"*6	c #A80E15"  alpha=0
+"*7	c #7E232A"  alpha=0
+"*8	c #FCE7F5"  alpha=0
+"*9	c #CB0707"  alpha=0
+"=!	c #BD0E15"  alpha=0
+"=#	c #CB0E1C"  alpha=0
+"=%	c #FCE7D9"  alpha=0
+"=?	c #000EA1"  alpha=0
+"=$	c #000770"  alpha=0
+"=*	c #1523AF"  alpha=0
+"==	c #F5E7F5"  alpha=0
+"=1	c #FCD9D2"  alpha=0
+"=2	c #BD0E00"  alpha=0
+"=3	c #B60007"  alpha=0
+"=4	c #AF5B62"  alpha=0
+"=5	c #D9A193"  alpha=0
+"=6	c #CB0000"  alpha=0
+"=7	c #FCE0D9"  alpha=0
+"=8	c #D97069"  alpha=0
+"=9	c #BD1507"  alpha=0
+"1!	c #BD6262"  alpha=0
+"1#	c #D94D54"  alpha=0
+"1%	c #A1151C"  alpha=0
+"1?	c #A84D3F"  alpha=0
+"1$	c #0015B6"  alpha=0
+"1*	c #070EC4"  alpha=0
+"1=	c #07008C"  alpha=0
+"11	c #0E31A8"  alpha=0
+"12	c #93150E"  alpha=0
+"13	c #B60E0E"  alpha=0
+"14	c #FCEEE0"  alpha=0
+"15	c #7E0E00"  alpha=0
+"16	c #D9070E"  alpha=0
+"17	c #A13138"  alpha=0
+"18	c #A81C23"  alpha=0
+"19	c #85312A"  alpha=0
+"2!	c #CB3F38"  alpha=0
+"2#	c #E07770"  alpha=0
+"2%	c #B60E15"  alpha=0
+"2?	c #A12A23"  alpha=0
+"2$	c #152ABD"  alpha=0
+"2*	c #0007C4"  alpha=0
+"2=	c #4D4DA8"  alpha=0
+"21	c #0015C4"  alpha=0
+"22	c #EEEEFC"  alpha=0
+"23	c #A1231C"  alpha=0
+"24	c #C45454"  alpha=0
+"25	c #691C23"  alpha=0
+"26	c #E7B6B6"  alpha=0
+"27	c #FC777E"  alpha=0
+"28	c #D20715"  alpha=0
+"29	c #A80E00"  alpha=0
+"3!	c #CB8C7E"  alpha=0
+"3#	c #F58C93"  alpha=0
+"3%	c #A80000"  alpha=0
+"3?	c #AF0715"  alpha=0
+"3$	c #FCA8B6"  alpha=0
+"3*	c #AF0000"  alpha=0
+"3=	c #FC7E85"  alpha=0
+"31	c #C40007"  alpha=0
+"32	c #E0A19A"  alpha=0
+"33	c #0007A1"  alpha=0
+"34	c #151CE0"  alpha=0
+"35	c #938CE0"  alpha=0
+"36	c #850000"  alpha=0
+"37	c #AF0E0E"  alpha=0
+"38	c #AF3F46"  alpha=0
+"39	c #A11507"  alpha=0
+"4!	c #AF070E"  alpha=0
+"4#	c #FCC4D2"  alpha=0
+"4%	c #FCB6BD"  alpha=0
+"4?	c #9A1507"  alpha=0
+"4$	c #FCD9CB"  alpha=0
+"4*	c #9A1C15"  alpha=0
+"4=	c #850E07"  alpha=0
+"41	c #AF3831"  alpha=0
+"42	c #FCEED9"  alpha=0
+"43	c #939AE7"  alpha=0
+"44	c #4D5BCB"  alpha=0
+"45	c #1C23C4"  alpha=0
+"46	c #0015BD"  alpha=0
+"47	c #FCEEFC"  alpha=0
+"48	c #EEF5F5"  alpha=0
+"49	c #0715BD"  alpha=0
+"5!	c #0E1CCB"  alpha=0
+"5#	c #CBD9FC"  alpha=0
+"5%	c #F5EEF5"  alpha=0
+"5?	c #FCF5E7"  alpha=0
+"5$	c #FCFCE7"  alpha=0
+"5*	c #00009A"  alpha=0
+"5=	c #1C1CE0"  alpha=0
+"51	c #0007CB"  alpha=0
+"52	c #000E93"  alpha=0
+"53	c #CBE0FC"  alpha=0
+"54	c #E0E7FC"  alpha=0
+"55	c #CBD2FC"  alpha=0
+"56	c #0723CB"  alpha=0
+"57	c #858CEE"  alpha=0
+"58	c #000ECB"  alpha=0
+"59	c #0715B6"  alpha=0
+"6!	c #1523A1"  alpha=0
+"6#	c #C4CBFC"  alpha=0
+"6%	c #3846A1"  alpha=0
+"6?	c #151CBD"  alpha=0
+"6$	c #070EBD"  alpha=0
+"6*	c #151CA1"  alpha=0
+"6=	c #3F54BD"  alpha=0
+"61	c #071CE0"  alpha=0
+"62	c #000ED2"  alpha=0
+"63	c #070EE0"  alpha=0
+"64	c #0015E7"  alpha=0
+"65	c #3F54C4"  alpha=0
+"66	c #A1AFFC"  alpha=0
+"67	c #5B70BD"  alpha=0
+"68	c #384DA8"  alpha=0
+"69	c #3F4DAF"  alpha=0
+"7!	c #5469BD"  alpha=0
+"7#	c #FF00FF"  alpha=15
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#!#!%!?!$!*!=!1!2!3!47#7#7#7#7#7#7#"
+"7#7#7#7#!5!6!7!8!9#!###%#?###$#*#=!*#1#27#7#7#7#"
+"7#7#7##3#4#5#6#7#8#8#9%!%!#8#9%!%#%%%?%$%*7#7#7#"
+"7#7#%=!=%1%2%3%4%5%6%!%4%4%7%!#8#8#8##%8%9?!7#7#"
+"7#7##4?#?%???$?*%#%7#8?=?1?2#8?3#8?4%!%!##?5?67#"
+"7#?7?8%#?9$!$#$%$?$$$*$=$1$2$3$4$5$6$7$8$9*!*#*%"
+"*?!8?2%!*$***=%#$8*1*2*3*4*5*6*7*8*9=!=#=%#8!2=?"
+"=$=*==#?=1=2=3=4=5=6=7*8=8=9=%$?1!1#$11%1?%#1$1*"
+"1=11#8#9121314$1%#151617#818=6192!2#%72%2?%62$2*"
+"2=2122#923*52425262728293!3#3%3?3$3*3=3132#9!233"
+"7#3435%3$8!$3738=1394!4#4%4?3%4$*84*4=414243?544"
+"7#4546##%!%#47#8#9%#*8#8484747%##947$5$4%349#17#"
+"7#7#5!%=5#5%5?5$%4%3%3%3%3%348%3%##9#9%35*5=7#7#"
+"7#7#7#?651525354#8%7?2#9%##8#?%3?255#356!%7#7#7#"
+"7#7#7#7#57!158596!6##%#?#?54%%6%6??56$6*7#7#7#7#"
+"7#7#7#7#7#7#6=466162!=?5?5!=6364!6657#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#666768697!!!7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+"7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#7#"
+;123456789012345678901234
+[end]

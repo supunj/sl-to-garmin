@@ -1,0 +1,14 @@
+[_line]
+Type=0x1040a
+UseOrientation=Y
+Xpm="32 4 2  1"
+"! c #000000"
+"  c none"
+"!!!!    !!!!    !!!!    !!!!    "
+"                                "
+"                                "
+"    !!!!    !!!!    !!!!    !!!!"
+;12345678901234567890123456789012
+String1=0x04,Tunnel
+ExtendedLabels=N
+[end]

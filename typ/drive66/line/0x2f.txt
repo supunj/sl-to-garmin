@@ -1,0 +1,10 @@
+[_line]
+Type=0x2f
+;GRMN_TYPE: Misc. Line Types/CABLE_CAR/Cable car/Non NT, NT
+UseOrientation=N
+LineWidth=2
+Xpm="0 0 2 0"
+"1 c #999999"
+"2 c #FFCA00"
+ExtendedLabels=N
+[end]

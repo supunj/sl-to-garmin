@@ -1,0 +1,20 @@
+[_line]
+Type=0x0d
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_1/Routable customizable line/Non NT, NT
+UseOrientation=N
+Xpm="32 6 4  1"
+"! c #6F6F6F"
+"# c #BBBBBB"
+"3 c #FFFFFF"
+"4 c #28D434"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"##########################!#####"
+"####!######!#######!############"
+"########################!###!###"
+"######!#######!#######!#########"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+;12345678901234567890123456789012
+String1=0x00,pedestrian
+String2=0x02,325E0D
+ExtendedLabels=N
+[end]
