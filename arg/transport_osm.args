@@ -1,0 +1,48 @@
+# Product
+family-id: 53130
+family-name: sl-route
+product-id: 1
+series-name: sl-topo
+area-name: sl
+code-page: 1252
+
+# Render
+draw-priority: 50
+keep-going
+transparent
+max-jobs
+#reduce-point-density: 4
+#reduce-point-density-polygon: 8
+lower-case
+report-similar-arcs
+order-by-decreasing-area
+preserve-element-order
+polygon-size-limits: 24:12, 18:10, 16:8, 14:4, 13:2, 11:0
+name-tag-list: name:en,int_name,name
+no-merge-lines
+no-tdbfile
+#ignore-osm-bounds
+improve-overview
+
+#Routing
+route
+drive-on: left
+location-autofill: is_in,nearest
+link-pois-to-ways
+process-destination
+process-exits
+report-roundabout-issues
+report-dead-ends: 2
+add-pois-to-lines
+
+#Address
+country-name: Sri_Lanka
+country-abbr: SL
+region-name: South_Asia
+region-abbr: SA
+housenumbers
+poi-address
+index
+split-name-index
+make-poi-index
+add-pois-to-areas

@@ -1,0 +1,15 @@
+# Product
+family-id: 53130
+family-name: sl-contours
+product-id: 1
+series-name: sl-topo
+area-name: sl
+code-page: 1252
+
+# Render
+draw-priority: 20
+transparent
+lower-case
+keep-going
+no-tdbfile
+improve-overview

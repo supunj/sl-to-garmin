@@ -1,0 +1,211 @@
+<VRTDataset rasterXSize="6001" rasterYSize="9601">
+  <SRS dataAxisToSRSAxisMapping="2,1">GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]</SRS>
+  <GeoTransform>  7.6999583333333334e+01,  8.3333333333333339e-04,  0.0000000000000000e+00,  1.3000416666666666e+01,  0.0000000000000000e+00, -8.3333333333333339e-04</GeoTransform>
+  <VRTRasterBand dataType="Int16" band="1">
+    <Metadata>
+      <MDI key="STATISTICS_APPROXIMATE">YES</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+    <NoDataValue>-32768</NoDataValue>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N05E080.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="3600" yOff="8400" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N06E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="7200" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N06E080.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="3600" yOff="7200" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N06E081.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="4800" yOff="7200" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N07E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="6000" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N07E080.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="3600" yOff="6000" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N07E081.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="4800" yOff="6000" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N08E077.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="0" yOff="4800" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N08E078.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="1200" yOff="4800" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N08E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="4800" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N08E080.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="3600" yOff="4800" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N08E081.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="4800" yOff="4800" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N09E077.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="0" yOff="3600" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N09E078.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="1200" yOff="3600" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N09E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="3600" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N09E080.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="3600" yOff="3600" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N10E077.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="0" yOff="2400" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N10E078.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="1200" yOff="2400" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N10E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="2400" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N11E077.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="0" yOff="1200" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N11E078.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="1200" yOff="1200" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N11E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="1200" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N12E078.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="1200" yOff="0" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N12E079.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="2400" yOff="0" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+    <ComplexSource>
+      <SourceFilename relativeToVRT="1">./N12E080.hgt</SourceFilename>
+      <SourceBand>1</SourceBand>
+      <SourceProperties RasterXSize="1201" RasterYSize="1201" DataType="Int16" BlockXSize="1201" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="1201" ySize="1201" />
+      <DstRect xOff="3600" yOff="0" xSize="1201" ySize="1201" />
+      <NODATA>-32768</NODATA>
+    </ComplexSource>
+  </VRTRasterBand>
+</VRTDataset>

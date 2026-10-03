@@ -1,0 +1,12 @@
+if (type >= 0x010000) {
+			if ((type & 0xff) > 0x1f)
+				return false;
+		} else {
+			switch (featureKind) {
+			case POLYGON:
+				if (type > 0x7f || type == 0x4a)
+					return false;
+				break;
+			}
+		}
+		return true;

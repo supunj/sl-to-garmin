@@ -1,0 +1,49 @@
+# Consolidated from: admin.args, elevation.args, sea_land.args, transport_osm.args
+
+# Product
+family-id: 53130
+family-name: sl-test
+product-id: 1
+series-name: sl-topo
+area-name: sl
+code-page: 1252
+
+# Render
+draw-priority: 50
+keep-going
+#transparent
+max-jobs
+lower-case
+report-similar-arcs
+order-by-decreasing-area
+preserve-element-order
+polygon-size-limits: 24:12, 18:10, 16:8, 14:4, 13:2, 11:0
+name-tag-list: name:en,int_name,name
+no-merge-lines
+no-tdbfile
+ignore-osm-bounds
+improve-overview
+generate-sea: multipolygon,extend-sea-sectors,land-tag=natural=coastline,close-gaps=10,floodblocker,fbdebug
+
+# Routing
+route
+drive-on: left
+location-autofill: is_in,nearest
+link-pois-to-ways
+process-destination
+process-exits
+report-roundabout-issues
+report-dead-ends: 2
+add-pois-to-lines
+
+# Address
+country-name: Sri_Lanka
+country-abbr: SL
+region-name: South_Asia
+region-abbr: SA
+housenumbers
+poi-address
+index
+split-name-index
+make-poi-index
+add-pois-to-areas

@@ -1,0 +1,22 @@
+# Product
+family-id: 53130
+family-name: sl-admin
+product-id: 1
+series-name: sl-topo
+area-name: sl
+code-page: 1252
+
+# Render
+draw-priority: 10
+keep-going
+transparent
+max-jobs
+lower-case
+report-similar-arcs
+order-by-decreasing-area
+preserve-element-order
+name-tag-list: name:en,int_name,name
+no-merge-lines
+no-tdbfile
+#ignore-osm-bounds
+improve-overview

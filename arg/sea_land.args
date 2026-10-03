@@ -1,0 +1,28 @@
+# Product
+family-id: 53130
+family-name: sl-base
+product-id: 1
+series-name: sl-topo
+area-name: sl
+code-page: 1252
+
+# Render
+draw-priority: 5
+# transparent
+lower-case
+keep-going
+generate-sea: multipolygon,extend-sea-sectors,land-tag=natural=coastline,close-gaps=10,floodblocker,fbdebug
+no-tdbfile
+max-jobs
+ignore-osm-bounds
+improve-overview
+
+#Elevation
+show-profiles: 1
+#dem-dists: 1656,9936,19872,26512,39768,52992,82800
+#dem-dists: 1656,1656,19872,19872,39768,39768,82800
+dem-dists: 3312,13248,26512,53024
+dem-interpolation: bilinear
+#overview-dem-dist: 128000
+#overview-dem-dist: 55000
+overview-dem-dist: 53024

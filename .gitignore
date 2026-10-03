@@ -1,0 +1,21 @@
+# Build artifacts
+build/
+build-default/
+
+# Python virtualenv (auto-created by hgt2osm.sh)
+.venv/
+
+# Geofabrik source extract — too large for git; fetch via download_data.sh
+# (the cleansed extract lives under build/, which is ignored above)
+data/osm/sri-lanka-latest.osm.pbf
+
+# Regenerable contour cache
+data/cache/
+
+# Test artifacts
+test/*.img
+test/area_type_grid.osm
+
+# Backups
+*.bak
+*.old
