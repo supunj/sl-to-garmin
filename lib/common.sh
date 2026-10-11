@@ -77,10 +77,19 @@ run_splitter() {
     )
 }
 
+# latest_typ_file — print the newest TYP text file for the device: the
+# highest-numbered typ/NN_<device>.txt (version-sorted so 9 sorts before 10).
+latest_typ_file() {
+    local latest
+    latest=$(find "$PROJECT_ROOT/typ" -maxdepth 1 -name "[0-9]*_$DEVICE.txt" -print |
+        sort -V | tail -n 1)
+    [ -n "$latest" ] || die "no TYP text file for device '$DEVICE': typ/NN_$DEVICE.txt"
+    printf '%s\n' "$latest"
+}
+
 # compile_typ — compile the TYP into $BUILD_DIR/<style>.typ. The TYP text is
-# assembled from the segment tree by assemble_typ.sh unless TYP_FILE points at
-# a ready-made file. No-op for the built-in default style
-# (test/build_map_default.sh).
+# the latest typ/NN_<device>.txt unless TYP_FILE points at a specific file.
+# No-op for the built-in default style (test/build_map_default.sh).
 compile_typ() {
     if [ "$STYLE" = default ]; then
         log "Style '$STYLE' has no TYP — skipping TYP compilation"
@@ -88,8 +97,7 @@ compile_typ() {
     fi
     local typ_txt="${TYP_FILE:-}"
     if [ -z "$typ_txt" ]; then
-        typ_txt="$BUILD_DIR/$STYLE.txt"
-        "$PROJECT_ROOT/assemble_typ.sh" "$typ_txt"
+        typ_txt=$(latest_typ_file)
     fi
     need_file "$typ_txt"
     log "Compiling TYP: $typ_txt"

@@ -1,0 +1,2236 @@
+[_id]
+ProductCode=1
+FID=53130
+CodePage=1252
+[end]
+
+[_drawOrder]
+Type=0x4B,1
+Type=0x02,2
+Type=0x03,2
+Type=0x07,2
+Type=0x09,2
+Type=0x0a,2
+Type=0x10,2
+Type=0x11,2
+Type=0x12,2
+Type=0x15,2
+Type=0x16,2
+Type=0x18,2
+Type=0x1a,2
+Type=0x1c,2
+Type=0x1d,2
+Type=0x20,2
+Type=0x21,2
+Type=0x22,2
+Type=0x24,2
+Type=0x25,2
+Type=0x26,2
+Type=0x3b,2
+Type=0x3d,2
+Type=0x46,2
+Type=0x47,2
+Type=0x48,2
+Type=0x4c,2
+Type=0x4d,2
+Type=0x51,2
+Type=0x53,2
+Type=0x10100,2
+Type=0x08,3
+Type=0x0b,3
+Type=0x0c,3
+Type=0x0f,3
+Type=0x32,3
+Type=0x4e,3
+Type=0x50,3
+Type=0x52,3
+Type=0x10200,3
+Type=0x6b,3
+Type=0x17,4
+Type=0x4f,4
+Type=0x05,5
+Type=0x19,5
+Type=0x3c,5
+Type=0x3f,5
+Type=0x41,5
+Type=0x10102,5
+Type=0x10104,5
+Type=0x10107,5
+Type=0x10108,5
+Type=0x10506,5
+Type=0x1090F,5
+Type=0x06,6
+Type=0x0e,6
+Type=0x13,7
+Type=0x23,7
+Type=0x6a,7
+Type=0x6c,8
+Type=0x04,9
+[end]
+
+[_polygon]
+Type=0x4B
+ExtendedLabels=Y
+String1=0x04,Map Background
+FontStyle=SmallFont
+CustomColor=No
+FontStyle=SmallFont
+FontStyle=SmallFont
+Xpm="0 0 2 0"
+"0 c #d9dbca"
+"1 c #4f4f4a"
+[end]
+
+[_polygon]
+Type=0x02
+String1=0x04,Suburb
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #E0DFDF"
+[end]
+
+[_polygon]
+Type=0x03
+String1=0x04,Village
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #E0DFDF"
+[end]
+
+[_polygon]
+Type=0x04
+String1=0x04,Prison / Military
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #FF958B"
+"  c none"
+" !!              !!             "
+"!!              !!              "
+"!              !!              !"
+"              !!              !!"
+"             !!              !! "
+"            !!              !!  "
+"           !!              !!   "
+"          !!              !!    "
+"         !!              !!     "
+"        !!              !!      "
+"       !!              !!       "
+"      !!              !!        "
+"     !!              !!         "
+"    !!              !!          "
+"   !!              !!           "
+"  !!              !!            "
+" !!              !!             "
+"!!              !!              "
+"!              !!              !"
+"              !!              !!"
+"             !!              !! "
+"            !!              !!  "
+"           !!              !!   "
+"          !!              !!    "
+"         !!              !!     "
+"        !!              !!      "
+"       !!              !!       "
+"      !!              !!        "
+"     !!              !!         "
+"    !!              !!          "
+"   !!              !!           "
+"  !!              !!            "
+[end]
+
+[_polygon]
+Type=0x05
+String1=0x04,Parking
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #7BCAFF"
+"  c none"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+" !!!! !!!!!!!!!! !!!! !!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!! !!!! !!!!!!!!!! !!!! !!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+" !!!! !!!!!!!!!! !!!! !!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!! !!!! !!!!!!!!!! !!!! !!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x06
+String1=0x04,Parking
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #7BCAFF"
+"  c none"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+" !!!! !!!!!!!!!! !!!! !!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!! !!!! !!!!!!!!!! !!!! !!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+" !!!! !!!!!!!!!! !!!! !!!!!!!!!!"
+" !!!  !!!!!!!!!! !!!  !!!!!!!!!!"
+"     !!!!!!!!!!!     !!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+" !!!!!!!!!!!!!!! !!!!!!!!!!!!!!!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!! !!!! !!!!!!!!!! !!!! !!"
+"!!!!!!!! !!!  !!!!!!!!!! !!!  !!"
+"!!!!!!!!     !!!!!!!!!!!     !!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+"!!!!!!!! !!!!!!!!!!!!!!! !!!!!!!"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x07
+String1=0x04,Airport
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #E9E7E2"
+[end]
+
+[_polygon]
+Type=0x08
+String1=0x04,Food / Shops
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #F2DAD9"
+[end]
+
+[_polygon]
+Type=0x09
+String1=0x04,Water Park
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x0a
+String1=0x04,Education
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #FFFFE5"
+[end]
+
+[_polygon]
+Type=0x0b
+String1=0x04,Medical
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #FFFFE5"
+[end]
+
+[_polygon]
+Type=0x0c
+String1=0x04,Industrial
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #EBDBE8"
+[end]
+
+[_polygon]
+Type=0x0e
+String1=0x04,Aviation Surfaces
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #BBBBCC"
+[end]
+
+[_polygon]
+Type=0x0f
+String1=0x04,Commercial
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #F2DAD9"
+[end]
+
+[_polygon]
+Type=0x11
+String1=0x04,Danger Area
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #FFFFFF"
+"# c #FCD8DB"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"#############!###!##############"
+"##############!#!###############"
+"###############!################"
+"##############!#!###############"
+"#############!###!##############"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+[end]
+
+[_polygon]
+Type=0x12
+String1=0x04,Retail
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #EFC8C8"
+[end]
+
+[_polygon]
+Type=0x13
+String1=0x04,Buildings
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #D9D0C9"
+[end]
+
+[_polygon]
+Type=0x15
+String1=0x04,Village Green
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #CDEBB0"
+[end]
+
+[_polygon]
+Type=0x17
+String1=0x04,Parks
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #C8FACC"
+[end]
+
+[_polygon]
+Type=0x18
+String1=0x04,Golf Course
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #B5E3B5"
+[end]
+
+[_polygon]
+Type=0x19
+String1=0x04,Sports
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #AAE0CB"
+[end]
+
+[_polygon]
+Type=0x1a
+String1=0x04,Cemeteries
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #88B78E"
+"# c #AACBAF"
+"################################"
+"################################"
+"################################"
+"################################"
+"#######!!#######################"
+"######!!!!######################"
+"######!!!!######################"
+"######!!!!######################"
+"######!!!!######################"
+"######!!!!######################"
+"######!!!!######################"
+"####!!!!!!!!####################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+[end]
+
+[_polygon]
+Type=0x1c
+String1=0x04,Farmland / Meadows
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #CDEBB0"
+[end]
+
+[_polygon]
+Type=0x1d
+String1=0x04,Commons
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #C8FACC"
+[end]
+
+[_polygon]
+Type=0x20
+String1=0x04,Gardens
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #8CB873"
+"# c #CDEBB0"
+"################################"
+"################################"
+"################################"
+"###!#######!#######!#######!####"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"###!#######!#######!#######!####"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"###!#######!#######!#######!####"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"###!#######!#######!#######!####"
+"################################"
+"################################"
+"################################"
+"################################"
+[end]
+
+[_polygon]
+Type=0x21
+String1=0x04,Tourism Areas
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #CDEBB0"
+[end]
+
+[_polygon]
+Type=0x22
+String1=0x04,Ruins / Historic
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #D9D0C9"
+[end]
+
+[_polygon]
+Type=0x24
+String1=0x04,Dams / Man-made
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #B8B8B8"
+[end]
+
+[_polygon]
+Type=0x25
+String1=0x04,Pedestrian Areas
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #DDDDE8"
+[end]
+
+[_polygon]
+Type=0x26
+String1=0x04,Farms
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #F5DCBA"
+[end]
+
+[_polygon]
+Type=0x28
+String1=0x04,Transport Stations
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #D9D0C9"
+[end]
+
+[_polygon]
+Type=0x32
+String1=0x04,Sea
+ExtendedLabels=Y
+FontStyle=Normal
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x35
+String1=0x04,Supermarkets
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #D9D0C9"
+[end]
+
+[_polygon]
+Type=0x36
+String1=0x04,Religious
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #D9D0C9"
+[end]
+
+[_polygon]
+Type=0x3b
+String1=0x04,Waterways Areas
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x3c
+String1=0x04,Water / Lakes
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x03d00
+String1=0x04,Bays
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c none"
+"1 c #288DB1"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000011100000000000000000000000"
+"00000100010000000100000000000000"
+"00001000001000001000000000000000"
+"00000000000100010000000000000000"
+"00000000000011100000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000011100000000000000000"
+"00000000000100010000000000000000"
+"00000000001000001000000000000000"
+"00000000000000000100010000000000"
+"00000000000000000011100000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000111000000000"
+"00000000000000000001000100000000"
+"00000000000000000010000010000010"
+"00000000000000000000000001000100"
+"00000000000000000000000000111000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x3f
+String1=0x04,Basins / Reservoirs
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x41
+String1=0x04,Small Lakes
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x46
+String1=0x04,Riverbanks
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x47
+String1=0x04,Waterfalls
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x48
+String1=0x04,Canals / Rivers
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x4c
+String1=0x04,Drydocks / Locks
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+[end]
+
+[_polygon]
+Type=0x4d
+String1=0x04,Glaciers
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4DA0D7
+Xpm="0 0 1 0"
+"1 c #DDECEC"
+[end]
+
+[_polygon]
+Type=0x4e
+String1=0x04,Allotments / Vineyards
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #EEF0D5"
+[end]
+
+[_polygon]
+Type=0x4f
+String1=0x04,Scrub
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #B0BE93"
+"# c #C8D7AB"
+"################################"
+"#######################!########"
+"#######################!########"
+"#####################!#!#!######"
+"#####################!!!!!######"
+"######################!!!#######"
+"####################!!!!!!!#####"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"##############!#################"
+"##############!#################"
+"############!#!#!###############"
+"############!!!!!###############"
+"#############!!!################"
+"###########!!!!!!!##############"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+[end]
+
+[_polygon]
+Type=0x50
+String1=0x04,Forests / Woods
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #8AB379"
+"# c #ADD19E"
+"################################"
+"################################"
+"################################"
+"#####!!!###!####################"
+"####!###!##!####################"
+"####!###!#!#!###################"
+"####!###!#!#!###################"
+"#####!!!##!#!###################"
+"######!##!###!##################"
+"######!##!!!!!##################"
+"######!####!####################"
+"######!####!####################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"################################"
+"###############!!!###!##########"
+"##############!###!##!##########"
+"##############!###!#!#!#########"
+"##############!###!#!#!#########"
+"###############!!!##!#!#########"
+"################!##!###!########"
+"################!##!!!!!########"
+"################!####!##########"
+"################!####!##########"
+"################################"
+"################################"
+[end]
+
+[_polygon]
+Type=0x51
+String1=0x04,Marshes / Mud
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #49A6FA"
+"  c none"
+"                                "
+"                                "
+"   !!!!!!          !!!!!!       "
+"                                "
+"                                "
+"       !!!!!!          !!!!!!   "
+"                                "
+"!!!!!           !!!!!           "
+"                                "
+"                                "
+"      !!!!!!         !!!!!!     "
+"                                "
+"                                "
+"           !!!!!!         !!!!! "
+"!!!!!!                          "
+"                                "
+"                                "
+"                                "
+"   !!!!!!          !!!!!!       "
+"                                "
+"          !!!!!!                "
+"!!!!!!                          "
+"                           !!!!!"
+"                !!!!!!          "
+"                                "
+"                                "
+"   !!!!!!          !!!!!!       "
+"                                "
+"                                "
+"       !!!!!!          !!!!!!   "
+"!!!!!!                          "
+"                !!!!!           "
+[end]
+
+[_polygon]
+Type=0x52
+String1=0x04,Tundra
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #D6D99F"
+[end]
+
+[_polygon]
+Type=0x53
+String1=0x04,Islands
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #F2EFE9"
+[end]
+
+[_polygon]
+Type=0x10100
+String1=0x04,Salt Ponds
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c #AAD3DF"
+"1 c #FAFAFA"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000011110000111100000000000000"
+"00000011110000111100000000000000"
+"00000011110000111100000000000000"
+"00000011110000111100000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000111100001111000000"
+"00000000000000111100001111000000"
+"00000000000000111100001111000000"
+"00000000000000111100001111000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x10102
+String1=0x04,Tea Crops
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 4 1"
+"0 c #C5D8A4"
+"1 c #4A5D23"
+"2 c #F9F6F0"
+"3 c #88B04B"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00111111111100000011111111110000"
+"00111111111100000011111111110000"
+"00111111111111100011111111111110"
+"00111111111100010011111111110001"
+"00111111111100010011111111110001"
+"00111111111111100011111111111110"
+"00011111111000000001111111100000"
+"00001111110000000000111111000000"
+"01111111111110000111111111111000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00111111111100000011111111110000"
+"00111111111100000011111111110000"
+"00111111111111100011111111111110"
+"00111111111100010011111111110001"
+"00111111111100010011111111110001"
+"00111111111111100011111111111110"
+"00011111111000000001111111100000"
+"00001111110000000000111111000000"
+"01111111111110000111111111111000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x10104
+String1=0x04,Vegetable Crops
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c #FF9500"
+"1 c #BDFFB4"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111011100111011111111111"
+"11111111110000100100001111111111"
+"11111111111100100100111111111111"
+"11111111111110000001111111111111"
+"11111111111110000001111111111111"
+"11111111111111100111111111111111"
+"11111111111000000000011111111111"
+"11111111100000000000000111111111"
+"11111111100000000000000111111111"
+"11111111100000000000000111111111"
+"11111111100000000000000111111111"
+"11111111110000000000001111111111"
+"11111111111000000000011111111111"
+"11111111111100000000111111111111"
+"11111111111100000000111111111111"
+"11111111111110000001111111111111"
+"11111111111110000001111111111111"
+"11111111111111000011111111111111"
+"11111111111111000011111111111111"
+"11111111111111000011111111111111"
+"11111111111111000011111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111100111111111111111"
+"11111111111111111111111111111111"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x10107
+String1=0x04,Rubber Crops
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c #3E4A3A"
+"1 c #DDE8C0"
+"11100000001111111111000001111111"
+"11000101000111111100010100011111"
+"10011101100011111001110111001111"
+"00101101100001111010110110101111"
+"00110101011001110011010101100111"
+"01111000111101110111100011110111"
+"00000000000001110000000000000111"
+"01111000111101110111100011110111"
+"00110101011001110011010101100111"
+"00001101100001111010110110101111"
+"10001101100011111001110111001111"
+"11000101000111111100010100011111"
+"11100000001111111110000000111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11110000011111111111000001111111"
+"11000101000111111100000000011111"
+"10011101110011111000110111001111"
+"10101101101011111000110110101111"
+"00110101011001110011010101100111"
+"01111000111101110111100011110111"
+"00000000000001110000000000000111"
+"01111000111101110111100011110111"
+"00110101011001110011010101100111"
+"10101101101011111010110110101111"
+"10011101110011111001110111001111"
+"11000101000111111100000000011111"
+"11110000011111111110000000111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x10108
+String1=0x04,Coconut Crops
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c #FFFFD5"
+"1 c #006500"
+"00000000000000000000000000000000"
+"00011100100000000000000000000000"
+"00100010101110000000000000000000"
+"00100001110001000000000000000000"
+"00001111101101000000000000000000"
+"00010001110010000000000000000000"
+"00110001100001000000000000000000"
+"01100111111000100000000000000000"
+"00001001100100100000000000000000"
+"00010001100100000000000000000000"
+"00010001100000000000000000000000"
+"00000001100000000000100000110000"
+"00000001100000000000011001001000"
+"00000001100000000000000110000000"
+"00000001100000000000111111110000"
+"00000001100000000001100110001000"
+"00000000000000000010000110000100"
+"00000000000000000000111110000000"
+"00000000000000000000100111110000"
+"00000000000000000011000111001000"
+"00000000000000000010000110000100"
+"00000000000000000100000110000100"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000110000000"
+"00000000000000000000000000000000"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x10506
+String1=0x04,Paddy / Rice Crops
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c #5F8A46"
+"1 c #E0E9C6"
+"11111111111111111111111111111111"
+"11111111011111111111111111111111"
+"11111111011111111111111111111111"
+"11111111011111111111111111111111"
+"11101111011110111110111111111011"
+"11110111011100111110011111110111"
+"11111011011011111111101111101111"
+"11111101010111111111110111011111"
+"11111101010111111111110111011111"
+"11111110001111111111111010111111"
+"11111110001111111111111010111111"
+"11111111011111111111111101111111"
+"11111111011111111111111101111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111110111111111111111"
+"11111111111111110111111111111111"
+"11111111111111110111111111111111"
+"11111011111011110111101111101111"
+"11110011111101110111011111100111"
+"11101111111110110110111111111011"
+"11011111111111010101111111111101"
+"11011111111111010101111111111101"
+"10111111111111100011111111111110"
+"10111111111111100011111111111110"
+"01111111111111110111111111111111"
+"01111111111111110111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x1090f
+String1=0x04,Beaches / Sand
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #f5e4c6"
+[end]
+
+[_polygon]
+Type=0x10200
+String1=0x04,Scree / Rock
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"! c #888888"
+"  c #eee5dc"
+"!!     !    !!  !!     !        "
+"  !!  !!     !!  !!    !  !!!!  "
+"   !  !  !!!!     !!!! !     !!!"
+"!    !!      !!!     !  !!      "
+"!!   !         !!!! !!   !!!!!! "
+"  !    !!!!!        !         !!"
+"   !!      !!!!!   !  !   !!    "
+"    !!!        !!! !! !!!   !!  "
+" !    !!!!!       ! !!   !!!!   "
+" !         !!!   !   !!!    !!! "
+"!   !!!          !     !!!!     "
+" !     !!!!     !! !!     !!!!  "
+" !         !!!      !!       !  "
+" ! !!!!       !!!     !!        "
+"       !!!!      !!    !!!!    !"
+"! !       !       !!!         !!"
+"  !!          !!     !!      !! "
+"!   !!!!!!    !  !     !!! !!!  "
+"!!       !!  !    !!!    ! !    "
+" !!        !   !     !!!   !  !!"
+"  !!!       !  !!!     !!! !   !"
+"     !!!   !!    !!!!!!    !    "
+"       !!  !  !!      !!! !! !  "
+" !!       !!    !!      !     !!"
+"  !!!    !!       !!     !     !"
+"!   !   !   !!     !!!   !!! !  "
+" !!    !      !!     !!  !   !!!"
+"  !!!!!!! !     !!!     !! !    "
+"        !  !      !!   !!  !!!  "
+"!!         !!!     !!  !      !!"
+" !!!! !!     !!        ! !      "
+"    !!!       !!!     !! !!!!   "
+[end]
+
+[_polygon]
+Type=0x10106
+String1=0x04,Corn / Chena
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 32 2 1"
+"0 c #7B6500"
+"1 c #FFEDB5"
+"11111111111111111111111111111111"
+"11111111011111111111111111111111"
+"11111110011111111111111111111111"
+"11111110011111111111111111111111"
+"11111100001111111111111111111111"
+"11111100001111111111111111111111"
+"11111000000111111111111111111111"
+"10011000000110011111111111111111"
+"11100000000001111111111111111111"
+"11110000000011111111111111111111"
+"11110000000011111111111111111111"
+"11110000000011111111111111111111"
+"11110000000011111111111111111111"
+"11111000000111111111111111111111"
+"11111000000111111111111111111111"
+"11111100001111111111110111111111"
+"11111110011111111111111001111111"
+"11111110111111111111111001011111"
+"11111111111111111111111100111111"
+"11111111111111111111110100111111"
+"11111111111111111111111001111111"
+"11111111111111111111111001011111"
+"11111111111111111111111100111111"
+"11111111111111111111110100111111"
+"11111111111111111111111001011111"
+"11111111111111111111111000111111"
+"11111111111111111111111100111111"
+"11111111111111111111111101111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x10201
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10202
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10203
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10204
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10205
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10206
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10207
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10208
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10209
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1020a
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1020b
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1020c
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1020d
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1020e
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1020f
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10210
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10211
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10212
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10213
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10214
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10215
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10216
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10217
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10218
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x10219
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1021a
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1021b
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1021c
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1021d
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1021e
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_polygon]
+Type=0x1021f
+String1=0x04,Usable
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="0 0 1 0"
+"1 c #aad3df"
+[end]
+
+[_line]
+Type=0x01
+UseOrientation=N
+LineWidth=8
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #E892A2"
+"2 c #FF008B"
+"3 c #E892A2"
+"4 c #FF008B"
+String1=0x04,Motorway
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x02
+UseOrientation=N
+LineWidth=8
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #F9B29C"
+"2 c #D87559"
+"3 c #F9B29C"
+"4 c #D87559"
+String1=0x04,Trunk
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x03
+UseOrientation=N
+LineWidth=8
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FCD6A4"
+"2 c #C5A363"
+"3 c #FCD6A4"
+"4 c #C5A363"
+String1=0x04,Primary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x04
+UseOrientation=N
+LineWidth=8
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #F7FABF"
+"2 c #BBC279"
+"3 c #F7FABF"
+"4 c #BBC279"
+String1=0x04,Secondary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x05
+UseOrientation=N
+LineWidth=8
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FFFFFF"
+"2 c #C5C5C5"
+"3 c #FFFFFF"
+"4 c #C5C5C5"
+String1=0x04,Tertiary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x06
+UseOrientation=N
+LineWidth=7
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FFFFFF"
+"2 c #C5C5C5"
+"3 c #FFFFFF"
+"4 c #C5C5C5"
+String1=0x04,Minor / Residential
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x07
+UseOrientation=N
+LineWidth=3
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FFFFFF"
+"2 c #C5C5C5"
+"3 c #FFFFFF"
+"4 c #C5C5C5"
+String1=0x04,Bridleway / Service
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#626262
+[end]
+
+[_line]
+Type=0x08
+UseOrientation=Y
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #F7FABF"
+"2 c #BBC279"
+"3 c #F7FABF"
+"4 c #BBC279"
+String1=0x04,Primary / Secondary Link
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x09
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #F9B29C"
+"2 c #D87559"
+"3 c #F9B29C"
+"4 c #D87559"
+String1=0x04,Motorway / Trunk Link
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x0a
+UseOrientation=Y
+Xpm="32 2 2  1"
+"! c #BD6500"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Track
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x0b
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #E892A2"
+"2 c #FF008B"
+"3 c #E892A2"
+"4 c #FF008B"
+String1=0x04,Motorway Link (Exit)
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x11
+UseOrientation=N
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #0000ff"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Cycleway
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x16
+UseOrientation=Y
+Xpm="32 2 2  1"
+"! c #FA8086"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Pedestrian / Footway
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x30
+UseOrientation=Y
+LineWidth=3
+Xpm="0 0 1 0"
+"1 c #7ac482"
+String1=0x04,Leisure track
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x0c
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FFFFFF"
+"2 c #C5C5C5"
+"3 c #FFFFFF"
+"4 c #C5C5C5"
+String1=0x04,Roundabouts
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x14
+UseOrientation=Y
+Xpm="32 3 2  1"
+"! c #737373"
+"# c #FFFFFF"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!########!!!!!!!!########"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+String1=0x04,Railway lines
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x1f
+UseOrientation=Y
+LineWidth=7
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+String1=0x04,Canal / River
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#4D80B3
+[end]
+
+[_line]
+Type=0x18
+UseOrientation=Y
+LineWidth=2
+Xpm="0 0 1 0"
+"1 c #AAD3DF"
+String1=0x04,Stream / Drain
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x26
+UseOrientation=Y
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #AAD3DF"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Intermittent rivers
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x1a
+UseOrientation=Y
+LineWidth=2
+Xpm="0 0 1 0"
+"1 c #8461c4"
+String1=0x04,Ferry route
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x1b
+UseOrientation=Y
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #8461c4"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Ferry route (no cars)
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x27
+UseOrientation=Y
+LineWidth=12
+Xpm="0 0 1 0"
+"1 c #BBBBCC"
+String1=0x04,Runway
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x1e
+UseOrientation=N
+Xpm="32 8 2  1"
+"! c #BD95D5"
+"# c #FFFFFF"
+"#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!"
+"!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#"
+"#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!"
+"!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#"
+"#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!"
+String1=0x04,Admin boundary
+ExtendedLabels=Y
+FontStyle=Normal
+CustomColor=Day
+DaycustomColor:#BD30B4
+[end]
+
+[_line]
+Type=0x1d
+UseOrientation=N
+Xpm="32 2 2  1"
+"! c #BD95D5"
+"  c none"
+"   !!!   !!!!!!!!!!!!!!!!!!!!!!!"
+"   !!!   !!!!!!!!!!!!!!!!!!!!!!!"
+String1=0x04,Admin boundary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#BD30B4
+[end]
+
+[_line]
+Type=0x1c
+UseOrientation=N
+Xpm="32 1 2  1"
+"! c #BD95D5"
+"  c none"
+"   !!!   !!!   !!!   !!!!!!!!!!!"
+String1=0x04,Admin boundary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10801
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #F9B29C"
+"2 c #D87559"
+"3 c #F9B29C"
+"4 c #D87559"
+String1=0x04,Roundabout Trunk
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10802
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FCD6A4"
+"2 c #C5A363"
+"3 c #FCD6A4"
+"4 c #C5A363"
+String1=0x04,Roundabout Primary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10803
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #F7FABF"
+"2 c #BBC279"
+"3 c #F7FABF"
+"4 c #BBC279"
+String1=0x04,Roundabout Secondary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10804
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 4 0"
+"1 c #FFFFFF"
+"2 c #C5C5C5"
+"3 c #FFFFFF"
+"4 c #C5C5C5"
+String1=0x04,Roundabout Tertiary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10102
+UseOrientation=N
+LineWidth=2
+Xpm="0 0 1 0"
+"1 c #000000"
+String1=0x04,Highway bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x34
+UseOrientation=N
+LineWidth=2
+Xpm="0 0 1 0"
+"1 c #000000"
+String1=0x04,Highway embankment
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10601
+UseOrientation=N
+LineWidth=1
+Xpm="0 0 1 0"
+"1 c #666666"
+String1=0x04,Oneway indicator
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x17
+UseOrientation=Y
+Xpm="32 6 2  1"
+"! c #B4B4B4"
+"  c none"
+"  !                          !  "
+"  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  "
+"  !                          !  "
+"  !                          !  "
+"  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  "
+"  !                          !  "
+String1=0x04,Breakwater / Barriers
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10506
+UseOrientation=N
+LineWidth=3
+Xpm="0 0 1 0"
+"1 c #888888"
+String1=0x04,Dam
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x28
+UseOrientation=Y
+Xpm="32 6 2  1"
+"! c #B4B4B4"
+"  c none"
+"  !                          !  "
+"  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  "
+"  !                          !  "
+"  !                          !  "
+"  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  "
+"  !                          !  "
+String1=0x04,Cables / Pipes
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x29
+UseOrientation=Y
+LineWidth=1
+Xpm="0 0 2 0"
+"1 c #737373"
+"2 c #FFFFFF"
+String1=0x04,Power lines
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10100
+UseOrientation=N
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #737373"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Railway tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10403
+UseOrientation=N
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #aad3df"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Waterway tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x11002
+UseOrientation=N
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #006500"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,National park boundary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x11003
+UseOrientation=N
+LineWidth=2
+Xpm="32 2 2  1"
+"! c #006500"
+"  c none"
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+"!!!!!  !!  !!!!!  !!  !!!!!  !! "
+String1=0x04,Protected area boundary
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x1161f
+UseOrientation=N
+LineWidth=2
+Xpm="0 0 1 0"
+"1 c #967757"
+String1=0x04,Cliff
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x20
+UseOrientation=N
+LineWidth=1
+Xpm="32 1 2  1"
+"! c #DBB793"
+"  c none"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+String1=0x04,Contour Minor
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x21
+UseOrientation=N
+LineWidth=1
+Xpm="0 0 1 0"
+"1 c #D3A87C"
+String1=0x04,Contour Medium
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#996633
+[end]
+
+[_line]
+Type=0x22
+UseOrientation=N
+LineWidth=1
+Xpm="0 0 1 0"
+"1 c #CC9966"
+String1=0x04,Contour Major
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#996633
+[end]

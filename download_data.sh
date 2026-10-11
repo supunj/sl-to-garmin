@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# download_data.sh — fetch the source OSM extract into data/osm/.
+# download_data.sh — fetch the source OSM extract into data/cache/.
 #
 # Usage: ./download_data.sh [--force]
 #
@@ -16,8 +16,8 @@ case "${1:-}" in --force|""|-h|--help) ;; *) die "unknown option: $1" ;; esac
 
 need_cmd wget
 
-target="$DATA_DIR/osm/$SOURCE_MAP_NAME"
-mkdir -p "$DATA_DIR/osm"
+target="$DATA_DIR/cache/$SOURCE_MAP_NAME"
+mkdir -p "$DATA_DIR/cache"
 
 if [ -f "$target" ] && [ "$FORCE" = 0 ]; then
     log "Source extract already present: $target (use --force to re-download)"

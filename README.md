@@ -7,6 +7,26 @@
 Builds a multi-layer OpenStreetMap topo map of Sri Lanka for **Garmin Drive**
 GPS devices (Drive 52/66 family), plus `.gpi` POI alert files.
 
+## Screenshots
+
+Taken on an actual Garmin Drive device.
+
+### Map views
+
+| | |
+|---|---|
+| ![Route overview — Colombo to the hill country](images/46742.png) | ![South-east coast — Yala forest and Panama](images/145927.png) |
+| ![Kumana National Park and Kumbukkan Oya](images/148555.png) | ![Hill country — contours and hill shading near Ohiya](images/151906.png) |
+| ![3D terrain — Pattipola / Ohiya](images/154608.png) | ![3D terrain — A5 towards Nuwara Eliya](images/156430.png) |
+| ![3D terrain — Randenigala Reservoir](images/159978.png) | ![Nuwara Eliya — Galway's Land National Park](images/162691.png) |
+
+### Turn-by-turn navigation
+
+| | |
+|---|---|
+| ![Active route with upcoming turn — High Level Road](images/127007.png) | ![Roundabout guidance — 2nd exit, Ginigathena Road](images/406537.png) |
+| ![Navigation over hill shading — Talawakelle Road](images/411781.png) | |
+
 ## What it produces
 
 `build_map.sh` builds four layers from the Geofabrik Sri Lanka extract and
@@ -52,7 +72,7 @@ Optional:
    ./download_data.sh
    ```
 
-   This downloads `sri-lanka-latest.osm.pbf` from Geofabrik into `data/osm/`.
+   This downloads `sri-lanka-latest.osm.pbf` from Geofabrik into `data/cache/`.
 
    SRTM elevation tiles (`data/hgt/`) are needed for hill shading and are not
    auto-downloaded — the project ships with them, but if you set up from
@@ -100,7 +120,7 @@ Optional:
 
 | Flag | Effect |
 |---|---|
-| `--device <type>` | Garmin device family to build for (default: `drive66`); selects the style (`style/<type>/`) and TYP segment tree (`typ/<type>/`) |
+| `--device <type>` | Garmin device family to build for (default: `drive66`); selects the style (`style/<type>/`) and TYP text file (`typ/NN_<type>.txt`) |
 | `--pg-cleanse` | Round-trip the extract through PostGIS first (see below) and build from the cleansed PBF |
 | `--pg-experiments` | Also run `pg/experiments/*.sql` (implies `--pg-cleanse`) |
 | `--skip-contours` | Do not build the contour layer |
@@ -110,17 +130,16 @@ Optional:
 
 | Script | Purpose |
 |---|---|
-| `./download_data.sh [--force]` | Fetch the Geofabrik extract into `data/osm/` |
+| `./download_data.sh [--force]` | Fetch the Geofabrik extract into `data/cache/` |
 | `./cleanse_data.sh [--experiments] [--keep-db]` | Run the PostGIS cleansing stage standalone |
 | `./db.sh [start\|stop\|status\|rm\|purge]` | Run PostgreSQL/PostGIS + pgAdmin in podman (cleanse-stage database) |
 | `./build_gpi.sh [--device <type>]` | Build `.gpi` POI alert files into `build/gpi/` from `config/tags.conf`, using `icons/<device>/` bitmaps |
-| `./assemble_typ.sh [output]` | Assemble `build/<style>.txt` from the TYP segment tree under `typ/` (run automatically by `build_map.sh`) |
-| `./hgt2osm.sh` | Regenerate contours from SRTM tiles: phyghtmap per tile into `build/contours/` (temporary), then merged with osmosis into `data/osm/sl-contours.osm.pbf` |
+| `./hgt2osm.sh` | Regenerate contours from SRTM tiles: phyghtmap per tile into `build/contours/` (temporary), then merged with osmosis into `data/cache/sl-contours.osm.pbf` |
 | `test/build_test_map.sh` | Build the type-grid test map (style development) |
 | `test/build_map_default.sh` | Full build with mkgmap's built-in default style, no TYP — comparison/testing only; output goes to `build-default/` |
 
 You normally don't need to run `hgt2osm.sh` yourself: if the merged contour
-file is missing from `data/osm/`, `build_map.sh` runs it automatically. The
+file is missing from `data/cache/`, `build_map.sh` runs it automatically. The
 compiled contour layer is cached in `data/cache/sl-contour.img` and rebuilt
 whenever the contour source is newer.
 
@@ -133,14 +152,14 @@ environment variables:
 |---|---|---|
 | `FID` / `PID` | `53130` / `1` | Garmin family/product IDs |
 | `SERIES_NAME` / `AREA_NAME` | `sl-topo` / `sl` | Map names shown on device |
-| `DEVICE` | `drive66` | Garmin device family; derives `STYLE` and `TYP_SRC_DIR` (`--device` overrides) |
+| `DEVICE` | `drive66` | Garmin device family; derives `STYLE` and the TYP text file (`--device` overrides) |
 | `STYLE` | `$DEVICE` | mkgmap style (`style/<style>/`) |
-| `TYP_FILE` / `TYP_SRC_DIR` | *(empty)* / `typ/$DEVICE` | TYP text file to compile; empty = assemble `build/<style>.txt` from the segment tree (`common`, `polygon`, `line`, `point` subdirs) via `assemble_typ.sh` |
+| `TYP_FILE` | *(empty)* | TYP text file to compile; empty = the latest (highest-numbered) `typ/NN_<device>.txt` |
 | `DATA_DIR` | `./data` | Source data root — point elsewhere to keep big files off the project disk |
 | `BUILD_DIR` | `./build` | Artifact root (wiped each build) |
-| `SOURCE_MAP_NAME` | `sri-lanka-latest.osm.pbf` | Raw extract filename |
+| `SOURCE_MAP_NAME` | `sri-lanka-latest.osm.pbf` | Raw extract filename (in `data/cache/`) |
 | `CLEANSED_MAP_NAME` | `sri-lanka-cleansed.osm.pbf` | Cleansed extract filename |
-| `CONTOURS_NAME` | `sl-contours.osm.pbf` | Contour layer input filename |
+| `CONTOURS_NAME` | `sl-contours.osm.pbf` | Contour layer input filename (in `data/cache/`) |
 | `POLY_FILE` | `data/poly/sri-lanka.poly` | Bounding polygon |
 | `GEOFABRIK_URL` | Geofabrik SL extract | Download source |
 | `DEM_DIR` | `data/hgt` | DEM tiles for hill shading (`data/hgt-srtm1` for SRTM1) |
@@ -160,15 +179,15 @@ using `icons/drive66/police.bmp` as the icon.
 ## Directory layout
 
 ```
-├── build_map.sh / build_gpi.sh / hgt2osm.sh / download_data.sh / cleanse_data.sh / db.sh / assemble_typ.sh
+├── build_map.sh / build_gpi.sh / hgt2osm.sh / download_data.sh / cleanse_data.sh / db.sh
 ├── logo.svg                 # project logo (shown at the top of this file)
+├── images/                  # device screenshots (shown above)
 ├── lib/common.sh          # shared setup + mkgmap/osmosis/splitter wrappers
 ├── config/                # build.conf (all knobs), tags.conf (POI categories)
 ├── arg/                   # mkgmap option files, one per layer
 ├── style/drive66/         # the mkgmap style (Garmin Drive only)
-├── typ/drive66/           # TYP source as segments for the device: common/common.txt
-│                          # plus one file per section in polygon/, line/, point/
-│                          # (assemble_typ.sh joins them into build/<style>.txt)
+├── typ/                   # monolithic TYP text files per device (NN_<device>.txt);
+│                          # the highest-numbered one is compiled into build/<style>.typ
 ├── icons/drive66/         # POI bitmaps for build_gpi.sh (per device)
 ├── tools/                 # vendored mkgmap / splitter / osmosis
 ├── pg/
@@ -176,12 +195,11 @@ using `icons/drive66/police.bmp` as the icon.
 │   ├── experiments/       # unvetted SQL — only via --pg-experiments
 │   └── analysis/          # tag-statistics exploration queries (scratchpad)
 ├── test/                  # style-development harness (type grid, default style)
-├── data/                  # SOURCE DATA (the raw Geofabrik extract is gitignored)
-│   ├── osm/               # OSM extracts (raw download, contours, test extracts)
+├── data/                  # SOURCE DATA (gitignored: raw extract + contour cache)
 │   ├── hgt/               # SRTM3 elevation tiles (+ sl-gdal.vrt)
 │   ├── hgt-srtm1/         # higher-resolution SRTM1 tiles (unused by default)
 │   ├── poly/              # bounding polygon
-│   └── cache/             # cached compiled contour layer (gitignored)
+│   └── cache/             # raw Geofabrik extract, contour source PBF + compiled contour layer (gitignored)
 └── build/                 # BUILD ARTIFACTS (gitignored, wiped each build)
     ├── dist/              # final device-ready images
     └── sri-lanka-cleansed.osm.pbf  # cleanse-stage output (regenerable)
@@ -234,9 +252,9 @@ Copy all of them to the `Garmin` folder on the device/SD card.
 ## Troubleshooting
 
 - **`source extract missing ... run ./download_data.sh`** — the Geofabrik
-  PBF is not in `data/osm/` yet.
+  PBF is not in `data/cache/` yet.
 - **Contour layer skipped / stale** — the cache `data/cache/sl-contour.img`
-  is reused while it is newer than `data/osm/sl-contours.osm.pbf`; to force a
+  is reused while it is newer than `data/cache/sl-contours.osm.pbf`; to force a
   rebuild, regenerate the contour file with `./hgt2osm.sh` (or delete the
   cache). If the contour file is missing, `build_map.sh` runs `hgt2osm.sh`
   automatically (needs phyghtmap — auto-installed on first run).
@@ -258,3 +276,40 @@ Copy all of them to the `Garmin` folder on the device/SD card.
   fails. Note: the size is fixed at pod creation — recreate with
   `./db.sh rm && PG_SHM_SIZE=4g ./db.sh start` (the data volume survives).
 - **mkgmap runs out of memory** — raise `JAVA_HEAP` in `config/build.conf`.
+
+## Attribution
+
+This project stands on the shoulders of these open source tools and data
+providers — many thanks to their authors and contributors.
+
+### Tools and libraries
+
+- [mkgmap](https://www.mkgmap.org.uk/) — converts OSM data into Garmin
+  `.img` map images (vendored: r4924, `tools/mkgmap-r4924/`)
+- [splitter](https://www.mkgmap.org.uk/) — splits large OSM extracts into
+  tiles for mkgmap (vendored: r654, `tools/splitter-r654/`)
+- [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) — OSM data
+  filtering, merging and PostGIS import/export (vendored: 0.49.2,
+  `tools/osmosis-0.49.2/`)
+- [phyghtmap](http://katze.tfiu.de/projects/phyghtmap/) — generates contour
+  lines from SRTM elevation tiles (optional, `hgt2osm.sh`)
+- [GPSBabel](https://www.gpsbabel.org/) — builds `.gpi` POI alert files
+  (optional, `build_gpi.sh`)
+- [PostgreSQL](https://www.postgresql.org/) +
+  [PostGIS](https://postgis.net/) — power the optional data-cleansing stage
+- [pgAdmin](https://www.pgadmin.org/) — database admin UI in the podman
+  setup (`db.sh`)
+
+### Data providers
+
+- [OpenStreetMap](https://www.openstreetmap.org/) contributors — all map
+  data, licensed under the
+  [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/).
+  Maps built with this project must carry the attribution
+  "© OpenStreetMap contributors".
+- [Geofabrik](https://www.geofabrik.de/) — provides the ready-made Sri
+  Lanka OSM extract that the build downloads.
+- [NASA Shuttle Radar Topography Mission (SRTM)](https://www2.jpl.nasa.gov/srtm/)
+  — elevation data used for hill shading and contour lines.
+- [viewfinderpanoramas.org](http://viewfinderpanoramas.org/) (Jonathan de
+  Ferranti) — void-filled SRTM tiles (`data/hgt/`, `data/hgt-srtm1/`).

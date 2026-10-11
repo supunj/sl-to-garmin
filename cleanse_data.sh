@@ -53,7 +53,7 @@ recreate_db() {
 }
 
 import_osm() {
-    local source_pbf="$DATA_DIR/osm/$SOURCE_MAP_NAME"
+    local source_pbf="$DATA_DIR/cache/$SOURCE_MAP_NAME"
     need_file "$source_pbf"
     log "Importing $source_pbf into PostGIS (this takes a while)"
     mapfile -t auth < <(osmosis_pg_auth)

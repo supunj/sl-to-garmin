@@ -13,7 +13,7 @@
 #
 #   --device <type>  Garmin device family to build for (default: drive66);
 #                    selects the mkgmap style (style/<type>/) and the TYP
-#                    segment tree (typ/<type>/); overrides $DEVICE/$STYLE
+#                    text file (typ/NN_<type>.txt); overrides $DEVICE/$STYLE
 #   --pg-cleanse       round-trip the OSM extract through PostGIS first
 #                      (cleanse_data.sh) and build from the cleansed PBF
 #   --pg-experiments   also run pg/experiments/*.sql (implies --pg-cleanse)
@@ -42,7 +42,6 @@ parse_args() {
                 [ $# -ge 2 ] || die "--device requires a device type (e.g. drive66)"
                 DEVICE="$2"
                 STYLE="$DEVICE"
-                TYP_SRC_DIR="$PROJECT_ROOT/typ/$DEVICE"
                 shift ;;
             --pg-cleanse)     PG_CLEANSE=1 ;;
             --pg-experiments) PG_EXPERIMENTS=1; PG_CLEANSE=1 ;;
@@ -64,8 +63,7 @@ check_prerequisites() {
         [ -d "$STYLE_DIR/$STYLE" ] \
             || die "no style for device '$DEVICE': $STYLE_DIR/$STYLE"
         if [ -z "${TYP_FILE:-}" ]; then
-            [ -d "$TYP_SRC_DIR" ] \
-                || die "no TYP segment tree for device '$DEVICE': $TYP_SRC_DIR"
+            latest_typ_file >/dev/null
         fi
     fi
     if [ "$PG_CLEANSE" = 1 ]; then
@@ -76,8 +74,8 @@ check_prerequisites() {
 }
 
 ensure_source_data() {
-    [ -f "$DATA_DIR/osm/$SOURCE_MAP_NAME" ] \
-        || die "source extract missing: $DATA_DIR/osm/$SOURCE_MAP_NAME
+    [ -f "$DATA_DIR/cache/$SOURCE_MAP_NAME" ] \
+        || die "source extract missing: $DATA_DIR/cache/$SOURCE_MAP_NAME
        run ./download_data.sh first"
     need_file "$POLY_FILE"
 }
@@ -132,7 +130,7 @@ build_admin_layer() {
 
 build_contour_layer() {
     log "=== Contour layer ==="
-    local contours="$DATA_DIR/osm/$CONTOURS_NAME"
+    local contours="$DATA_DIR/cache/$CONTOURS_NAME"
     local cache="$DATA_DIR/cache/sl-contour.img"
 
     if [ "$SKIP_CONTOURS" = 1 ]; then
@@ -192,7 +190,7 @@ main() {
     parse_args "$@"
     check_prerequisites
     ensure_source_data
-    SOURCE_PBF="$DATA_DIR/osm/$SOURCE_MAP_NAME"
+    SOURCE_PBF="$DATA_DIR/cache/$SOURCE_MAP_NAME"
     # Wipe build/ before the cleanse stage so the cleansed PBF it writes
     # there survives for the layer builds below.
     prepare_build_dir

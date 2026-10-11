@@ -88,11 +88,8 @@ dock=drydock [0x4c resolution 22]  # might also have natural=water
 
 natural=bay [0x3d resolution 18]
 natural=glacier [0x4d resolution 18]
-natural=marsh [0x51 resolution 20]
+natural=marsh | natural=mud [0x51 resolution 20]
 natural=tundra [0x52 resolution 18]
-natural=mud [0x51 resolution 20]
-#natural=beach | natural=sand | surface=sand [0x53 resolution 20]
-# Supun
 natural=beach | natural=sand | surface=sand [0x1090f resolution 20]
 natural=wetland [0x51 resolution 20]
 natural=water & (water=canal | water=river | waterway=river) [0x48 resolution 22]
@@ -113,53 +110,33 @@ landuse=allotments [0x4e resolution 21]
 landuse=cemetery | landuse=cemetary | amenity=grave_yard [0x1a resolution 21]
 landuse=commercial | building=commercial [0x0f resolution 19]
 landuse=construction [0x0c resolution 21]
-landuse=farm [0x26 resolution 22]
 
-crop=Paddy | crop=paddy | crop=rice [0x10506 resolution 20]
-landuse='Paddy land' [0x10506 resolution 20]
-crop=rubber [0x10107 resolution 20]
-trees=rubber_trees [0x10107 resolution 20]
-crop=tea [0x10102 resolution 20]
-trees=tea_plants [0x10102 resolution 20]
-crop=corn [0x1c resolution 20]
+crop=Paddy | crop=paddy | crop=rice | landuse='Paddy land' [0x10506 resolution 20]
+crop=rubber | trees=rubber_trees [0x10107 resolution 20]
+crop=tea | trees=tea_plants [0x10102 resolution 20]
+crop=corn [0x10106 resolution 20]
 crop=vegetable [0x10104 resolution 20]
-crop=cocount | crop='cocount plams' [0x10108 resolution 20]
-trees=coconut_palms [0x10108 resolution 20]
-landuse=farmland [0x1c resolution 20]
-crop=* [0x1c resolution 20]
+crop=cocount | crop='cocount plams' | trees=coconut_palms [0x10108 resolution 20]
 
-landuse=farmyard | landuse=plant_nursery | landuse=greenhouse_horticulture [0x26 resolution 22]
+landuse=farm | landuse=farmland | crop=* | landuse=farmyard | landuse=plant_nursery | landuse=greenhouse_horticulture [0x26 resolution 22]
 landuse=forest | landuse=wood | natural=wood | natural=tree_row [0x50 resolution 20]
-natural=wood | natural=tree_row [0x50 resolution 20]
+landuse=meadow | landuse=grass | crop=grass | landuse=brownfield | landuse=greenfield | natural=heath | natural=grassland [0x1c resolution 19]
 
-landuse=meadow [0x1c resolution 19]
-landuse=grass [0x1c resolution 19]
-crop=grass [0x1c resolution 19]
-landuse=brownfield [0x1c resolution 19]
-landuse=greenfield [0x1c resolution 19]
-natural=heath [0x1c resolution 19]
-
-landuse=military [0x04 resolution 19]
-landuse=quarry [0x0c resolution 19]
 landuse=recreation_ground [0x19 resolution 19]
 # dedicate resolution 24 for building=* instead of related landuse=*
-landuse=industrial | building=industrial [0x0c resolution 19]
-#landuse=residential [0x10 resolution 19-23]
-landuse=residential {delete landuse}
+landuse=industrial | building=industrial | landuse=quarry [0x0c resolution 19]
+landuse=residential [0x10 resolution 19-23]
+#landuse=residential {delete landuse}
 landuse=retail [0x12 resolution 20]
 landuse=village_green [0x15 resolution 20]
 landuse=vineyard [0x4e resolution 20]
 landuse=orchard [0x4e resolution 20]
 landuse=salt_pond [0x10100 resolution 20]
 
-military=airfield [0x04 resolution 20]
-military=barracks [0x04 resolution 23]
-military=danger_area [0x11 resolution 20]
-military=range [0x04 resolution 20]
+landuse=military | military=airfield | military=barracks | military=danger_area | military=range [0x04 resolution 20]
 
 natural=scrub [0x4f resolution 20]
-#natural=wood [0x50 resolution 20]
-natural=bare_rock | natural=rock [0x12 resolution 20]
+natural=bare_rock | natural=rock [0x10200 resolution 20]
 
 # amenity=* & area!=no & amenity!=grave_yard {add name='${amenity|subst:"_=> "}'} [0x23 resolution 24 continue]
 
@@ -182,7 +159,7 @@ amenity=police [0x13 resolution 24]
 amenity=bank | building=bank [0x13 resolution 24]
 atm=yes [0x13 resolution 24]
 
-building=public | building=government | building=community_centre | building=goverment | building=abandoned [0x13 resolution 24]
+building=public | building=government | building=community_centre | building=goverment [0x13 resolution 24]
 
 tourism=* & area!=no & waterway!=* {add name='${tourism|subst:"_=> "}'} [0x21 resolution 24]
 

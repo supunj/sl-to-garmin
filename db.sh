@@ -92,9 +92,12 @@ start() {
         -e POSTGRES_USER="$PG_USER" \
         -e POSTGRES_HOST_AUTH_METHOD=trust \
         "$PG_IMAGE"
+    # The file is bind-mounted into the pgAdmin container; if it is missing
+    # (e.g. build dir cleaned), an existing container can no longer start, so
+    # always regenerate it before (re)starting pgAdmin.
+    write_pgadmin_servers_json
     if ! podman container exists "$PGADMIN_CONTAINER"; then
         log "Starting pgAdmin container ($PGADMIN_IMAGE)"
-        write_pgadmin_servers_json
     fi
     run_or_start "$PGADMIN_CONTAINER" \
         -e PGADMIN_DEFAULT_EMAIL="$PGADMIN_EMAIL" \

@@ -40,7 +40,7 @@ parse_args() {
 extract_nodes() {
     log "Extracting all POI nodes from $SOURCE_MAP_NAME"
     "$OSMOSIS" \
-        --read-pbf-fast file="$DATA_DIR/osm/$SOURCE_MAP_NAME" \
+        --read-pbf-fast file="$DATA_DIR/cache/$SOURCE_MAP_NAME" \
         --tf accept-nodes \
         --tf reject-ways \
         --tf reject-relations \

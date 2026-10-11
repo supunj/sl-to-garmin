@@ -3,7 +3,7 @@
 #
 # Runs phyghtmap over every .hgt tile in DEM_DIR (config/build.conf), writes
 # one contour PBF per tile into build/contours/ (temporary), then merges them
-# all with osmosis into data/osm/sl-contours.osm.pbf (the contour layer's
+# all with osmosis into data/cache/sl-contours.osm.pbf (the contour layer's
 # input file).
 #
 # The next ./build_map.sh run picks up the new contour file automatically.
@@ -121,20 +121,20 @@ shopt -u nullglob
 [ ${#tiles[@]} -gt 0 ] || die "no .hgt tiles found in $DEM_DIR"
 
 log "Generating contours from ${#tiles[@]} SRTM tile(s) in $DEM_DIR"
+# One invocation for all tiles: phyghtmap numbers ids from --start-node-id /
+# --start-way-id (default 10000000) per run, so per-tile runs would all reuse
+# the same id range and the osmosis merge below would drop colliding entities.
 (
     cd "$OUT_DIR"
-    for tile in "${tiles[@]}"; do
-        log "  $(basename "$tile")"
-        "$PHYGHTMAP" -s 5 --source=view3 --srtm-version=3 --srtm=3 \
-            --viewfinder-mask=3 --no-zero-contour --line-cat=200,100 \
-            --pbf "$tile"
-    done
+    "$PHYGHTMAP" -s "$CONTOUR_STEP" --source=view3 --srtm-version=3 --srtm=3 \
+        --viewfinder-mask=3 --no-zero-contour --line-cat=200,100 \
+        --pbf "${tiles[@]}"
 )
 
 # merge_contours — merge the per-tile contour PBFs into the contour layer's
-# input file (data/osm/$CONTOURS_NAME) using osmosis.
+# input file (data/cache/$CONTOURS_NAME) using osmosis.
 merge_contours() {
-    local out="$DATA_DIR/osm/$CONTOURS_NAME"
+    local out="$DATA_DIR/cache/$CONTOURS_NAME"
     [ -x "$OSMOSIS" ] || die "osmosis not executable: $OSMOSIS"
     shopt -s nullglob
     local pbfs=("$OUT_DIR"/*.osm.pbf)
