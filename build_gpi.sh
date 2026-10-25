@@ -63,7 +63,7 @@ build_one_gpi() {
         --node-key-value keyValueList="$keys" \
         --write-xml "$osm_file"
 
-    local out_opts="garmin_gpi,descr,category=$category,bitmap=$icon"
+    local out_opts="garmin_gpi,descr,languagecode=EN,units=s,writecodec=utf8,category=$category,bitmap=$icon,sleep=1"
     [ -n "$extra" ] && out_opts="$out_opts,$extra"
     gpsbabel \
         -i osm -f "$osm_file" \

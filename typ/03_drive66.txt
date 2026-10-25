@@ -59,6 +59,7 @@ Type=0x10107,5
 Type=0x10108,5
 Type=0x10506,5
 Type=0x1090F,5
+Type=0x10201,5
 Type=0x06,6
 Type=0x0e,6
 Type=0x13,7
@@ -909,7 +910,7 @@ ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
 Xpm="0 0 1 0"
-"1 c #F2EFE9"
+"1 c #d9dbca"
 [end]
 
 [_polygon]
@@ -1180,7 +1181,7 @@ Xpm="32 32 2 1"
 
 [_polygon]
 Type=0x1090f
-String1=0x04,Beaches / Sand
+String1=0x04, Sand
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -1277,12 +1278,12 @@ Xpm="32 32 2 1"
 
 [_polygon]
 Type=0x10201
-String1=0x04,Usable
+String1=0x04,Beach / Shoal
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
 Xpm="0 0 1 0"
-"1 c #aad3df"
+"1 c #fff1ba"
 [end]
 
 [_polygon]
@@ -1684,7 +1685,7 @@ CustomColor=No
 [_line]
 Type=0x07
 UseOrientation=N
-LineWidth=3
+LineWidth=4
 BorderWidth=1
 Xpm="0 0 4 0"
 "1 c #FFFFFF"
@@ -2051,18 +2052,6 @@ CustomColor=No
 [end]
 
 [_line]
-Type=0x10601
-UseOrientation=N
-LineWidth=1
-Xpm="0 0 1 0"
-"1 c #666666"
-String1=0x04,Oneway indicator
-ExtendedLabels=Y
-FontStyle=SmallFont
-CustomColor=No
-[end]
-
-[_line]
 Type=0x17
 UseOrientation=Y
 Xpm="32 6 2  1"
@@ -2234,3 +2223,549 @@ FontStyle=SmallFont
 CustomColor=Day
 DaycustomColor:#996633
 [end]
+
+;--------- Highway bridges ------------
+
+[_line]
+Type=0x10e01
+UseOrientation=N
+LineWidth=14
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Motorway Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e02
+UseOrientation=N
+LineWidth=12
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Trunk Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e03
+UseOrientation=N
+LineWidth=10
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Primary Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e04
+UseOrientation=N
+LineWidth=10
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Secondary Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e05
+UseOrientation=N
+LineWidth=10
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Tertiary Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e06
+UseOrientation=N
+LineWidth=9
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Minor / Residential Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e07
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Bridleway / Service Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#626262
+[end]
+
+[_line]
+Type=0x10e08
+UseOrientation=Y
+LineWidth=7
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Primary / Secondary Link Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e09
+UseOrientation=N
+LineWidth=7
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Motorway / Trunk Link Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e0a
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Track Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e0b
+UseOrientation=N
+LineWidth=7
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Motorway Link (Exit) Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e0c
+UseOrientation=N
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Cycleway Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e0d
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Pedestrian / Footway Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e0e
+UseOrientation=Y
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Leisure Track Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10e0f
+UseOrientation=Y
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 2 0"
+"0 c none"
+"1 c #000000"
+String1=0x04,Railway Bridge
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+;--------------------------Tunnels---------------------------------
+
+[_line]
+Type=0x10E10
+UseOrientation=Y
+String1=0x04,Motorway Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 10 4 1"
+"0 c #F1BCC6"
+"1 c #FF008B"
+"2 c #F1BCC6"
+"3 c #FF008B"
+"11001100110011001100110011001100"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00110011001100110011001100110011"
+[end]
+
+[_line]
+Type=0x10E11
+UseOrientation=Y
+String1=0x04,Trunk Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 14 4 1"
+"0 c #fcd7cc"
+"1 c #D87559"
+"2 c #fcd7cc"
+"3 c #D87559"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E12
+UseOrientation=Y
+String1=0x04,Primary Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 12 4 1"
+"0 c #feecd5"
+"1 c #C5A363"
+"2 c #feecd5"
+"3 c #C5A363"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E13
+UseOrientation=Y
+String1=0x04,Secondary Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 12 4 1"
+"0 c #fafcd7"
+"1 c #BBC279"
+"2 c #fafcd7"
+"3 c #BBC279"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E14
+UseOrientation=Y
+String1=0x04,Tertiary Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 12 4 1"
+"0 c #FFFFFF"
+"1 c #C5C5C5"
+"2 c #FFFFFF"
+"3 c #C5C5C5"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E15
+UseOrientation=Y
+String1=0x04,Minor / Residential Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 11 4 1"
+"0 c #f2f2f2"
+"1 c #C5C5C5"
+"2 c #f2f2f2"
+"3 c #C5C5C5"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E16
+UseOrientation=Y
+String1=0x04,Bridleway / Service Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor:#626262
+Xpm="32 7 4 1"
+"0 c #f2f2f2"
+"1 c #C5C5C5"
+"2 c #f2f2f2"
+"3 c #C5C5C5"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E17
+UseOrientation=Y
+String1=0x04,Primary / Secondary Link Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 9 4 1"
+"0 c #FAFCD7"
+"1 c #BBC279"
+"2 c #FAFCD7"
+"3 c #BBC279"
+"00110011001100110011001100110011"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E18
+UseOrientation=Y
+String1=0x04,Motorway / Trunk Link Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 9 4 1"
+"0 c #FCD7CC"
+"1 c #D87559"
+"2 c #FCD7CC"
+"3 c #D87559"
+"11001100110011001100110011001100"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00110011001100110011001100110011"
+[end]
+
+[_line]
+Type=0x10E19
+UseOrientation=Y
+String1=0x04,Track Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 4 2 1"
+"0 c #BD6500"
+"1 c #F08000"
+"01110110011011101100110111011001"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"01110110011011101100110111011001"
+[end]
+
+[_line]
+Type=0x10e1a
+UseOrientation=N
+LineWidth=7
+BorderWidth=1
+Xpm="32 7 4 1"
+"0 c #F1BCC6"
+"1 c #FF008B"
+"2 c #F1BCC6"
+"3 c #FF008B"
+"11001100110011001100110011001100"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00110011001100110011001100110011"
+String1=0x04,Motorway Link (Exit) Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+[end]
+
+[_line]
+Type=0x10E1B
+UseOrientation=Y
+String1=0x04,Cycleway Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 4 2 1"
+"0 c #0000FF"
+"1 c #3333FF"
+"01110110011011101100110111011001"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"01110110011011101100110111011001"
+[end]
+
+[_line]
+Type=0x10E1C
+UseOrientation=Y
+String1=0x04,Pedestrian / Footway Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 4 2 1"
+"0 c #FA8086"
+"1 c #FCB1B5"
+"01110110011011101100110111011001"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"01110110011011101100110111011001"
+[end]
+
+[_line]
+Type=0x10E1D
+UseOrientation=Y
+String1=0x04,Leisure Track Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 5 2 1"
+"0 c #7AC482"
+"1 c #9DD4A3"
+"00110011001100110011001100110011"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11111111111111111111111111111111"
+"11001100110011001100110011001100"
+[end]
+
+[_line]
+Type=0x10E1E
+UseOrientation=Y
+String1=0x04,Railway Tunnel
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=No
+Xpm="32 5 2 1"
+"0 c #737373"
+"1 c #8C8C8C"
+"11001100110011001100110011001100"
+"00000000000000000000000000000000"
+"00000000111111110000000011111111"
+"00000000000000000000000000000000"
+"00110011001100110011001100110011"
+[end]
+
+;0x10e00,0x10e01,0x10e02,0x10e03,0x10e04,0x10e05,0x10e06,0x10e07,0x10e08,0x10e09,0x10e0a,0x10e0b,0x10e0c,0x10e0d,0x10e0e,0x10e0f - Used
+;0x10e10,0x10e11,0x10e12,0x10e13,0x10e14,0x10e15,0x10e16,0x10e17,0x10e18,0x10e19,0x10e1a,0x10e1b,0x10e1c,0x10e1d,0x10e1e,0x10e1f

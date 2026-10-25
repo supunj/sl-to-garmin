@@ -5,7 +5,7 @@ one polygon per type code in area_type_codes.txt, named with the type code.
 The grid is placed in the South Pacific Ocean (south of French Polynesia,
 west of Point Nemo), well clear of any land or island."""
 
-CODES_FILE = "area_type_codes.txt"
+CODES_FILE = "area_line_type_codes.txt"
 OUT_FILE = "area_type_grid.osm"
 
 # Grid layout: 393216 codes -> 768 cols x 512 rows

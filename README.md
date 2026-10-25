@@ -135,7 +135,7 @@ Optional:
 | `./db.sh [start\|stop\|status\|rm\|purge]` | Run PostgreSQL/PostGIS + pgAdmin in podman (cleanse-stage database) |
 | `./build_gpi.sh [--device <type>]` | Build `.gpi` POI alert files into `build/gpi/` from `config/tags.conf`, using `icons/<device>/` bitmaps |
 | `./hgt2osm.sh` | Regenerate contours from SRTM tiles: phyghtmap per tile into `build/contours/` (temporary), then merged with osmosis into `data/cache/sl-contours.osm.pbf` |
-| `test/build_test_map.sh` | Build the type-grid test map (style development) |
+| `test/build_test_map.sh` | Build the type-grid test maps — areas and lines (style development) |
 | `test/build_map_default.sh` | Full build with mkgmap's built-in default style, no TYP — comparison/testing only; output goes to `build-default/` |
 
 You normally don't need to run `hgt2osm.sh` yourself: if the merged contour
@@ -163,6 +163,7 @@ environment variables:
 | `POLY_FILE` | `data/poly/sri-lanka.poly` | Bounding polygon |
 | `GEOFABRIK_URL` | Geofabrik SL extract | Download source |
 | `DEM_DIR` | `data/hgt` | DEM tiles for hill shading (`data/hgt-srtm1` for SRTM1) |
+| `CONTOUR_STEP` | `50` | Contour interval in meters, passed to phyghtmap `-s` (`hgt2osm.sh`) |
 | `JAVA_CMD` / `JAVA_HEAP` | `/usr/bin/java` / `8192M` | JVM settings |
 | `PG_DB_NAME` / `PG_HOST` / `PG_PORT` / `PG_USER` | `osm_build` / `localhost` / `5432` / `osm_build` | Cleanse-stage DB connection |
 
@@ -194,7 +195,7 @@ using `icons/drive66/police.bmp` as the icon.
 │   ├── cleanse/           # vetted cleansing rules, run in filename order
 │   ├── experiments/       # unvetted SQL — only via --pg-experiments
 │   └── analysis/          # tag-statistics exploration queries (scratchpad)
-├── test/                  # style-development harness (type grid, default style)
+├── test/                  # style-development harness (type grids, default style)
 ├── data/                  # SOURCE DATA (gitignored: raw extract + contour cache)
 │   ├── hgt/               # SRTM3 elevation tiles (+ sl-gdal.vrt)
 │   ├── hgt-srtm1/         # higher-resolution SRTM1 tiles (unused by default)
@@ -241,10 +242,13 @@ Copy all of them to the `Garmin` folder on the device/SD card.
 
 ## Testing
 
-- `test/build_test_map.sh` — renders `test/area_type_grid.osm` (a synthetic
-  grid of Garmin type codes, regenerable with `test/gen_grid_osm.py`) using
-  `test/test_style`; use it to check how types render before changing the
-  real style. `test/drive66_visible_typ.*` lists types visible on the Drive66.
+- `test/build_test_map.sh` — renders two synthetic grids of Garmin type
+  codes using `test/test_style`: `test/area_type_grid.osm` (polygons,
+  regenerable with `test/gen_grid_osm.py`) and `test/line_type_grid.osm`
+  (lines, regenerable with `test/gen_grid_line_osm.py`); use them to check
+  how types render before changing the real style. Both grids draw their
+  type codes from `test/area_line_type_codes.csv`.
+  `test/drive66_visible_typ.*` lists types visible on the Drive66.
 - `test/build_map_default.sh` — full build with the built-in default style
   and no TYP for comparison; writes to `build-default/`, never touches
   `build/`.
