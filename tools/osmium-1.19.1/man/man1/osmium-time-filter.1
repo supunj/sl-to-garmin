@@ -1,0 +1,156 @@
+.TH "OSMIUM-TIME-FILTER" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-time\-filter \- filter OSM data by time from a history file
+.SH SYNOPSIS
+\f[B]osmium time\-filter\f[R] [\f[I]OPTIONS\f[R]]
+\f[I]OSM\-HISTORY\-FILE\f[R] [\f[I]TIME\f[R]]
+.PD 0
+.P
+.PD
+\f[B]osmium time\-filter\f[R] [\f[I]OPTIONS\f[R]]
+\f[I]OSM\-HISTORY\-FILE\f[R] \f[I]FROM\-TIME\f[R] \f[I]TO\-TIME\f[R]
+.SH DESCRIPTION
+Copy all objects that were valid at the given \f[I]TIME\f[R] or in the
+time period between \f[I]FROM\-TIME\f[R] (inclusive) and
+\f[I]TO\-TIME\f[R] (not inclusive) from the input file into the output
+file.
+If no time is given, the current time is used.
+.PP
+Usually the \f[I]INPUT\-FILE\f[R] will be an OSM data file with history.
+If both \f[I]FROM\-TIME\f[R] and \f[I]TO\-TIME\f[R] are given, the
+result will also have history data, it will also include deleted
+versions of objects.
+.PP
+If only a single point in time was given, the result will be a normal
+OSM file without history containing no deleted objects.
+.PP
+The format for the timestamps is \(lqyyyy\-mm\-ddThh:mm:ssZ\(rq.
+.PP
+This commands reads its input file only once and writes its output file
+in one go so it can be streamed, ie.
+it can read from STDIN and write to STDOUT.
+.PP
+If the input file has a timestamp set in the header and the specified
+\f[I]TO\-TIME\f[R] is before that timestamp in the header, the header of
+the output file will have the timestamp set to the \f[I]TO\-TIME\f[R]
+(or \f[I]TO\-TIME\f[R] minus one second if a \f[I]FROM\-TIME\f[R] was
+also set).
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium time\-filter\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium time\-filter\f[R] does all its work on the fly and
+doesn\(cqt keep much data in main memory.
+.SH EXAMPLES
+Extract current planet file from history planet:
+.IP
+.EX
+osmium time\-filter \-o planet.osm.pbf history\-planet.osh.pbf
+.EE
+.PP
+Extract planet data how it appeared on January 1 2008 from history
+planet:
+.IP
+.EX
+osmium time\-filter \-o planet\-20080101.osm.pbf history\-planet.osh.pbf 2008\-01\-01T00:00:00Z
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-output\-headers\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

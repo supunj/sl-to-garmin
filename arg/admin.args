@@ -1,13 +1,14 @@
 # Product
-family-id: 53130
+family-id: 53131
 family-name: sl-admin
 product-id: 1
 series-name: sl-topo
 area-name: sl
 code-page: 1252
+description: SL - Administrative Boundaries
 
 # Render
-draw-priority: 10
+draw-priority: 100
 keep-going
 transparent
 max-jobs
@@ -15,8 +16,7 @@ lower-case
 report-similar-arcs
 order-by-decreasing-area
 preserve-element-order
-name-tag-list: name:en,int_name,name
+name-tag-list: name,name:en,int_name
 no-merge-lines
 no-tdbfile
-#ignore-osm-bounds
 improve-overview

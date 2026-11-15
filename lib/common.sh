@@ -12,6 +12,7 @@ source "$PROJECT_ROOT/config/build.conf"
 MKGMAP_JAR="$PROJECT_ROOT/tools/mkgmap-r4924/mkgmap.jar"
 SPLITTER_JAR="$PROJECT_ROOT/tools/splitter-r654/splitter.jar"
 OSMOSIS="$PROJECT_ROOT/tools/osmosis-0.49.2/bin/osmosis"
+OSMIUM="$PROJECT_ROOT/tools/osmium-1.19.1/bin/osmium"
 PGSNAPSHOT_SCHEMA="$PROJECT_ROOT/tools/osmosis-0.49.2/script/pgsnapshot_schema_0.6.sql"
 JAVA_OPTS="-Xmx$JAVA_HEAP -enableassertions"
 
@@ -53,10 +54,6 @@ run_mkgmap() {
         cd "$LAYERS_DIR"
         "$JAVA_CMD" $JAVA_OPTS -jar "$MKGMAP_JAR" \
             -c "$args_file" \
-            --family-id="$FID" \
-            --product-id="$PID" \
-            --series-name="$SERIES_NAME" \
-            --area-name="$AREA_NAME" \
             --mapname="$mapname" \
             ${style_args[@]+"${style_args[@]}"} \
             "$@"
@@ -87,10 +84,12 @@ latest_typ_file() {
     printf '%s\n' "$latest"
 }
 
-# compile_typ — compile the TYP into $BUILD_DIR/<style>.typ. The TYP text is
-# the latest typ/NN_<device>.txt unless TYP_FILE points at a specific file.
+# compile_typ [family-id] — compile the TYP into $BUILD_DIR. With a family ID,
+# adjust the TYP to match and write <style>-<family-id>.typ. The TYP text is the
+# latest typ/NN_<device>.txt unless TYP_FILE points at a specific file.
 # No-op for the built-in default style (test/build_map_default.sh).
 compile_typ() {
+    local family_id="${1:-}"
     if [ "$STYLE" = default ]; then
         log "Style '$STYLE' has no TYP — skipping TYP compilation"
         return
@@ -100,45 +99,53 @@ compile_typ() {
         typ_txt=$(latest_typ_file)
     fi
     need_file "$typ_txt"
+    local typ_out="$STYLE.typ"
+    if [ -n "$family_id" ]; then
+        local layer_txt="$BUILD_DIR/$STYLE-$family_id.txt"
+        sed "s/^FID=.*/FID=$family_id/" "$typ_txt" > "$layer_txt"
+        typ_txt="$layer_txt"
+        typ_out="$STYLE-$family_id.typ"
+    fi
     log "Compiling TYP: $typ_txt"
     (
         cd "$BUILD_DIR"
         "$JAVA_CMD" -cp "$MKGMAP_JAR" \
             uk.me.parabola.mkgmap.main.TypCompiler \
-            "$typ_txt" "$STYLE.typ"
+            "$typ_txt" "$typ_out"
     )
 }
 
-# merge_layer <output-name> [--with-index]
+# merge_layer <args-file> <output-name> [--with-index]
 # Combine every .img in $LAYERS_DIR into one gmapsupp, move it to
 # $DIST_DIR/<output-name>.img, then remove the intermediate tiles.
+# The args file supplies the product identity (description, family-name,
+# family-id, ...) just like it does for run_mkgmap.
 # --with-index also keeps the address-search index (osmmap_mdr.img/.mdx),
 # renamed to <output-name>_mdr.img / <output-name>.mdx.
 merge_layer() {
-    local out_name="$1" with_index="${2:-}"
+    local args_file="$1" out_name="$2" with_index="${3:-}"
+    need_file "$args_file"
     shopt -s nullglob
     local imgs=("$LAYERS_DIR"/*.img)
     shopt -u nullglob
     [ ${#imgs[@]} -gt 0 ] || die "merge_layer: no .img files in $LAYERS_DIR"
 
     local typ_args=()
-    if [ -f "$BUILD_DIR/$STYLE.typ" ]; then
-        typ_args=("$BUILD_DIR/$STYLE.typ")
+    if [ "$STYLE" != default ]; then
+        local family_id
+        family_id=$(sed -n 's/^family-id:[[:space:]]*//p' "$args_file")
+        [ -n "$family_id" ] || die "merge_layer: no family-id in $args_file"
+        compile_typ "$family_id"
+        typ_args=("$BUILD_DIR/$STYLE-$family_id.typ")
     fi
 
     log "Merging ${#imgs[@]} tile(s) -> $out_name.img"
     (
         cd "$MAPSET_DIR"
         "$JAVA_CMD" $JAVA_OPTS -jar "$MKGMAP_JAR" \
-            --latin1 \
-            --family-id="$FID" \
-            --product-id="$PID" \
-            --series-name="$SERIES_NAME" \
-            --area-name="$AREA_NAME" \
-            --keep-going \
+            -c "$args_file" \
             --gmapsupp \
             --tdbfile \
-            --index \
             "${imgs[@]}" \
             ${typ_args[@]+"${typ_args[@]}"}
     )

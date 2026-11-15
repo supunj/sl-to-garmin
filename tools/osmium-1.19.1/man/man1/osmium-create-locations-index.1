@@ -1,0 +1,126 @@
+.TH "OSMIUM-CREATE-LOCATIONS-INDEX" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-create\-locations\-index \- create or update locations index
+from OSM file
+.SH SYNOPSIS
+\f[B]osmium create\-locations\-index\f[R] \-i INDEX\-FILE
+[\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+.SH DESCRIPTION
+Create an index of all node locations from the OSM\-FILE in the file
+INDEX\-FILE.
+.PP
+If the INDEX\-FILE exists, it will not be touched unless the
+\f[B]\-\-update/\-u\f[R] option is used.
+.PP
+Regardless of the size of the input file, this index will need about 8 *
+highest\-node\-id bytes on disk.
+For a current planet file this is more than 50 GBytes.
+.PP
+The index file format is compatible to the one created by \(lqosmium
+add\-location\-to\-ways \-i dense_file_array,INDEX\-FILE\(rq and to the
+flatnode store created by osm2pgsql.
+.PP
+When the input file is a full history file or a change file, the last
+location encountered in the file for any ID ends up in the index.
+Usually this will be the newest location (from the node with the highest
+version).
+.PP
+This command will not work with negative node IDs.
+.PP
+This commands reads its input file only once, so it can be streamed, ie.
+it can read from STDIN.
+.SH OPTIONS
+.TP
+\-i, \-\-index\-file=FILENAME
+The name of the index file.
+.TP
+\-u, \-\-update
+Allow updating of existing file.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH DIAGNOSTICS
+\f[B]osmium create\-locations\-index\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium create\-locations\-index\f[R] will not use a lot of memory.
+.SH EXAMPLES
+Create node locations index from planet:
+.IP
+.EX
+osmium create\-locations\-index \-i locations.idx planet.osm.pbf
+.EE
+.PP
+Set a node location in the index using an input file in OPL format:
+.IP
+.EX
+echo \(dqn123 x\-80.6042 y28.6083\(dq | \(rs
+    osmium create\-locations\-index \-i locations.idx \-F opl \-\-update
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-query\-locations\-index\f[R](1),
+\f[B]osmium\-file\-formats\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.IP \(bu 2
+\c
+.UR https://wiki.openstreetmap.org/wiki/Osm2pgsql
+osm2pgsql
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

@@ -1,0 +1,78 @@
+.TH "OSMIUM-OUTPUT-HEADERS" "5" "1.19.1" "" ""
+.SH NAME
+osmium\-output\-headers \- Header options that can be set on output
+files
+.SH DESCRIPTION
+Most osmium commands that write OSM files can set values in the file
+header of the OSM file using the \f[B]\-\-output\-header\f[R] option.
+.PP
+The format generally is \f[B]\-\-output\-header=OPTION=VALUE\f[R].
+For some commands you can use the special format
+\f[B]\-\-output\-header=OPTION!\f[R] (ie.
+an exclamation mark after the \f[I]OPTION\f[R] and no value set) to set
+the value to the same as in the input file.
+See the individual command man pages for where this is allowed.
+.SH HEADER OPTIONS
+.TP
+\f[CR]generator\f[R]
+Set the \(lqgenerator program\(rq value.
+Default is \(lqosmium/VERSION\(rq.
+Can also be set using the \f[B]\-\-generator\f[R] option.
+(XML and PBF files only.)
+.TP
+\f[CR]xml_josm_upload\f[R]
+Value of the upload attribute on the osm XML element (true or false) for
+use in JOSM.
+(XML files only.)
+.TP
+\f[CR]osmosis_replication_timestamp\f[R]
+Timestamp used in replication (PBF files only).
+.TP
+\f[CR]osmosis_replication_sequence_number\f[R]
+Sequence number used in replication (PBF files only).
+.TP
+\f[CR]osmosis_replication_base_url\f[R]
+Base URL for change files used in replication (PBF files only).
+.TP
+\f[CR]sorting\f[R]
+Set the \f[B]Sort.Type_then_ID\f[R] property in the PBF header if set to
+\f[B]Type_then_ID\f[R].
+Other values are currently not supported.
+(PBF files only).
+Note that this only sets the header option, it does not actually sort
+the file!
+Use \f[B]osmium sort\f[R] for that.
+.SH EXAMPLES
+Copy the file in.osm.pbf to out.osm.pbf setting the generator to
+\f[B]myscript\f[R]:
+.IP
+.EX
+osmium cat \-\-output\-header=generator=myscript \-o out.osm.pbf in.osm.pbf
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.IP \(bu 2
+\c
+.UR https://wiki.openstreetmap.org/wiki/PBF_Format
+Replication headers
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

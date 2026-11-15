@@ -13,10 +13,9 @@
 TEST_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 source "$TEST_DIR/../lib/common.sh"
 
-# This harness uses its own style directory and series name.
+# This harness uses its own style directory.
 STYLE_DIR="$TEST_DIR"
 STYLE=test_style
-SERIES_NAME=sl-test
 
 AREA_GRID_OSM="$TEST_DIR/area_type_grid.osm"
 LINE_GRID_OSM="$TEST_DIR/line_type_grid.osm"

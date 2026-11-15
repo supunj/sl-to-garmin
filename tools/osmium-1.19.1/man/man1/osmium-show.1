@@ -1,0 +1,118 @@
+.TH "OSMIUM-SHOW" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-show \- show OSM file
+.SH SYNOPSIS
+\f[B]osmium show\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+.SH DESCRIPTION
+Show the contents of the \f[I]OSM\-FILE\f[R] on STDOUT, usually in a
+pager.
+The output format can be set using the \f[B]output\-format/\-f\f[R]
+option, its shortcuts \f[B]\-d\f[R] (debug format with colors),
+\f[B]\-o\f[R] (OPL), or \f[B]\-x\f[R] (XML), or the
+\f[CR]OSMIUM_SHOW_FORMAT\f[R] environment variable.
+.PP
+The pager can be set with the \f[CR]OSMIUM_PAGER\f[R] or the
+\f[CR]PAGER\f[R] environment variable.
+If neither is set, the default \f[CR]less\f[R] is used unless the option
+\f[B]\-\-no\-pager\f[R] is used.
+If the pager variables are set to an empty value or to \f[CR]cat\f[R],
+no pager is used.
+On Windows there is no pager support at all.
+.PP
+This commands reads its input file only once, ie.
+it can read from STDIN.
+.SH OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+\f[B]See osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-no\-pager
+Disable pager.
+.TP
+\-d, \-\-format\-debug
+Same as \f[CR]\-f debug,color=true\f[R].
+.TP
+\-o, \-\-format\-opl
+Same as \f[CR]\-f opl\f[R].
+.TP
+\-x, \-\-format\-xml
+Same as \f[CR]\-f xml\f[R].
+.TP
+\-t, \-\-object\-type=TYPE
+Read only objects of given type (\f[I]node\f[R], \f[I]way\f[R],
+\f[I]relation\f[R], \f[I]changeset\f[R]).
+By default all types are read.
+This option can be given multiple times.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH DIAGNOSTICS
+\f[B]osmium show\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium show\f[R] does all its work on the fly and doesn\(cqt keep
+much data in main memory.
+.SH EXAMPLES
+Show an OSM file using the default pager and default format:
+.IP
+.EX
+osmium show norway.osm.pbf
+.EE
+.PP
+Use \f[CR]more\f[R] as a pager and only show relations:
+.IP
+.EX
+OSMIUM_PAGER=more osmium show \-t r norway.osm.pbf
+.EE
+.PP
+Show using XML format:
+.IP
+.EX
+osmium show \-x norway.osm.pbf
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-cat\f[R](1),
+\f[B]osmium\-file\-formats\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

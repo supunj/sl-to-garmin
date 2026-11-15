@@ -1,0 +1,547 @@
+.TH "OSMIUM-EXTRACT" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-extract \- create geographical extracts from an OSM file
+.SH SYNOPSIS
+\f[B]osmium extract\f[R] \-\-config \f[I]CONFIG\-FILE\f[R]
+[\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+.PD 0
+.P
+.PD
+\f[B]osmium extract\f[R] \-\-bbox
+\f[I]LEFT\f[R],\f[I]BOTTOM\f[R],\f[I]RIGHT\f[R],\f[I]TOP\f[R]
+[\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+.PD 0
+.P
+.PD
+\f[B]osmium extract\f[R] \-\-polygon \f[I]POLYGON\-FILE\f[R]
+[\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+.SH DESCRIPTION
+Create geographical extracts from an OSM data file or an OSM history
+file.
+The region (geographical extent) can be given as a bounding box or as a
+(multi)polygon.
+.PP
+There are three ways of calling this command:
+.IP \(bu 2
+Specify a config file with the \f[B]\-\-config/\-c\f[R] option.
+It can define any number of regions you want to cut out.
+See the \f[B]CONFIG FILE\f[R] section for details.
+.IP \(bu 2
+Specify a bounding box to cut out with the \f[B]\-\-bbox/\-b\f[R]
+option.
+.IP \(bu 2
+Specify a (multi)polygon to cut out with the \f[B]\-\-polygon/\-p\f[R]
+option.
+.PP
+The input file is assumed to be ordered in the usual order: nodes first,
+then ways, then relations.
+.PP
+If the \f[B]\-\-with\-history/\-H\f[R] option is used, the command will
+work correctly for history files.
+This currently works for the \f[B]complete_ways\f[R] strategy only.
+The \f[B]simple\f[R] or \f[B]smart\f[R] strategies do not work with
+history files.
+A history extract will contain every version of all objects with at
+least one version in the region.
+Generating a history extract is somewhat slower than a normal data
+extract.
+.PP
+Osmium will make sure that all nodes on the vertices of the boundary of
+the region will be in the extract, but nodes that happen to be directly
+on the boundary, but between those vertices, might end up in the extract
+or not.
+In almost all cases this will be good enough, but if you want to make
+really sure you got everything, use a small buffer around your region.
+.PP
+By default no \f[B]bounds\f[R] will be set in the header of the output
+file.
+Use the \f[B]\-\-set\-bounds\f[R] option if you need this.
+.PP
+Note that \f[B]osmium extract\f[R] will never clip any OSM objects, ie.
+it will not remove node references outside the region from ways or
+unused relation members from relations.
+This means you might get objects that are not reference\-complete.
+It has the advantage that you can use \f[B]osmium merge\f[R] to merge
+several extracts without problems.
+.SH OPTIONS
+.TP
+\-b, \-\-bbox=LONG1,LAT1,LONG2,LAT2
+Set the bounding box to cut out.
+Can not be used with \f[B]\-\-polygon/\-p\f[R],
+\f[B]\-\-config/\-c\f[R], or \f[B]\-\-directory/\-d\f[R].
+The coordinates LONG1,LAT1 are from one arbitrary corner, the
+coordinates LONG2,LAT2 are from the opposite corner.
+.TP
+\-c, \-\-config=FILE
+Set the name of the config file.
+Can not be used with the \f[B]\-\-bbox/\-b\f[R] or
+\f[B]\-\-polygon/\-p\f[R] option.
+If this is set, the \f[B]\-\-output/\-o\f[R] and
+\f[B]\-\-output\-format/\-f\f[R] options are ignored, because they are
+set in the config file.
+.TP
+\-\-clean=ATTR
+Clean the attribute (\f[I]version\f[R], \f[I]timestamp\f[R],
+\f[I]changeset\f[R], \f[I]uid\f[R], \f[I]user\f[R]), from the data
+before writing it out again.
+The attribute will be set to 0 (the user will be set to the empty
+string).
+This option can be given multiple times.
+Depending on the output format these attributes might show up as 0 or
+not show up at all.
+.TP
+\-d, \-\-directory=DIRECTORY
+Output directory.
+Output file names in the config file are relative to this directory.
+Overwrites the setting of the same name in the config file.
+This option is ignored when the \f[B]\-\-bbox/\-b\f[R] or
+\f[B]\-\-polygon/\-p\f[R] options are used, set the output directory and
+name with the \f[B]\-\-output/\-o\f[R] option in that case.
+.TP
+\-H, \-\-with\-history
+Specify that the input file is a history file.
+The output file(s) will also be history file(s).
+.TP
+\-p, \-\-polygon=POLYGON_FILE
+Set the polygon to cut out based on the contents of the file.
+The file has to be a GeoJSON, poly, or OSM file as described in the
+\f[B](MULTI)POLYGON FILE FORMATS\f[R] section.
+It has to have the right suffix to be detected correctly.
+Can not be used with \f[B]\-\-bbox/\-b\f[R], \f[B]\-\-config/\-c\f[R],
+or \f[B]\-\-directory/\-d\f[R].
+.TP
+\-s, \-\-strategy=STRATEGY
+Use the given strategy to extract the region.
+For possible values and details see the \f[B]STRATEGIES\f[R] section.
+Default is \(lqcomplete_ways\(rq.
+.TP
+\-S, \-\-option=OPTION=VALUE
+Set a named option for the strategy.
+If needed you can specify this option multiple times to set several
+options.
+.TP
+\-\-set\-bounds
+Set the bounds field in the header.
+The bounds are set to the bbox or envelope of the polygon specified for
+the extract.
+Note that strategies other than \(lqsimple\(rq can put nodes outside
+those bounds into the output file.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH CONFIG FILE
+The config file mainly specifies the file names and the regions of the
+extracts that should be created.
+.PP
+The config file is in JSON format.
+The top\-level is an object which contains at least an \(lqextracts\(rq
+array.
+It can also contain a \(lqdirectory\(rq entry which names the directory
+where all the output files will be created:
+.IP
+.EX
+{
+    \(dqextracts\(dq: [...],
+    \(dqdirectory\(dq: \(dq/tmp/\(dq
+}
+.EE
+.PP
+The extracts array specifies the extracts that should be created.
+Each item in the array is an object with at least a name \(lqoutput\(rq
+naming the output file and a region defined in a \(lqbbox\(rq,
+\(lqpolygon\(rq or \(lqmultipolygon\(rq name.
+An optional \(lqdescription\(rq can be added, it will not be used by the
+program but can help with documenting the file contents.
+You can add an optional \(lqoutput_format\(rq if the format can not be
+detected from the \(lqoutput\(rq file name.
+Run \(lqosmium help file\-formats\(rq to get a description of allowed
+formats.
+.PP
+The optional \(lqoutput_header\(rq allows you to set additional OSM file
+header settings such as the \(lqgenerator\(rq.
+If you set the value of a file header setting to \f[CR]null\f[R], the
+output header will be set to the same header from the input file.
+.IP
+.EX
+\(dqextracts\(dq: [
+    {
+        \(dqoutput\(dq: \(dqhamburg.osm.pbf\(dq,
+        \(dqoutput_format\(dq: \(dqpbf\(dq,
+        \(dqdescription\(dq: \(dqoptional description\(dq,
+        \(dqbbox\(dq: ...
+    },
+    {
+        \(dqoutput\(dq: \(dqberlin.osm.pbf\(dq,
+        \(dqdescription\(dq: \(dqoptional description\(dq,
+        \(dqpolygon\(dq: ...
+    },
+    {
+        \(dqoutput\(dq: \(dqmunich.osm.pbf\(dq,
+        \(dqoutput_header\(dq: {
+            \(dqgenerator\(dq: \(dqMyExtractor/1.0\(dq,
+            \(dqosmosis_replication_timestamp\(dq: null
+        },
+        \(dqdescription\(dq: \(dqoptional description\(dq,
+        \(dqmultipolygon\(dq: ...
+    }
+]
+.EE
+.PP
+There are several formats for specifying the regions:
+.PP
+\f[B]bbox\f[R]:
+.PP
+A bounding box in one of two formats.
+The first is a simple array with four real numbers, the first two
+specifying the coordinates of an arbitrary corner, the second two
+specifying the coordinates of the opposite corner.
+.IP
+.EX
+{
+    \(dqoutput\(dq: \(dqmunich.osm.pbf\(dq,
+    \(dqdescription\(dq: \(dqBounding box specified in array format\(dq,
+    \(dqbbox\(dq: [11.35, 48.05, 11.73, 48.25]
+}
+.EE
+.PP
+The second format uses an object instead of an array:
+.IP
+.EX
+{
+    \(dqoutput\(dq: \(dqdresden.osm.pbf\(dq,
+    \(dqdescription\(dq: \(dqBounding box specified in object format\(dq,
+    \(dqbbox\(dq: {
+        \(dqleft\(dq: 13.57,
+        \(dqright\(dq: 13.97,
+        \(dqtop\(dq: 51.18,
+        \(dqbottom\(dq: 50.97
+    }
+}
+.EE
+.PP
+\f[B]polygon\f[R]:
+.PP
+A polygon, either specified inline in the config file or read from an
+external file.
+See the \f[B](MULTI)POLYGON FILE FORMATS\f[R] section for external
+files.
+If specified inline this is a nested array, the outer array defining the
+polygon, the next array the rings and the innermost arrays the
+coordinates.
+This format is the same as in GeoJSON files.
+.PP
+In this example there is only one outer ring:
+.IP
+.EX
+\(dqpolygon\(dq: [[
+    [9.613465, 53.58071],
+    [9.647599, 53.59655],
+    [9.649288, 53.61059],
+    [9.613465, 53.58071]
+]]
+.EE
+.PP
+In each ring, the last set of coordinates should be the same as the
+first set, closing the ring.
+.PP
+\f[B]multipolygon\f[R]:
+.PP
+A multipolygon, either specified inline in the config file or read from
+an external file.
+See the \f[B](MULTI)POLYGON FILE FORMATS\f[R] section for external
+files.
+If specified inline this is a nested array, the outer array defining the
+multipolygon, the next array the polygons, the next the rings and the
+innermost arrays the coordinates.
+This format is the same as in GeoJSON files.
+.PP
+In this example there is one outer and one inner ring:
+.IP
+.EX
+\(dqmultipolygon\(dq: [[[
+    [6.847, 50.987],
+    [6.910, 51.007],
+    [7.037, 50.953],
+    [6.967, 50.880],
+    [6.842, 50.925],
+    [6.847, 50.987]
+],[
+    [6.967, 50.954],
+    [6.969, 50.920],
+    [6.932, 50.928],
+    [6.934, 50.950],
+    [6.967, 50.954]
+]]]
+.EE
+.PP
+In each ring, the last set of coordinates should be the same as the
+first set, closing the ring.
+.PP
+Osmium must check each and every node in the input data and find out in
+which bounding boxes or (multi)polygons this node is.
+This is very cheap for bounding boxes, but more expensive for
+(multi)polygons.
+And it becomes more expensive the more vertices the (multi)polyon has.
+Use bounding boxes or simplified polygons where possible.
+.PP
+Note that bounding boxes or (multi)polygons are not allowed to span the
+\-180/180 degree line.
+If you need this, cut out the regions on each side and use \f[B]osmium
+merge\f[R] to join the resulting files.
+.SH (MULTI)POLYGON FILE FORMATS
+External files describing a (multi)polygon are specified in the config
+file using the \(lqfile_name\(rq and \(lqfile_type\(rq properties on the
+\(lqpolygon\(rq or \(lqmultipolygon\(rq object:
+.IP
+.EX
+\(dqpolygon\(dq: {
+    \(dqfile_name\(dq: \(dqberlin.geojson\(dq,
+    \(dqfile_type\(dq: \(dqgeojson\(dq
+}
+.EE
+.PP
+If file names don\(cqt start with a slash (/), they are interpreted
+relative to the directory where the config file is.
+If the \(lqfile_type\(rq is missing, Osmium will try to autodetect it
+from the suffix of the \(lqfile_name\(rq.
+.PP
+The following file types are supported:
+.TP
+geojson
+GeoJSON file containing exactly one Feature of type Polygon or
+MultiPolygon, or a FeatureCollection with the first Feature of type
+Polygon or MultiPolygon.
+Everything except the actual geometry (of the first Feature) is ignored.
+.TP
+poly
+A poly file as described in
+https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format .
+This wiki page also mentions several sources for such poly files.
+.TP
+osm
+An OSM file containing one or more multipolygon or boundary relation
+together with all the nodes and ways needed.
+Any OSM file format (XML, PBF, \&...)
+supported by Osmium can be used here, but the correct suffix must be
+used, so the file format is detected correctly.
+Files for this can easily be obtained by searching for the area on OSM
+and then downloading the full relation using a URL like
+https://www.openstreetmap.org/api/0.6/relation/RELATION\-ID/full .
+Or you can use \f[B]osmium getid \-r\f[R] to get a specific relation
+from an OSM file.
+Note that both these approaches can get you very detailed boundaries
+which can take quite a while to cut out.
+Consider simplifying the boundary before use.
+.PP
+If there are several (multi)polygons in a poly file or OSM file, they
+will be merged.
+The (multi)polygons must not overlap, otherwise the result is undefined.
+.SH STRATEGIES
+\f[B]osmium extract\f[R] can use different strategies for creating the
+extracts.
+Depending on the strategy different objects will end up in the extracts.
+The strategies differ in how much memory they need and how often they
+need to read the input file.
+The choice of strategy depends on how you want to use the generated
+extracts and how much memory and time you have.
+.PP
+The default strategy is \f[B]complete_ways\f[R].
+.TP
+Strategy \f[B]simple\f[R]
+Runs in a single pass.
+The extract will contain all nodes inside the region and all ways
+referencing those nodes as well as all relations referencing any nodes
+or ways already included.
+Ways crossing the region boundary will not be reference\-complete.
+Relations will not be reference\-complete.
+This strategy is fast, because it reads the input only once, but the
+result is not enough for most use cases.
+It is the only strategy that will work when reading from a socket or
+pipe.
+This strategy will not work for history files.
+.TP
+Strategy \f[B]complete_ways\f[R]
+Runs in two passes.
+The extract will contain all nodes inside the region and all ways
+referencing those nodes as well as all nodes referenced by those ways.
+The extract will also contain all relations referenced by nodes inside
+the region or ways already included and, recursively, their parent
+relations.
+The ways are reference\-complete, but the relations are not.
+.TP
+Strategy \f[B]smart\f[R]
+Runs in three passes.
+The extract will contain all nodes inside the region and all ways
+referencing those nodes as well as all nodes referenced by those ways.
+The extract will also contain all relations referenced by nodes inside
+the region or ways already included and, recursively, their parent
+relations.
+The extract will also contain all nodes and ways (and the nodes they
+reference) referenced by relations tagged \(lqtype=multipolygon\(rq
+directly referencing any nodes in the region or ways referencing nodes
+in the region.
+The ways are reference\-complete, and all multipolygon relations
+referencing nodes in the regions or ways that have nodes in the region
+are reference\-complete.
+Other relations are not reference\-complete.
+.PP
+For the \f[B]complete_ways\f[R] strategy you can set the option \(lq\-S
+relations=false\(rq in which case no relations will be written to the
+output file.
+.PP
+The \f[B]smart\f[R] strategy allows the following strategy options:
+.PP
+Use \(lq\-S types=TYPE,\&...\(rq to change the types of relations that
+should be reference\-complete.
+Instead of just relations tagged \(lqtype=multipolygon\(rq, you can
+either get all relations (use \(lq\-S types=any\(rq) or give a list of
+types to the \-S option: \(lq\-S types=multipolygon,route\(rq.
+Note that especially boundary relations can be huge, so if you include
+them, be aware your result might be huge.
+.PP
+Use \(lq\-S complete\-partial\-relations=X\(rq to force completion of
+partly completed relations.
+If this is set, all relations that have more than X percent of their
+members already in the extract will have their full set of members in
+the extract.
+So this allows completing almost complete relations.
+It can be useful for instance to make sure a boundary relation is
+complete even if some of it is outside the polygon used for extraction.
+.PP
+Use \(lq\-S tags=PATTERN,\&...\(rq to only complete relations that have
+a tag matching one of the PATTERNs.
+So for example if you use \(lq\-S
+tags=landuse,natural=wood,natural=water\(rq everything tagged
+\f[CR]landuse=*\f[R] or \f[CR]natural=wood\f[R] or
+\f[CR]natural=water\f[R] is added to the result, but no other relations.
+.PP
+You can combine the \(lq\-S types\(rq, \(lq\-S
+complete\-partial\-relations\(rq, and \(lq\-S tags\(rq options.
+The options will be interpreted as \(lq(types OR
+complete\-partial\-relations) AND tags\(rq.
+.SH DIAGNOSTICS
+\f[B]osmium extract\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments, config file or
+polygon files.
+.SH MEMORY USAGE
+Memory usage of \f[B]osmium extract\f[R] depends on the number of
+extracts and on the strategy used.
+For the \f[I]simple\f[R] strategy it will at least be the number of
+extracts times the highest node ID used divided by 8.
+For the \f[I]complete_ways\f[R] twice that and for the \f[I]smart\f[R]
+strategy a bit more.
+.PP
+If you want to split a large file into many extracts, do this in several
+steps.
+First create several larger extracts and then split them again and again
+into smaller pieces.
+.SH LIMITS
+You can not have more than 500 extracts.
+Although chances are that you will be running out of memory long before
+that.
+See MEMORY USAGE.
+.SH EXAMPLES
+See the example config files in the \f[I]extract\-example\-config\f[R]
+directory.
+To try it:
+.IP
+.EX
+osmium extract \-v \-c extract\-example\-config/extracts.json \(rs
+    germany\-latest.osm.pbf
+.EE
+.PP
+Extract the city of Karlsruhe using a boundary polygon:
+.IP
+.EX
+osmium extract \-p karlsruhe\-boundary.osm.bz2 germany\-latest.osm.pbf \(rs
+    \-o karlsruhe.osm.pbf
+.EE
+.PP
+Extract the city of Munich using a bounding box:
+.IP
+.EX
+osmium extract \-b 11.35,48.05,11.73,48.25 germany\-latest.osm.pbf \(rs
+    \-o munich.osm.pbf
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-output\-headers\f[R](5), \f[B]osmium\-getid\f[R](1),
+\f[B]osmium\-merge\f[R](1)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

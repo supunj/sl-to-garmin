@@ -1,0 +1,158 @@
+.TH "OSMIUM-SORT" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-sort \- sort OSM files
+.SH SYNOPSIS
+\f[B]osmium sort\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]\&...
+.SH DESCRIPTION
+Combines and sorts the content of all input files given on the command
+line.
+.PP
+Objects are sorted by type, ID, and version.
+IDs are sorted negative IDs first, then positive IDs, both ordered by
+their absolute values.
+So the sort order for types and IDs is:
+.PP
+node \-1, node \-2, \&..., node 1, node 2, \&..., way \-1, way \-2,
+\&..., way 1, way 2, \&..., relation \-1, relation \-2, \&..., relation
+1, relation 2, \&...
+.PP
+If there are several objects of the same type and with the same ID they
+are ordered by ascending version.
+If there are several objects of the same type and with the same ID and
+version the sort order is unspecified.
+Duplicate objects will not be removed.
+.PP
+This command works with normal OSM data files, history files, and change
+files.
+.PP
+This commands reads its input file(s) only once and writes its output
+file in one go so it can be streamed, ie.
+it can read from STDIN and write to STDOUT.
+(Unless the \f[I]multipass\f[R] strategy is used.)
+.SH OPTIONS
+.TP
+\-s, \-\-strategy=STRATEGY
+Sorting strategy.
+The \(lqsimple\(rq strategy reads all input files into memory, does the
+sorting and writes everything out.
+The \(lqmultipass\(rq strategy reads the input files in three passes,
+one for nodes, one for ways, and one for relations.
+After reading all objects of each type, they are sorted and written out.
+This is a bit slower than the \(lqsimple\(rq strategy, but uses less
+memory.
+The \(lqmultipass\(rq strategy doesn\(cqt work when reading from STDIN.
+Default: \(lqsimple\(rq.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium sort\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium sort\f[R] keeps the contents of all the input files in main
+memory.
+This will take roughly 10 times as much memory as the files take on disk
+in \f[I].osm.bz2\f[R] or \f[I]osm.pbf\f[R] format.
+.SH EXAMPLES
+Sort \f[I]in.osm.bz2\f[R] and write out to \f[I]sorted.osm.pbf\f[R]:
+.IP
+.EX
+osmium sort \-o sorted.osm.pbf in.osm.bz2
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-output\-headers\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

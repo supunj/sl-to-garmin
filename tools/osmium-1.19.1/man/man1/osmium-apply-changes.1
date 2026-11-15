@@ -1,0 +1,184 @@
+.TH "OSMIUM-APPLY-CHANGES" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-apply\-changes \- apply OSM change file(s) to OSM data file
+.SH SYNOPSIS
+\f[B]osmium apply\-changes\f[R] [\f[I]OPTIONS\f[R]]
+\f[I]OSM\-DATA\-FILE\f[R] \f[I]OSM\-CHANGE\-FILE\f[R]\&...
+.PD 0
+.P
+.PD
+\f[B]osmium apply\-changes\f[R] [\f[I]OPTIONS\f[R]]
+\f[I]OSM\-HISTORY\-FILE\f[R] \f[I]OSM\-CHANGE\-FILE\f[R]\&...
+.SH DESCRIPTION
+Merges the content of all OSM change files and applies those changes to
+the OSM data or history file.
+.PP
+Objects in the data or history file must be sorted by type, ID, and
+version.
+.PP
+Objects in change files need not be sorted, so it doesn\(cqt matter in
+what order the change files are given or in what order they contain the
+data.
+(If you are using change files of extracts this is not necessarily true
+and you must specify the change files on the command line in the correct
+order from oldest to newest.
+This is because change files from extracts can contain multiple
+different object versions with the same version and timestamp!)
+.PP
+Changes can be applied to normal OSM data files or OSM history files
+with this command.
+File formats will be autodetected from the file name suffixes, see the
+\f[B]\-\-with\-history/\-H\f[R] option if that doesn\(cqt work.
+.PP
+This commands reads its input file(s) only once and writes its output
+file in one go so it can be streamed, ie.
+it can read from STDIN and write to STDOUT.
+.SH OPTIONS
+.TP
+\-H, \-\-with\-history
+Update an OSM history file (instead of a normal OSM data file).
+Both input and output must be history files.
+This option is usually not necessary, because history files will be
+detected from their file name suffixes, but if this detection doesn\(cqt
+work, you can force this mode with this option.
+Can not be used together with the \f[B]\-\-locations\-on\-ways\f[R]
+option.
+.TP
+\-\-locations\-on\-ways
+Input has and output should have node locations on ways.
+Can be used to update files created by the
+\f[B]osmium\-add\-locations\-to\-ways\f[R].
+See there for details on the format.
+Can not be used together with the \f[B]\-\-with\-history/\-H\f[R]
+option.
+.TP
+\-\-redact
+Redact (patch) history files.
+Change files can contain any version of any object which will replace
+that version of that object from the input.
+This allows changing the history!
+This mode is for special use only, for instance to remove copyrighted or
+private data.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the OSM\-DATA\-FILE or OSM\-HISTORY\-FILE.
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-change\-file\-format=FORMAT
+The format of the OSM\-CHANGE\-FILE(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all change files, there is no way to set
+the format for some change files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium apply\-changes\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium apply\-changes\f[R] keeps the contents of all the change
+files in main memory.
+This will take roughly 10 times as much memory as the files take on disk
+in \f[I].osc.bz2\f[R] format.
+.SH EXAMPLES
+Apply changes in \f[CR]362.osc.gz\f[R] to planet file and write result
+to \f[CR]new.osm.pbf\f[R]:
+.IP
+.EX
+osmium apply\-changes \-\-output=new.osm.pbf planet.osm.pbf 362.osc.gz
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-merge\-changes\f[R](1),
+\f[B]osmium\-derive\-changes\f[R](1),
+\f[B]osmium\-file\-formats\f[R](5), \f[B]osmium\-output\-headers\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

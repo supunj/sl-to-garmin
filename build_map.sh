@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # build_map.sh — build the Sri Lanka topo map for Garmin Drive GPS devices.
 #
-# Produces four layers, each merged into its own gmapsupp-style image in
+# Produces five layers, each merged into its own gmapsupp-style image in
 # build/dist/:
-#   sl-base.img     sea/land polygons + DEM hill shading
-#   sl-admin.img    administrative boundaries
-#   sl-contour.img  contour lines (cached in data/cache/)
-#   sl-road.img     roads, POIs, routing + address index (_mdr.img / .mdx)
+#   sl-base.img             sea/land polygons + DEM hill shading
+#   sl-admin.img            administrative boundaries
+#   sl-contour.img          contour lines (cached in data/cache/)
+#   sl-road.img             roads, POIs, routing + address index (_mdr.img / .mdx)
+#   sl-protected-areas.img  protected-area and national-park boundaries
 #
 # Usage: ./build_map.sh [--device <type>] [--pg-cleanse] [--pg-experiments]
 #                       [--skip-contours] [--keep-build-dir] [-h|--help]
@@ -29,11 +30,12 @@ KEEP_BUILD_DIR=0
 
 # Deterministic 8-digit tile mapnames: <FID><layer index>.
 MAPNAME_BASE=53130001
-MAPNAME_ADMIN=53130002
-MAPNAME_CONTOUR=53130003
-MAPNAME_ROAD=53130004
+MAPNAME_ADMIN=53131002
+MAPNAME_CONTOUR=53132003
+MAPNAME_ROAD=53133004
+MAPNAME_PROTECTED_AREAS=53134005
 
-usage() { sed -n '2,21p' "$0"; exit "${1:-0}"; }
+usage() { sed -n '2,22p' "$0"; exit "${1:-0}"; }
 
 parse_args() {
     while [ $# -gt 0 ]; do
@@ -59,6 +61,7 @@ check_prerequisites() {
     need_file "$MKGMAP_JAR"
     need_file "$SPLITTER_JAR"
     [ -x "$OSMOSIS" ] || die "osmosis not executable: $OSMOSIS"
+    [ -x "$OSMIUM" ] || die "osmium not executable: $OSMIUM"
     if [ "$STYLE" != default ]; then
         [ -d "$STYLE_DIR/$STYLE" ] \
             || die "no style for device '$DEVICE': $STYLE_DIR/$STYLE"
@@ -109,7 +112,7 @@ build_base_layer() {
         --dem="$DEM_DIR" \
         --dem-poly="$POLY_FILE" \
         "$coastline"
-    merge_layer sl-base
+    merge_layer "$PROJECT_ROOT/arg/sea_land.args" sl-base
 }
 
 build_admin_layer() {
@@ -125,13 +128,14 @@ build_admin_layer() {
         --write-pbf "$admin"
     log "Building admin tiles"
     run_mkgmap "$PROJECT_ROOT/arg/admin.args" "$MAPNAME_ADMIN" "$admin"
-    merge_layer sl-admin
+    merge_layer "$PROJECT_ROOT/arg/admin.args" sl-admin
 }
 
 build_contour_layer() {
     log "=== Contour layer ==="
     local contours="$DATA_DIR/cache/$CONTOURS_NAME"
     local cache="$DATA_DIR/cache/sl-contour.img"
+    local args_file="$PROJECT_ROOT/arg/elevation.args"
 
     if [ "$SKIP_CONTOURS" = 1 ]; then
         log "--skip-contours given; skipping contour layer"
@@ -146,8 +150,9 @@ build_contour_layer() {
     fi
 
     # Contour data changes rarely, so the compiled layer is cached. Reuse the
-    # cache while it is newer than the contour source; rebuild otherwise.
-    if [ -f "$cache" ] && [ "$cache" -nt "$contours" ]; then
+    # cache while it is newer than the contour source and mkgmap options.
+    if [ -f "$cache" ] && [ "$cache" -nt "$contours" ] \
+        && [ "$cache" -nt "$args_file" ]; then
         log "Reusing cached contour layer: $cache"
         cp "$cache" "$DIST_DIR/sl-contour.img"
         return
@@ -155,9 +160,8 @@ build_contour_layer() {
     log "Splitting contour data"
     run_splitter "$contours"
     log "Building contour tiles"
-    run_mkgmap "$PROJECT_ROOT/arg/elevation.args" "$MAPNAME_CONTOUR" \
-        "$SPLIT_DIR"/*.osm.pbf
-    merge_layer sl-contour
+    run_mkgmap "$args_file" "$MAPNAME_CONTOUR" "$SPLIT_DIR"/*.osm.pbf
+    merge_layer "$args_file" sl-contour
     log "Updating contour cache: $cache"
     mkdir -p "$(dirname "$cache")"
     cp "$DIST_DIR/sl-contour.img" "$cache"
@@ -176,6 +180,7 @@ build_road_layer() {
         --tf reject-relations name:en='Gulf of Mannar' \
         --tf reject-relations name:en='Bay of Bengal' \
         --tf reject-relations boundary=administrative \
+        --tf reject-relations boundary=protected_area,national_park \
         --bounding-polygon file="$POLY_FILE" \
         --write-pbf "$filtered"
     log "Splitting road data"
@@ -183,7 +188,36 @@ build_road_layer() {
     log "Building road tiles"
     run_mkgmap "$PROJECT_ROOT/arg/transport_osm.args" "$MAPNAME_ROAD" \
         "$SPLIT_DIR"/*.osm.pbf
-    merge_layer sl-road --with-index
+    merge_layer "$PROJECT_ROOT/arg/transport_osm.args" sl-road --with-index
+}
+
+build_protected_areas_layer() {
+    log "=== Protected-area boundary layer ==="
+    local extracted="$BUILD_DIR/protected-areas-with-way-tags.osm.pbf"
+    local filtered="$BUILD_DIR/protected-areas.osm.pbf"
+    log "Filtering protected-area and national-park boundary relations"
+    "$OSMOSIS" \
+        --read-pbf-fast file="$SOURCE_PBF" \
+        --tf reject-relations boundary=administrative \
+        --tf reject-relations name='Asia/Colombo timezone' \
+        --tf reject-relations name='Yala National Park' \
+        --tf accept-relations boundary=protected_area,national_park \
+        --used-way \
+        --used-node \
+        --bounding-polygon file="$POLY_FILE" \
+        --write-pbf "$extracted"
+    log "Stripping tags from protected-area ways"
+    "$OSMIUM" tags-filter \
+        --invert-match \
+        --remove-tags \
+        --overwrite \
+        --output="$filtered" \
+        "$extracted" \
+        'w/*'
+    log "Building protected-area tiles"
+    run_mkgmap "$PROJECT_ROOT/arg/protected_areas.args" \
+        "$MAPNAME_PROTECTED_AREAS" "$filtered"
+    merge_layer "$PROJECT_ROOT/arg/protected_areas.args" sl-protected-areas
 }
 
 main() {
@@ -197,11 +231,11 @@ main() {
     if [ "$PG_CLEANSE" = 1 ]; then
         run_cleanse
     fi
-    compile_typ
     build_base_layer
     build_admin_layer
     build_contour_layer
     build_road_layer
+    build_protected_areas_layer
     log "Build complete. Device-ready files:"
     ls -lh "$DIST_DIR"
 }

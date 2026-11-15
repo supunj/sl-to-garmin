@@ -1,0 +1,218 @@
+.TH "OSMIUM-GETPARENTS" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-getparents \- get parents of objects from OSM file
+.SH SYNOPSIS
+\f[B]osmium getparents\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+\f[I]ID\f[R]\&...
+.PD 0
+.P
+.PD
+\f[B]osmium getparents\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R] \-i
+\f[I]ID\-FILE\f[R]
+.PD 0
+.P
+.PD
+\f[B]osmium getparents\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R] \-I
+\f[I]ID\-OSM\-FILE\f[R]
+.SH DESCRIPTION
+Get objects referencing the objects with the specified IDs from the
+input and write them to the output.
+So this will get ways referencing any of the specified node IDs and
+relations referencing any specified node, way, or relation IDs.
+Only one level of indirection is resolved, so no relations of relations
+are found and no relations referencing ways referencing the specified
+node IDs.
+.PP
+IDs can be specified on the command line (first case in synopsis), or
+read from text files with one ID per line (second case in synopsis), or
+read from OSM files (third cases in synopsis).
+A mixture of these cases is also allowed.
+.PP
+All objects with these IDs will be read from \f[I]OSM\-FILE\f[R] and
+written to the output.
+If the option \f[B]\-\-add\-self/\-s\f[R] is specified, the objects with
+the specified IDs themselves will also be added to the output.
+.PP
+Objects will be written out in the order they are found in the
+\f[I]OSM\-FILE\f[R].
+.PP
+The input file is read only once.
+.PP
+On the command line or in the ID file, the IDs have the form:
+\f[I]TYPE\-LETTER\f[R] \f[I]NUMBER\f[R].
+The type letter is `n' for nodes, `w' for ways, and `r' for relations.
+If there is no type letter, `n' for nodes is assumed (or whatever the
+\f[B]\-\-default\-type\f[R] option says).
+So \(lqn13 w22 17 r21\(rq will match the nodes 13 and 17, the way 22 and
+the relation 21.
+.PP
+The order in which the IDs appear does not matter.
+Identical IDs can appear multiple times on the command line or in the ID
+file(s).
+.PP
+On the command line, the list of IDs can be in separate arguments or in
+a single argument separated by spaces, tabs, commas (,), semicolons (;),
+forward slashes (/) or pipe characters (|).
+.PP
+In an ID file (option \f[B]\-\-id\-file/\-i\f[R]) each line must start
+with an ID in the format described above.
+Leading space characters in the line are ignored.
+Lines can optionally contain a space character or a hash sign (`#')
+after the ID.
+Any characters after that are ignored.
+(This also allows files in OPL format to be read.)
+Empty lines are ignored.
+.PP
+Note that all objects will be taken from the \f[I]OSM\-FILE\f[R], the
+\f[I]ID\-OSM\-FILE\f[R] is only used to detect which objects to get.
+This might matter if there are different object versions in the
+different files.
+.PP
+The \f[I]OSM\-FILE\f[R] can be a history file, then all matching
+versions of the objects will be copied to the output.
+.PP
+This command will not work with negative IDs.
+.SH OPTIONS
+.TP
+\-\-default\-type=TYPE
+Use TYPE (`node', `way', or `relation') for IDs without a type prefix
+(default: `node').
+It is also allowed to just use the first character of the type here.
+.TP
+\-i, \-\-id\-file[=FILE]
+Read IDs from text file instead of from the command line.
+Use the special name \(lq\-\(rq to read from \f[I]STDIN\f[R].
+Each line of the file must start with an ID in the format described
+above.
+Lines can optionally contain a space character or a hash sign (`#')
+after the ID.
+This character and all following characters are ignored.
+(This allows files in OPL format to be read.)
+Empty lines are also ignored.
+This option can be used multiple times.
+.TP
+\-I, \-\-id\-osm\-file=OSMFILE
+Like \f[B]\-i\f[R] but get the IDs from an OSM file.
+This option can be used multiple times.
+.TP
+\-s, \-\-add\-self
+Also add all objects with the specified IDs to the output.
+.TP
+\-\-verbose\-ids
+Also print all requested IDs.
+This is usually disabled, because the lists can get quite long.
+(This option implies \f[B]\-\-verbose\f[R].)
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium getparents\f[R] exits with exit code
+.TP
+0
+if there was no error.
+.TP
+1
+if there was an error processing the data.
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium getparents\f[R] does all its work on the fly and only keeps
+a table of all IDs it needs in main memory.
+.SH EXAMPLES
+Output all ways referencing nodes 17 or 1234, and all relations with
+nodes 17 or 1234, or way 42, or relation 111 as members to STDOUT in OPL
+format:
+.IP
+.EX
+osmium getparents \-f opl planet.osm.pbf n1234 w42 n17 r111
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-getid\f[R](1),
+\f[B]osmium\-file\-formats\f[R](5), \f[B]osmium\-output\-headers\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

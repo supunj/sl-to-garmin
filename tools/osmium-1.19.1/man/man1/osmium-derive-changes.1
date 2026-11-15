@@ -1,0 +1,180 @@
+.TH "OSMIUM-DERIVE-CHANGES" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-derive\-changes \- create OSM change files from two OSM data
+files
+.SH SYNOPSIS
+\f[B]osmium derive\-changes\f[R] [\f[I]OPTIONS\f[R]]
+\f[I]OSM\-FILE1\f[R] \f[I]OSM\-FILE2\f[R]
+.SH DESCRIPTION
+Finds differences between two OSM files and creates a change file with
+those differences.
+The resulting change file is created in a way, that it could be applied
+on \f[I]OSM\-FILE1\f[R] to re\-create \f[I]OSM\-FILE2\f[R].
+.PP
+Objects in both input files must be sorted by type, ID, and version.
+The first input file must be from a point in time before the second
+input file.
+.PP
+Only object type, id, and version are compared, so this program will not
+detect differences in, say, the tags, unless the object has a new
+version, which is the normal way things work in OSM.
+If you need to compare all data in OSM files, have a look at the
+\f[B]osmium diff\f[R] program.
+.PP
+For this command to create a proper change file you have to set the
+\f[B]\-\-output\f[R] option or \f[B]\-\-output\-format\f[R] option in a
+way that it will generate an .osc file, typically by using something
+like `\-o out.osc.gz'.
+You can create any other OSM file format, but that is usually not what
+you want.
+Osmium derive\-changes will warn you in this case.
+.PP
+Note that for objects that are in \f[I]OSM\-FILE1\f[R] but not
+\f[I]OSM\-FILE2\f[R] a \(lqdeleted\(rq entry will be created in the
+output.
+But because we can not know when this deletion actually occurred, in
+which changeset, and by which user, it is unclear what attributes this
+deleted object should have.
+Also, if you are working with extracts, the object might not actually
+have been deleted in the OSM database, but just moved out of the extract
+you are looking at.
+So a real, new, \(lqdeleted\(rq version was never created.
+Usually the \(lqdeleted\(rq object will get the same version number and
+timestamp as the object in \f[I]OSM\-FILE1\f[R] had, all other
+information will be removed.
+But you can change this using the \f[B]\-\-increment\-version\f[R],
+\f[B]\-\-keep\-details\f[R], and \f[B]\-\-update\-timestamp\f[R]
+options.
+Depending on which software you are using the change files with,
+different settings might be necessary.
+.PP
+This commands reads its input files only once and writes its output file
+in one go so it can be streamed, ie.
+it can read from STDIN and write to STDOUT.
+.SH OPTIONS
+.TP
+\-\-increment\-version
+Increment version number of deleted objects.
+.TP
+\-\-keep\-details
+Keep details of deleted objects.
+Usually only id, version, and timestamp are kept.
+If this option is set all attributes, all tags, and all nodes or members
+for ways and relations, respectively, are kept.
+.TP
+\-\-update\-timestamp
+Update timestamp of deleted objects to the current time.
+This is the same behaviour as Osmosis.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium derive\-changes\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium derive\-changes\f[R] doesn\(cqt keep a lot of data in
+memory.
+.SH EXAMPLES
+Find changes in Nepal extract in January 2016:
+.IP
+.EX
+osmium derive\-changes nepal\-20160101.osm.pbf nepal\-20160201.osm.pbf \-o nepal\-jan.osc.bz2
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-output\-headers\f[R](5),
+\f[B]osmium\-apply\-changes\f[R](1), \f[B]osmium\-diff\f[R](1)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

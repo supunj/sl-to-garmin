@@ -1,0 +1,181 @@
+.TH "OSMIUM-FILE-FORMATS" "5" "1.19.1" "" ""
+.SH NAME
+osmium\-file\-formats \- OSM file formats known to Osmium
+.SH FILE TYPES
+OSM uses three types of files for its main data:
+.TP
+\f[B]Data files\f[R]
+These are the most common files.
+They contain the OSM data from a specific point in time.
+This can either be a planet file containing \f[I]all\f[R] OSM data or
+some kind of extract.
+At most one version of every object (node, way, or relation) is
+contained in this file.
+Deleted objects are \f[I]not\f[R] in this file.
+The usual suffix used is \f[CR].osm\f[R].
+.TP
+\f[B]History files\f[R]
+These files contain not only the current version of an object, but their
+history, too.
+So for any object (node, way, or relation) there can be zero or more
+versions in this file.
+Deleted objects can also be in this file.
+The usual suffix used is \f[CR].osm\f[R] or \f[CR].osh\f[R].
+Because sometimes the same suffix is used as for normal data files
+(\f[CR].osm\f[R]) and because there is no clear indicator in the header,
+it is not always clear what type of file you have in front of you.
+.TP
+\f[B]Change files\f[R]
+Sometimes called \f[I]diff files\f[R] or \f[I]replication diffs\f[R]
+these files contain the changes between one state of the OSM database
+and another state.
+Change files can contains several versions of an object and also deleted
+objects.
+The usual suffix used is \f[CR].osc\f[R].
+.PP
+All these files have in common that they contain OSM objects (nodes,
+ways, and relations).
+History files and change files can contain several versions of the same
+object and also deleted objects, data files can\(cqt.
+.PP
+Where possible, Osmium commands can handle all file types.
+For some commands only some file types make sense.
+.SH FORMATS
+The \f[B]osmium\f[R] command line tool supports all major OSM file
+formats plus some more.
+These are:
+.IP \(bu 2
+The classical XML format in the variants \f[I].osm\f[R] (for data
+files), \f[I].osh\f[R] (for data files with history) and \f[I].osc\f[R]
+(for change files).
+.IP \(bu 2
+The PBF binary format (usually with suffix \f[I].osm.pbf\f[R] or just
+\f[I].pbf\f[R]).
+.IP \(bu 2
+The OPL format (usually with suffix \f[I].osm.opl\f[R] or just
+\f[I].opl\f[R]).
+.IP \(bu 2
+The O5M/O5C format (usually with suffix \f[I].o5m\f[R] or
+\f[I].o5c\f[R]) (reading only).
+.IP \(bu 2
+The \(lqdebug\(rq format (usually with suffix \f[I].osm.debug\f[R])
+(writing only).
+.PP
+In addition files in all formats except PBF can be compressed using
+\f[I]gzip\f[R] or \f[I]bzip2\f[R].
+(Add \f[I].gz\f[R] or \f[I].bz2\f[R] suffixes, respectively.)
+.SH AUTODETECTION
+Which format a file has is usually autodetected from the file name
+suffix.
+.PP
+If this doesn\(cqt work, either because you are reading from STDIN or
+writing to STDOUT, or because you have an unusual file name, you have to
+set the format manually.
+You can also set the format manually if you want to specify special
+format options.
+.PP
+Most \f[B]osmium\f[R] commands support the
+\f[B]\-\-input\-format/\-F\f[R] and \f[B]\-\-output\-format/\-f\f[R]
+options to set the format.
+They take a comma\-separated list of arguments, the first is the format,
+further arguments set additional options.
+.SH SPECIAL FORMAT OPTIONS
+The following options can be added when writing OSM files:
+.TP
+\f[CR]history\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R]
+Explicitly set whether this file allows multiple versions of the same
+object or not.
+By default set to \f[CR]true\f[R] for \f[I].osh\f[R] and \f[I].osc\f[R]
+files, to \f[CR]false\f[R] otherwise.
+.TP
+\f[CR]xml_change_format\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R]
+Enable/disable XML change format.
+Same as \f[I].osc\f[R].
+.TP
+\f[CR]force_visible_flag\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R] (\f[I]default: false\f[R])
+Force writing of visible flag, even for normal OSM XML files.
+.TP
+\f[CR]pbf_dense_nodes\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R] (\f[I]default: true\f[R])
+Enable/disable DenseNodes format for PBF files.
+.TP
+\f[CR]pbf_compression\f[R]=\f[CR]none\f[R]/\f[CR]zlib\f[R]/\f[CR]lz4\f[R] (\f[I]default: zlib\f[R])
+Set compression type in PBF files.
+\f[CR]zlib\f[R] (or \f[CR]true\f[R]) is the default and almost all files
+use this.
+\f[CR]none\f[R] (or \f[CR]false\f[R]) disables compression which will
+make writing files a bit faster, but the resulting files are 2 to 3
+times bigger.
+The \f[CR]lz4\f[R] compression is not quite as good as \f[CR]zlib\f[R]
+but much faster to compress and decompress, it is currently not
+supported by most OSM file readers.
+.TP
+\f[CR]pbf_compression_level\f[R]=\&...
+Set compression level for PBF.
+Available values and default depend on the compression type used, see
+the OSM File Formats Manual for details.
+.TP
+\f[CR]add_metadata\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R]/\&... (\f[I]default: true\f[R])
+Enable/disable writing of object metadata such as changeset id,
+username, etc.
+Disabling this will make files a bit smaller.
+This can also be set to other values, see the OSM File Formats Manual
+for details.
+.TP
+\f[CR]locations_on_ways\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R] (\f[I]default: false\f[R])
+Add node locations to way nodes.
+(PBF, XML, OPL only.)
+.TP
+\f[CR]use_color\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R] (\f[I]default: false\f[R])
+Output with ANSI colors.
+(DEBUG format only.)
+.TP
+\f[CR]add_crc32\f[R]=\f[CR]true\f[R]/\f[CR]false\f[R] (\f[I]default: false\f[R])
+Add CRC32 checksum to all objects.
+(DEBUG format only.)
+.SH EXAMPLES
+Here are some examples:
+.TP
+\f[CR]pbf\f[R]
+PBF format.
+.TP
+\f[CR]pbf,add_metadata=false\f[R]
+PBF format, don\(cqt write metadata
+.TP
+\f[CR]osm.bz2\f[R]
+XML format, compressed with bzip2.
+.TP
+\f[CR]osc.gz\f[R]
+OSM change file, compressed with gzip.
+.TP
+\f[CR]osm.gz,xml_change_format=true\f[R]
+OSM change file, compressed with gzip.
+.TP
+\f[CR]osh.opl\f[R]
+OSM history file in OPL format.
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.IP \(bu 2
+\c
+.UR https://osmcode.org/file-formats-manual/
+OSM File Formats Manual
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

@@ -1,0 +1,153 @@
+.TH "OSMIUM" "1" "1.19.1" "" ""
+.SH NAME
+osmium \- multipurpose tool for working with OpenStreetMap data
+.SH SYNOPSIS
+\f[B]osmium\f[R] \f[I]COMMAND\f[R] [\f[I]ARG\f[R]\&...]
+.PD 0
+.P
+.PD
+\f[B]osmium\f[R] \-\-version
+.SH DESCRIPTION
+Multipurpose tool for working with OpenStreetMap data.
+.PP
+Run \f[B]osmium help\f[R] \f[I]COMMAND\f[R] to get more information
+about a command.
+This will only work on Linux and macOS systems and only if the
+\f[CR]man\f[R] command is available and working correctly.
+.SH OPTIONS
+.TP
+\-h, \-\-help
+Show usage and list of commands.
+.TP
+\-\-version
+Show program version.
+.SH COMMANDS
+.TP
+add\-locations\-to\-ways
+add node locations to ways in OSM file
+.TP
+apply\-changes
+apply OSM change file(s) to OSM data file
+.TP
+cat
+concatenate OSM files and convert to different formats
+.TP
+changeset\-filter
+filter changesets from OSM changeset files
+.TP
+check\-refs
+check referential integrity of OSM file
+.TP
+derive\-changes
+create OSM change file from two OSM files
+.TP
+diff
+display differences between OSM files
+.TP
+export
+export OSM data
+.TP
+extract
+create geographical extracts from an OSM file
+.TP
+fileinfo
+show information about an OSM file
+.TP
+getid
+get objects from OSM file by ID
+.TP
+getparents
+get parents of objects from OSM file
+.TP
+help
+show help about commands
+.TP
+merge
+merge several OSM files into one
+.TP
+merge\-changes
+merge several OSM change files into one
+.TP
+removeid
+remove OSM objects with specified IDs
+.TP
+renumber
+renumber object IDs
+.TP
+show
+show OSM file
+.TP
+sort
+sort OSM files
+.TP
+tags\-filter
+filter OSM data based on tags
+.TP
+time\-filter
+filter OSM data by time from a history file
+.SH COMMON OPTIONS
+Most commands support the following options:
+.TP
+\-h, \-\-help
+Show short usage information.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.SH MEMORY USAGE
+Osmium commands try to do their work as memory efficient as possible.
+But some osmium commands still need to load quite a bit of data into
+main memory.
+In some cases this means that only smaller datasets can be handled.
+Look into the man pages for the individual commands to learn more about
+their memory use.
+.PP
+On most commands, if you use the \f[B]\-\-verbose/\-v\f[R] option,
+osmium will print out the peak memory usage at the end.
+This is the actual amount of memory used including the program code
+itself, any needed libraries, and the data.
+(Printing of memory usage is currently only available on Linux systems.)
+.PP
+If an osmium command exits with an \(lqOut of memory\(rq error, try
+running it with \f[B]\-\-verbose/\-v\f[R] on smaller datasets to get an
+idea how much memory it needs.
+.PP
+On Linux a program that uses a lot of memory can be killed by the kernel
+without the program being notified.
+If you see osmium dieing without any apparent reason, this might be the
+case.
+Search on the Internet for \(lqOOM killer\(rq to find out more about
+this.
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\-add\-locations\-to\-ways\f[R](1),
+\f[B]osmium\-apply\-changes\f[R](1), \f[B]osmium\-cat\f[R](1),
+\f[B]osmium\-changeset\-filter\f[R](1),
+\f[B]osmium\-check\-refs\f[R](1), \f[B]osmium\-derive\-changes\f[R](1),
+\f[B]osmium\-diff\f[R](1), \f[B]osmium\-export\f[R](1),
+\f[B]osmium\-extract\f[R](1), \f[B]osmium\-fileinfo\f[R](1),
+\f[B]osmium\-getid\f[R](1), \f[B]osmium\-getparents\f[R](1),
+\f[B]osmium\-merge\f[R](1), \f[B]osmium\-merge\-changes\f[R](1),
+\f[B]osmium\-renumber\f[R](1), \f[B]osmium\-show\f[R](1),
+\f[B]osmium\-sort\f[R](1), \f[B]osmium\-tags\-filter\f[R](1),
+\f[B]osmium\-time\-filter\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-index\-types\f[R](5), \f[B]osmium\-output\-headers\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

@@ -1,0 +1,153 @@
+.TH "OSMIUM-MERGE" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-merge \- merge several sorted OSM files into one
+.SH SYNOPSIS
+\f[B]osmium merge\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]\&...
+.SH DESCRIPTION
+Merges the content of all OSM files given on the command line into one
+large OSM file.
+Objects in all files must be sorted by type, ID, and version.
+The results will also be sorted in the same way.
+Objects that appear in multiple input files will only be in the output
+once.
+.PP
+If there is only a single input file, its contents will be copied to the
+output.
+.PP
+If there are different versions of the same object in the input files,
+all versions will appear in the output.
+So this command will work fine with history files as input creating a
+new history file.
+Do not use this command to merge non\-history files with data from
+different points in time.
+It will not work correctly.
+.PP
+If you have objects with the same type, id, and version but different
+other data, the result of this command is undefined.
+This situation can never happen in correct OSM files, but sometimes
+buggy programs can generate data like this.
+Osmium doesn\(cqt make any promises on what the result of the command is
+if the input data is not correct.
+.PP
+This commands reads its input file(s) only once and writes its output
+file in one go so it can be streamed, ie.
+it can read from STDIN and write to STDOUT.
+.SH OPTIONS
+.TP
+\-H, \-\-with\-history
+Do not warn when there are multiple versions of the same object in the
+input files.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium merge\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium merge\f[R] doesn\(cqt keep a lot of data in memory, but if
+you are merging many files, the buffers might take a noticeable amount
+of memory.
+.SH EXAMPLES
+Merge several extracts into one:
+.IP
+.EX
+osmium merge washington.pbf oregon.pbf california.pbf \-o westcoast.pbf
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-output\-headers\f[R](5),
+\f[B]osmium\-merge\-changes\f[R](1)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

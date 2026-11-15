@@ -1,13 +1,14 @@
 # Product
-family-id: 53130
+family-id: 53132
 family-name: sl-contours
 product-id: 1
 series-name: sl-topo
 area-name: sl
 code-page: 1252
+description: SL - Hill-shading & Contours
 
 # Render
-draw-priority: 20
+draw-priority: 40
 transparent
 lower-case
 keep-going

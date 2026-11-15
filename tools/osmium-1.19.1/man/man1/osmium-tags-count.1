@@ -1,0 +1,223 @@
+.TH "OSMIUM-TAGS-COUNT" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-tags\-count \- count keys/tags
+.SH SYNOPSIS
+\f[B]osmium tags\-count\f[R] [\f[I]OPTIONS\f[R]] \f[I]OSM\-FILE\f[R]
+[\f[I]TAG\-EXPRESSION\f[R]\&...]
+.PD 0
+.P
+.PD
+\f[B]osmium tags\-count\f[R] [\f[I]OPTIONS\f[R]]
+\-\-expressions=\f[I]FILE\f[R] \f[I]OSM\-FILE\f[R]
+.SH DESCRIPTION
+Count how often keys or tags appear in the input file.
+If the only command line argument is an OSM file, all keys in this file
+are counted.
+If there are one or more tag expressions on the command line, only the
+keys and tags matching those expressions are counted.
+.PP
+See the \f[B]TAG EXPRESSIONS\f[R] section for a description of the
+expression format.
+.PP
+The output has one line per key/tag found.
+Each line contains the count, the tag key, and the tag value (if
+matching tags) separated by TAB characters.
+Tag keys and values are surrounded by double quotes.
+Any double quotes in the keys and values are doubled.
+.SH OPTIONS
+.TP
+\-e FILE, \-\-expressions=FILE
+Read expressions from the specified file, one per line.
+Empty lines are ignored.
+Everything after the comment character (#) is also ignored.
+See the \f[B]TAG EXPRESSIONS\f[R] section for further details.
+.TP
+\-m COUNT, \-\-min\-count=COUNT
+The minimum count that should be in the output.
+Used when you are only interested in common keys/tags.
+.TP
+\-M COUNT, \-\-max\-count=COUNT
+The maximum count that should be in the output.
+Used when you are only interested in rare keys/tags.
+.TP
+\-s SORT, \-\-sort=SORT
+Sort order.
+Order by \(lqcount\-asc\(rq, \(lqcount\-desc\(rq, \(lqname\-asc\(rq, or
+\(lqname\-desc\(rq.
+Default is \(lqcount\-desc\(rq.
+.TP
+\-t, \-\-object\-type=TYPE
+Read only objects of given type (\f[I]node\f[R], \f[I]way\f[R],
+\f[I]relation\f[R]).
+By default all types are read.
+This option can be given multiple times.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH OUTPUT OPTIONS
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.SH TAG EXPRESSIONS
+A filter expression specifies one or more keys and/or tags that should
+be counted in the data.
+.PP
+Some examples:
+.TP
+amenity
+Matches the key \(lqamenity\(rq.
+.TP
+highway=primary
+Matches the tag with key \(lqhighway\(rq and value \(lqprimary\(rq.
+.TP
+highway!=primary
+Matches any tag with key \(lqhighway\(rq and a value other than
+\(lqprimary\(rq.
+.TP
+type=multipolygon,boundary
+Matches any tag with key \(lqtype\(rq and value \(lqmultipolygon\(rq or
+\(lqboundary\(rq.
+.TP
+name,name:de=Kastanienallee,Kastanienstrasse
+Matches any tag with the key \(lqname\(rq or \(lqname:de\(rq with the
+value \(lqKastanienallee\(rq or \(lqKastanienstrasse\(rq.
+.TP
+addr:*
+Matches tags with keys starting with \(lqaddr:\(rq
+.TP
+name=*Paris
+Matches all tags with key \(lqname\(rq and a value that contains the
+word \(lqParis\(rq.
+.PP
+If there is no equal sign (\(lq=\(rq) in the expression only keys are
+matched and values can be anything.
+If there is an equal sign (\(lq=\(rq) in the expression, the key is to
+the left and the value to the right.
+An exclamation sign (\(lq!\(rq) before the equal sign means: A tag with
+that key, but not the value(s) to the right of the equal sign.
+A leading or trailing asterisk (\(lq*\(rq) can be used for substring or
+prefix matching, respectively.
+Commas (\(lq,\(rq) can be used to separate several keys or values.
+.PP
+All filter expressions are case\-sensitive.
+There is no way to escape the special characters such as \(lq=\(rq,
+\(lq*\(rq and \(lq,\(rq.
+You can not mix comma\-expressions and \(lq*\(rq\-expressions.
+.PP
+The filter expressions specified in a file and/or on the command line
+are matched in the order they are given.
+To achieve best performance, put expressions expected to match more
+often first.
+.SH DIAGNOSTICS
+\f[B]osmium tags\-count\f[R] exits with exit code
+.TP
+0
+if everything went alright,
+.TP
+1
+if there was an error processing the data, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium tags\-count\f[R] keeps all counters in memory.
+For a large OSM file and unrestricted keys or, worse, tags, this can use
+quite a lot of memory.
+(Counting all tags on a full planet file will use about 16 GByte RAM.)
+.PP
+Use the filter expressions to restrict the counting to the keys or tags
+you are actually interested in.
+.SH EXAMPLES
+Count all keys in Spain and display most common keys first:
+.IP
+.EX
+osmium tags\-count spain.osm.pbf
+.EE
+.PP
+Count all building keys in Madrid:
+.IP
+.EX
+osmium tags\-count madrid.osm.pbf building
+.EE
+.PP
+Count all building tags on ways in Madrid, order by name:
+.IP
+.EX
+osmium tags\-count \-t way \-\-sort=name\-asc madrid.osm.pbf \(aqbuilding=*\(aq
+.EE
+.PP
+Count all relation types in Sevilla that appear at least 100 times:
+.IP
+.EX
+osmium tags\-count \-t relation \-m 100 sevilla.osm.pbf \(aqtype=*\(aq
+.EE
+.PP
+Count all tags in the input file.
+Note that this might need quite a lot of memory!
+.IP
+.EX
+osmium tags\-count input.osm.pbf \(aq*=*\(aq
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.IP \(bu 2
+\c
+.UR https://github.com/taginfo/taginfo/
+Taginfo
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

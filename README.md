@@ -29,7 +29,7 @@ Taken on an actual Garmin Drive device.
 
 ## What it produces
 
-`build_map.sh` builds four layers from the Geofabrik Sri Lanka extract and
+`build_map.sh` builds five layers from the Geofabrik Sri Lanka extract and
 merges each into its own device-ready image:
 
 | Layer | Content | Output |
@@ -38,6 +38,7 @@ merges each into its own device-ready image:
 | Admin | administrative boundaries | `sl-admin.img` |
 | Contours | contour lines (cached) | `sl-contour.img` |
 | Roads | roads, POIs, routing + address index | `sl-road.img`, `sl-road_mdr.img`, `sl-road.mdx` |
+| Protected areas | protected-area and national-park boundary relations | `sl-protected-areas.img` |
 
 All outputs land in `build/dist/`. Copy the `.img` files to the `Garmin`
 directory of the device (or SD card) to install.
@@ -48,7 +49,9 @@ Required:
 
 - **Java** (JRE 8+; `JAVA_CMD`/`JAVA_HEAP` in `config/build.conf`)
 - **wget** (downloading the OSM extract)
-- mkgmap, splitter and osmosis — **vendored** under `tools/`, no install needed
+- mkgmap, splitter, osmosis and osmium — **vendored** under `tools/`, no separate
+  tool installation needed; osmium uses the system Boost, zlib, Expat, bzip2 and
+  lz4 shared libraries
 
 Optional:
 
@@ -141,17 +144,16 @@ Optional:
 You normally don't need to run `hgt2osm.sh` yourself: if the merged contour
 file is missing from `data/cache/`, `build_map.sh` runs it automatically. The
 compiled contour layer is cached in `data/cache/sl-contour.img` and rebuilt
-whenever the contour source is newer.
+whenever the contour source or `arg/elevation.args` is newer.
 
 ## Configuration
 
-All build knobs live in `config/build.conf` and can also be overridden via
-environment variables:
+Build settings live in `config/build.conf` and can also be overridden via
+environment variables. Product identity (family/product IDs and series/area
+names) is configured per layer in `arg/*.args`.
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `FID` / `PID` | `53130` / `1` | Garmin family/product IDs |
-| `SERIES_NAME` / `AREA_NAME` | `sl-topo` / `sl` | Map names shown on device |
 | `DEVICE` | `drive66` | Garmin device family; derives `STYLE` and the TYP text file (`--device` overrides) |
 | `STYLE` | `$DEVICE` | mkgmap style (`style/<style>/`) |
 | `TYP_FILE` | *(empty)* | TYP text file to compile; empty = the latest (highest-numbered) `typ/NN_<device>.txt` |
@@ -183,14 +185,14 @@ using `icons/drive66/police.bmp` as the icon.
 ├── build_map.sh / build_gpi.sh / hgt2osm.sh / download_data.sh / cleanse_data.sh / db.sh
 ├── logo.svg                 # project logo (shown at the top of this file)
 ├── images/                  # device screenshots (shown above)
-├── lib/common.sh          # shared setup + mkgmap/osmosis/splitter wrappers
+├── lib/common.sh          # shared setup + mkgmap/osmosis/osmium/splitter wrappers
 ├── config/                # build.conf (all knobs), tags.conf (POI categories)
 ├── arg/                   # mkgmap option files, one per layer
 ├── style/drive66/         # the mkgmap style (Garmin Drive only)
 ├── typ/                   # monolithic TYP text files per device (NN_<device>.txt);
-│                          # the highest-numbered one is compiled into build/<style>.typ
+│                          # the highest-numbered one is compiled per layer with a matching FID
 ├── icons/drive66/         # POI bitmaps for build_gpi.sh (per device)
-├── tools/                 # vendored mkgmap / splitter / osmosis
+├── tools/                 # vendored mkgmap / splitter / osmosis / osmium
 ├── pg/
 │   ├── cleanse/           # vetted cleansing rules, run in filename order
 │   ├── experiments/       # unvetted SQL — only via --pg-experiments
@@ -221,7 +223,7 @@ between download and map build:
    (`--read-pgsql --dd --write-pbf`)
 7. Drop the scratch DB (unless `--keep-build-dir`)
 
-All four layers then build from the cleansed extract.
+All five layers then build from the cleansed extract.
 
 **Adding a rule**: put a commented `NN_descriptive_name.sql` in
 `pg/cleanse/`. **Trying an idea**: put it in `pg/experiments/` and run with
@@ -233,8 +235,9 @@ useful for deciding rules.
 
 After a build, `build/dist/` contains:
 
-- `sl-base.img`, `sl-admin.img`, `sl-contour.img`, `sl-road.img` — the four
-  map layers (each a self-contained gmapsupp image)
+- `sl-base.img`, `sl-admin.img`, `sl-contour.img`, `sl-road.img`,
+  `sl-protected-areas.img` — the five map layers (each a self-contained
+  gmapsupp image)
 - `sl-road_mdr.img`, `sl-road.mdx` — address-search index for the road layer
 - `build/gpi/*.gpi` (from `build_gpi.sh`) — POI proximity alerts
 
@@ -252,16 +255,20 @@ Copy all of them to the `Garmin` folder on the device/SD card.
 - `test/build_map_default.sh` — full build with the built-in default style
   and no TYP for comparison; writes to `build-default/`, never touches
   `build/`.
+- `test/test_protected_areas_extraction.sh [input.osm.pbf]` — runs the
+  protected-area Osmosis extraction, strips all way tags with osmium, and
+  validates relation tags and tag-free ways; writes the filtered PBF and XML
+  audit copy to `build/tmp/protected-areas/`.
 
 ## Troubleshooting
 
 - **`source extract missing ... run ./download_data.sh`** — the Geofabrik
   PBF is not in `data/cache/` yet.
 - **Contour layer skipped / stale** — the cache `data/cache/sl-contour.img`
-  is reused while it is newer than `data/cache/sl-contours.osm.pbf`; to force a
-  rebuild, regenerate the contour file with `./hgt2osm.sh` (or delete the
-  cache). If the contour file is missing, `build_map.sh` runs `hgt2osm.sh`
-  automatically (needs phyghtmap — auto-installed on first run).
+  is reused while it is newer than both `data/cache/sl-contours.osm.pbf` and
+  `arg/elevation.args`; to force a rebuild, delete the cache. If the contour
+  source is missing, `build_map.sh` runs `hgt2osm.sh` automatically (needs
+  phyghtmap — auto-installed on first run).
 - **psql: password authentication failed** — set up `~/.pgpass` or trust
   auth for the `osm_build` role; see Setup.
 - **osmosis cleanse import fails with auth errors** — osmosis uses JDBC and
@@ -295,6 +302,8 @@ providers — many thanks to their authors and contributors.
 - [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) — OSM data
   filtering, merging and PostGIS import/export (vendored: 0.49.2,
   `tools/osmosis-0.49.2/`)
+- [osmium](https://osmcode.org/) — fast OSM data inspection and manipulation
+  (vendored: 1.19.1, `tools/osmium-1.19.1/`)
 - [phyghtmap](http://katze.tfiu.de/projects/phyghtmap/) — generates contour
   lines from SRTM elevation tiles (optional, `hgt2osm.sh`)
 - [GPSBabel](https://www.gpsbabel.org/) — builds `.gpi` POI alert files

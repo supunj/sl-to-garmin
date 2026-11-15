@@ -1,0 +1,118 @@
+.TH "OSMIUM-CHECK-REFS" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-check\-refs \- check referential integrity of OSM file
+.SH SYNOPSIS
+\f[B]osmium check\-refs\f[R] [\f[I]OPTIONS\f[R]]
+\f[I]OSM\-DATA\-FILE\f[R]
+.SH DESCRIPTION
+Ways in OSM files refer to OSM nodes; relations refer to nodes, ways, or
+other relations.
+This command checks whether all objects \f[I]referenced\f[R] in the
+input file are also \f[I]present\f[R] in the input file.
+.PP
+Referential integrity is often broken in extracts.
+This can lead to problems with some uses of the OSM data.
+Use this command to make sure your data is good.
+.PP
+If the option \f[B]\-\-check\-relations/\-r\f[R] is not given, this
+command will only check if all nodes referenced in ways are in the file,
+with the option, relations will also be checked.
+.PP
+This command expects the input file to be ordered in the usual way:
+First nodes in order of ID, then ways in order of ID, then relations in
+order of ID.
+Negative IDs are allowed, they must be ordered before the positive IDs.
+See the \f[B]osmium\-sort\f[R](1) man page for details of the ordering.
+.PP
+This command will only work for OSM data files, not OSM history files or
+change files.
+.PP
+This commands reads its input file only once, ie.
+it can read from STDIN.
+.SH OPTIONS
+.TP
+\-i, \-\-show\-ids
+Print all missing IDs to STDOUT.
+If you don\(cqt specify this option, only a summary is shown.
+.TP
+\-r, \-\-check\-relations
+Also check referential integrity of relations.
+Without this option, only nodes in ways are checked.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.TP
+\-\-progress
+Show progress bar.
+Usually a progress bar is only displayed if STDOUT and STDERR are
+detected to be TTY.
+With this option a progress bar is always shown.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.TP
+\-\-no\-progress
+Do not show progress bar.
+Usually a progress bar is displayed if STDOUT and STDERR are detected to
+be a TTY.
+With this option the progress bar is suppressed.
+Note that a progress bar will never be shown when reading from STDIN or
+a pipe.
+.SH INPUT OPTIONS
+.TP
+\-F, \-\-input\-format=FORMAT
+The format of the input file(s).
+Can be used to set the input format if it can\(cqt be autodetected from
+the file name(s).
+This will set the format for all input files, there is no way to set the
+format for some input files only.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.SH MEMORY USAGE
+\f[B]osmium check\-refs\f[R] will do the check in one pass through the
+input data.
+It needs enough main memory to store all temporary data.
+.PP
+Largest memory need will be about 1 bit for each node ID, that\(cqs
+roughly 860 MB these days (February 2020).
+With the \f[B]\-\-check\-relations/\-r\f[R] option memory use will be a
+bit bigger.
+.SH DIAGNOSTICS
+\f[B]osmium check\-refs\f[R] exits with exit code
+.TP
+0
+if all references are satisfied
+.TP
+1
+if there was an error processing the data or some references were not
+satisfied, or
+.TP
+2
+if there was a problem with the command line arguments.
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-file\-formats\f[R](5),
+\f[B]osmium\-sort\f[R](1)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.

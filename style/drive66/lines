@@ -10,7 +10,7 @@
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
-abandoned=yes {deletealltags}  # old, depreciated, ambiguous, method of handling abandoned
+# abandoned=yes {deletealltags}  # old, depreciated, ambiguous, method of handling abandoned
 
 # do these as lines regardless of being closed unless explicity marked as area. continue in case also a highway
 aeroway=runway & area!=yes {name '${ref}'} [0x27 resolution 20 continue]
@@ -285,9 +285,6 @@ railway=platform [0x16 road_class=0 road_speed=0 resolution 23]
 # Railway lines, note that many devices display type 0x14 only at resolution 24
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes)
     [0x14 resolution 22]
-
-# Supun
-
 
 (man_made=cable | (man_made=* & man_made~'.*pipe.*')) & area!=yes & tunnel!=yes & location!=underground
     {name '${name} (${operator})' | '${name}' | '${operator}'} [0x28 resolution 23]

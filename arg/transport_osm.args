@@ -1,27 +1,25 @@
 # Product
-family-id: 53130
+family-id: 53133
 family-name: sl-route
 product-id: 1
 series-name: sl-topo
 area-name: sl
 code-page: 1252
+description: SL - Roads, Area and POIs
 
 # Render
-draw-priority: 50
+draw-priority: 60
 keep-going
 transparent
 max-jobs
-#reduce-point-density: 4
-#reduce-point-density-polygon: 8
 lower-case
 report-similar-arcs
 order-by-decreasing-area
 preserve-element-order
 polygon-size-limits: 24:12, 18:10, 16:8, 14:4, 13:2, 11:0
-name-tag-list: name:en,int_name,name
+name-tag-list: name,name:en,int_name
 no-merge-lines
 no-tdbfile
-#ignore-osm-bounds
 improve-overview
 
 #Routing
@@ -34,6 +32,7 @@ process-exits
 report-roundabout-issues
 report-dead-ends: 2
 add-pois-to-lines
+fix-roundabout-direction
 
 #Address
 country-name: Sri_Lanka

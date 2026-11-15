@@ -81,18 +81,21 @@ building=ruins [0x22 resolution 21]
 historic=ruins | historic=wayside_shrine | historic=archaeological_site [0x22 resolution 21]
 historic=* & historic!=no & historic!=yes & boundary!=* {add name='${historic|subst:"_=> "}'} [0x22 resolution 21]
 
+(natural=water | landuse=reservoir | landuse=basin | waterway=riverbank | waterway=dock) & (intermittent=yes | basin=detention | basin=infiltration | seasonal=yes | seasonal=spring | seasonal=summer | seasonal=autumn | seasonal=winter | seasonal=wet_season | seasonal=dry_season) [0x10202 resolution 22 continue]
 landuse=basin [0x3f resolution 20]
 landuse=reservoir | (natural=water & water=reservoir) [0x3f resolution 20]
-
 dock=drydock [0x4c resolution 22]  # might also have natural=water
-
 natural=bay [0x3d resolution 18]
 natural=glacier [0x4d resolution 18]
 natural=marsh | natural=mud [0x51 resolution 20]
 natural=tundra [0x52 resolution 18]
 natural=sand | surface=sand [0x1090f resolution 20]
 natural=beach | natural=shoal [0x10201 resolution 20]
-natural=wetland [0x51 resolution 20]
+
+# Wetlands
+natural=wetland [0x51 resolution 20 continue]
+natural=wetland & wetland=mangrove [0x10203 resolution 20]
+
 natural=water & (water=canal | water=river | waterway=river) [0x48 resolution 22]
 natural=water & water=lock [0x4c resolution 22 default_name 'Lock']
 natural=water & area_size() < 100000 [0x41 resolution 22]  # Small Lake

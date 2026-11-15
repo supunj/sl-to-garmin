@@ -1,0 +1,132 @@
+.TH "OSMIUM-QUERY-LOCATIONS-INDEX" "1" "1.19.1" "" ""
+.SH NAME
+osmium\-query\-locations\-index \- query node locations index
+.SH SYNOPSIS
+\f[B]osmium query\-locations\-index\f[R] \-i INDEX\-FILE
+[\f[I]OPTIONS\f[R]] \f[I]NODE\-ID\f[R]
+.PD 0
+.P
+.PD
+\f[B]osmium query\-locations\-index\f[R] \-i INDEX\-FILE
+[\f[I]OPTIONS\f[R]] \-\-dump
+.SH DESCRIPTION
+Get the location of a node from an index created with \f[B]osmium
+create\-locations\-index\f[R] or dump the whole index into an OSM file.
+.PP
+The index file format is compatible to the one created by \(lqosmium
+add\-location\-to\-ways \-i dense_file_array,INDEX\-FILE\(rq and to the
+flatnode store created by osm2pgsql.
+.PP
+This command will not work with negative node IDs.
+.PP
+Note that when the \f[B]\-\-dump\f[R] option is used, metadata (like
+version, timestamp, etc.)
+is not written to the output file because it is all empty anyway.
+Use the \f[B]\-\-output\-format/\-f\f[R] option with
+\f[CR]add_metadata=...\f[R] to overwrite this.
+.SH OPTIONS
+.TP
+\-\-dump
+Dump all node locations to an OSM file.
+Use the \f[B]\-\-output/\-o\f[R] and \f[B]\-\-output\-format/\-f\f[R]
+options to set the file format to be used.
+Default is STDOUT and the OPL format, respectively.
+.TP
+\-i, \-\-index\-file=FILENAME
+The name of the index file.
+.SH COMMON OPTIONS
+.TP
+\-h, \-\-help
+Show usage help.
+.TP
+\-v, \-\-verbose
+Set verbose mode.
+The program will output information about what it is doing to STDERR.
+.SH OUTPUT OPTIONS
+.TP
+\-f, \-\-output\-format=FORMAT
+The format of the output file.
+Can be used to set the output file format if it can\(cqt be autodetected
+from the output file name.
+See \f[B]osmium\-file\-formats\f[R](5) or the libosmium manual for
+details.
+.TP
+\-\-fsync
+Call fsync after writing the output file to force flushing buffers to
+disk.
+.TP
+\-\-generator=NAME
+The name and version of the program generating the output file.
+It will be added to the header of the output file.
+Default is \(lq\f[I]osmium/\f[R]\(rq and the version of osmium.
+.TP
+\-o, \-\-output=FILE
+Name of the output file.
+Default is `\-' (STDOUT).
+.TP
+\-O, \-\-overwrite
+Allow an existing output file to be overwritten.
+Normally \f[B]osmium\f[R] will refuse to write over an existing file.
+.TP
+\-\-output\-header=OPTION=VALUE
+Add output header option.
+This command line option can be used multiple times for different
+OPTIONs.
+See the \f[I]osmium\-output\-headers(5)\f[R] man page for a list of
+available header options.
+For some commands you can use the special format \(lqOPTION!\(rq (ie.
+an exclamation mark after the OPTION and no value set) to set the value
+to the same as in the input file.
+.SH DIAGNOSTICS
+\f[B]osmium query\-locations\-index\f[R] exits with exit code
+.TP
+0
+if everything went alright and the node location was found,
+.TP
+1
+if the node location was not found,
+.TP
+2
+if there was a problem with the command line arguments.
+.SH MEMORY USAGE
+\f[B]osmium query\-locations\-index\f[R] will not use a lot of memory.
+.SH EXAMPLES
+Get location of node 1234 from locations.idx:
+.IP
+.EX
+osmium query\-locations\-index \-i locations.idx 1234
+.EE
+.PP
+Dump contents of locations.idx into an OPL file:
+.IP
+.EX
+osmium query\-locations\-index \-i locations.idx \-\-dump \-o nodes.opl
+.EE
+.SH SEE ALSO
+.IP \(bu 2
+\f[B]osmium\f[R](1), \f[B]osmium\-create\-locations\-index\f[R](1),
+\f[B]osmium\-file\-formats\f[R](5), \f[B]osmium\-output\-headers\f[R](5)
+.IP \(bu 2
+\c
+.UR https://osmcode.org/osmium-tool/
+Osmium website
+.UE \c
+.IP \(bu 2
+\c
+.UR https://wiki.openstreetmap.org/wiki/Osm2pgsql
+osm2pgsql
+.UE \c
+.SH COPYRIGHT
+.PP
+Copyright (C) 2013\-2026 Jochen Topf <jochen@topf.org>.
+
+License GPLv3+: GNU GPL version 3 or later
+<https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH CONTACT
+.PP
+If you have any questions or want to report a bug, please go to
+https://osmcode.org/contact.html
+.SH AUTHORS
+Jochen Topf <jochen@topf.org>.
