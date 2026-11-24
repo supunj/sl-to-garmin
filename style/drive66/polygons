@@ -100,7 +100,7 @@ natural=water & (water=canal | water=river | waterway=river) [0x48 resolution 22
 natural=water & water=lock [0x4c resolution 22 default_name 'Lock']
 natural=water & area_size() < 100000 [0x41 resolution 22]  # Small Lake
 natural=water [0x3c resolution 18]
-water=pond [0x3c resolution 18]
+water=* & water!=water_line [0x3c resolution 18]
 landuse=aquaculture [0x09 resolution 18]
 natural=waterfall | waterway=waterfall [0x47 resolution 21]
 natural=sea {add mkgmap:skipSizeFilter=true; set mkgmap:drawLevel=2} [0x32 resolution 10]

@@ -74,19 +74,24 @@ run_splitter() {
     )
 }
 
-# latest_typ_file — print the newest TYP text file for the device: the
-# highest-numbered typ/NN_<device>.txt (version-sorted so 9 sorts before 10).
+# latest_typ_file — print the newest TYP text file for the device and optional
+# theme: the highest-numbered typ/NN_<device>[_<theme>].txt (version-sorted so
+# 9 sorts before 10).
 latest_typ_file() {
-    local latest
-    latest=$(find "$PROJECT_ROOT/typ" -maxdepth 1 -name "[0-9]*_$DEVICE.txt" -print |
+    local latest typ_name="$DEVICE"
+    if [ -n "${THEME:-}" ]; then
+        typ_name+="_$THEME"
+    fi
+    latest=$(find "$PROJECT_ROOT/typ" -maxdepth 1 -name "[0-9]*_$typ_name.txt" -print |
         sort -V | tail -n 1)
-    [ -n "$latest" ] || die "no TYP text file for device '$DEVICE': typ/NN_$DEVICE.txt"
+    [ -n "$latest" ] || die "no TYP text file for device '$DEVICE'${THEME:+ and theme '$THEME'}: typ/NN_$typ_name.txt"
     printf '%s\n' "$latest"
 }
 
 # compile_typ [family-id] — compile the TYP into $BUILD_DIR. With a family ID,
-# adjust the TYP to match and write <style>-<family-id>.typ. The TYP text is the
-# latest typ/NN_<device>.txt unless TYP_FILE points at a specific file.
+# adjust the TYP to match and write <typ-name>-<family-id>.typ, retaining the
+# source TYP's filename. The TYP text is the latest typ/NN_<device>[_<theme>].txt
+# unless TYP_FILE points at a specific file.
 # No-op for the built-in default style (test/build_map_default.sh).
 compile_typ() {
     local family_id="${1:-}"
@@ -99,12 +104,14 @@ compile_typ() {
         typ_txt=$(latest_typ_file)
     fi
     need_file "$typ_txt"
-    local typ_out="$STYLE.typ"
+    local typ_name="${typ_txt##*/}"
+    typ_name="${typ_name%.txt}"
+    local typ_out="$typ_name.typ"
     if [ -n "$family_id" ]; then
-        local layer_txt="$BUILD_DIR/$STYLE-$family_id.txt"
+        local layer_txt="$BUILD_DIR/$typ_name-$family_id.txt"
         sed "s/^FID=.*/FID=$family_id/" "$typ_txt" > "$layer_txt"
         typ_txt="$layer_txt"
-        typ_out="$STYLE-$family_id.typ"
+        typ_out="$typ_name-$family_id.typ"
     fi
     log "Compiling TYP: $typ_txt"
     (
@@ -132,11 +139,17 @@ merge_layer() {
 
     local typ_args=()
     if [ "$STYLE" != default ]; then
-        local family_id
+        local family_id typ_txt typ_name
         family_id=$(sed -n 's/^family-id:[[:space:]]*//p' "$args_file")
         [ -n "$family_id" ] || die "merge_layer: no family-id in $args_file"
+        typ_txt="${TYP_FILE:-}"
+        if [ -z "$typ_txt" ]; then
+            typ_txt=$(latest_typ_file)
+        fi
+        typ_name="${typ_txt##*/}"
+        typ_name="${typ_name%.txt}"
         compile_typ "$family_id"
-        typ_args=("$BUILD_DIR/$STYLE-$family_id.typ")
+        typ_args=("$BUILD_DIR/$typ_name-$family_id.typ")
     fi
 
     log "Merging ${#imgs[@]} tile(s) -> $out_name.img"

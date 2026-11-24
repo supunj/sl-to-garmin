@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+    <translation>
+        <name>Replace water-body way tags</name>
+        <match type="way">
+            <notag k="__water_extraction_match_all__" v=".*"/>
+        </match>
+        <output>
+            <tag k="water" v="water_line"/>
+        </output>
+    </translation>
+</translations>

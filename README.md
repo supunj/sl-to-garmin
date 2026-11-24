@@ -29,7 +29,7 @@ Taken on an actual Garmin Drive device.
 
 ## What it produces
 
-`build_map.sh` builds five layers from the Geofabrik Sri Lanka extract and
+`build_map.sh` builds seven layers from the Geofabrik Sri Lanka extract and
 merges each into its own device-ready image:
 
 | Layer | Content | Output |
@@ -37,11 +37,13 @@ merges each into its own device-ready image:
 | Base | sea/land polygons + DEM hill shading | `sl-base.img` |
 | Admin | administrative boundaries | `sl-admin.img` |
 | Contours | contour lines (cached) | `sl-contour.img` |
+| Water | water bodies, wetlands, shorelines and waterways | `sl-water.img` |
+| Forest cover | non-protected forest-cover relations; selected member polygons retain tags and unrelated member ways are untagged | `sl-forest.img` |
 | Roads | roads, POIs, routing + address index | `sl-road.img`, `sl-road_mdr.img`, `sl-road.mdx` |
 | Protected areas | protected-area and national-park boundary relations | `sl-protected-areas.img` |
 
-All outputs land in `build/dist/`. Copy the `.img` files to the `Garmin`
-directory of the device (or SD card) to install.
+All map outputs land in `build/dist/`. Copy the `.img` files and the road-index
+`.mdx` file to the `Garmin` directory of the device (or SD card) to install.
 
 ## Prerequisites
 
@@ -117,17 +119,25 @@ Optional:
 ### Build the map
 
 ```sh
-./build_map.sh [--device <type>] [--pg-cleanse] [--pg-experiments]
-               [--skip-contours] [--keep-build-dir]
+./build_map.sh [--device <type>] [--theme <name>] [--pg-cleanse]
+               [--pg-experiments] [--skip-contours] [--keep-build-dir]
+               [--keep-db]
 ```
 
 | Flag | Effect |
 |---|---|
-| `--device <type>` | Garmin device family to build for (default: `drive66`); selects the style (`style/<type>/`) and TYP text file (`typ/NN_<type>.txt`) |
+| `--device <type>` | Garmin device family to build for (default: `drive66`); selects the style (`style/<type>/`) and TYP text file |
+| `--theme <name>` | Map theme (default: `osm`); selects the latest `typ/NN_<device>_<theme>.txt` |
 | `--pg-cleanse` | Round-trip the extract through PostGIS first (see below) and build from the cleansed PBF |
 | `--pg-experiments` | Also run `pg/experiments/*.sql` (implies `--pg-cleanse`) |
 | `--skip-contours` | Do not build the contour layer |
-| `--keep-build-dir` | Keep the PostGIS scratch database after cleansing (debugging) |
+| `--keep-build-dir` | Do not wipe the existing `build/` directory before building |
+| `--keep-db` | Keep the PostGIS scratch database after cleansing (debugging) |
+
+By default, the build uses the `drive66` device and `osm` theme, selecting the
+highest-numbered `typ/NN_drive66_osm.txt`. Each layer compiles that source with
+its own family ID as `build/<typ-name>-<family-id>.typ`. Set `TYP_FILE` to use a
+specific TYP source instead.
 
 ### Other scripts
 
@@ -136,7 +146,7 @@ Optional:
 | `./download_data.sh [--force]` | Fetch the Geofabrik extract into `data/cache/` |
 | `./cleanse_data.sh [--experiments] [--keep-db]` | Run the PostGIS cleansing stage standalone |
 | `./db.sh [start\|stop\|status\|rm\|purge]` | Run PostgreSQL/PostGIS + pgAdmin in podman (cleanse-stage database) |
-| `./build_gpi.sh [--device <type>]` | Build `.gpi` POI alert files into `build/gpi/` from `config/tags.conf`, using `icons/<device>/` bitmaps |
+| `./build_gpi.sh [--device <type>]` | Build `.gpi` POI alert files into `build/gpi/` from `config/tags.conf` and `icons/<device>/` |
 | `./hgt2osm.sh` | Regenerate contours from SRTM tiles: phyghtmap per tile into `build/contours/` (temporary), then merged with osmosis into `data/cache/sl-contours.osm.pbf` |
 | `test/build_test_map.sh` | Build the type-grid test maps — areas and lines (style development) |
 | `test/build_map_default.sh` | Full build with mkgmap's built-in default style, no TYP — comparison/testing only; output goes to `build-default/` |
@@ -156,9 +166,10 @@ names) is configured per layer in `arg/*.args`.
 |---|---|---|
 | `DEVICE` | `drive66` | Garmin device family; derives `STYLE` and the TYP text file (`--device` overrides) |
 | `STYLE` | `$DEVICE` | mkgmap style (`style/<style>/`) |
-| `TYP_FILE` | *(empty)* | TYP text file to compile; empty = the latest (highest-numbered) `typ/NN_<device>.txt` |
+| `THEME` | `osm` | Map theme used in the TYP filename (`--theme` overrides); empty = `typ/NN_<device>.txt` |
+| `TYP_FILE` | *(empty)* | TYP text file to compile; empty = the latest (highest-numbered) `typ/NN_<device>[_<theme>].txt` |
 | `DATA_DIR` | `./data` | Source data root — point elsewhere to keep big files off the project disk |
-| `BUILD_DIR` | `./build` | Artifact root (wiped each build) |
+| `BUILD_DIR` | `./build` | Artifact root (wiped before building unless `--keep-build-dir` is used) |
 | `SOURCE_MAP_NAME` | `sri-lanka-latest.osm.pbf` | Raw extract filename (in `data/cache/`) |
 | `CLEANSED_MAP_NAME` | `sri-lanka-cleansed.osm.pbf` | Cleansed extract filename |
 | `CONTOURS_NAME` | `sl-contours.osm.pbf` | Contour layer input filename (in `data/cache/`) |
@@ -172,12 +183,14 @@ names) is configured per layer in `arg/*.args`.
 `config/tags.conf` drives `build_gpi.sh` — one category per line:
 
 ```
-category:key.value,key.value,...[:extra_gpsbabel_options]
+category:display_name:key.value,key.value,...[:extra_gpsbabel_options]
 ```
 
-Example: `police:amenity.police:alerts=1,proximity=3km` builds
+Example: `police:Police:amenity.police:alerts=1,proximity=3km` builds
 `build/gpi/police.gpi` from `amenity=police` nodes, with proximity alerts,
-using `icons/drive66/police.bmp` as the icon.
+using `icons/drive66/police.bmp` as the icon and `Police` as the Garmin-visible
+category name. The category ID continues to determine the icon and output
+filenames.
 
 ## Directory layout
 
@@ -189,8 +202,8 @@ using `icons/drive66/police.bmp` as the icon.
 ├── config/                # build.conf (all knobs), tags.conf (POI categories)
 ├── arg/                   # mkgmap option files, one per layer
 ├── style/drive66/         # the mkgmap style (Garmin Drive only)
-├── typ/                   # monolithic TYP text files per device (NN_<device>.txt);
-│                          # the highest-numbered one is compiled per layer with a matching FID
+├── typ/                   # TYP text files per device/theme (NN_<device>[_<theme>].txt);
+│                          # the highest-numbered selection is compiled per layer with a matching FID
 ├── icons/drive66/         # POI bitmaps for build_gpi.sh (per device)
 ├── tools/                 # vendored mkgmap / splitter / osmosis / osmium
 ├── pg/
@@ -203,8 +216,12 @@ using `icons/drive66/police.bmp` as the icon.
 │   ├── hgt-srtm1/         # higher-resolution SRTM1 tiles (unused by default)
 │   ├── poly/              # bounding polygon
 │   └── cache/             # raw Geofabrik extract, contour source PBF + compiled contour layer (gitignored)
-└── build/                 # BUILD ARTIFACTS (gitignored, wiped each build)
-    ├── dist/              # final device-ready images
+└── build/                 # BUILD ARTIFACTS (gitignored, wiped unless --keep-build-dir)
+    ├── layers/            # intermediate mkgmap tile builds
+    ├── mapset/            # working directory for gmapsupp merges
+    ├── split/             # splitter output
+    ├── dist/              # final device-ready map images and road index
+    ├── gpi/               # POI alert files from build_gpi.sh
     └── sri-lanka-cleansed.osm.pbf  # cleanse-stage output (regenerable)
 ```
 
@@ -221,9 +238,9 @@ between download and map build:
 5. With `--pg-experiments`: also run `pg/experiments/*.sql`
 6. Export the result to `build/sri-lanka-cleansed.osm.pbf`
    (`--read-pgsql --dd --write-pbf`)
-7. Drop the scratch DB (unless `--keep-build-dir`)
+7. Drop the scratch DB (unless `--keep-db`)
 
-All five layers then build from the cleansed extract.
+All seven layers then build from the cleansed extract.
 
 **Adding a rule**: put a commented `NN_descriptive_name.sql` in
 `pg/cleanse/`. **Trying an idea**: put it in `pg/experiments/` and run with
@@ -233,15 +250,16 @@ useful for deciding rules.
 
 ## Outputs and installation
 
-After a build, `build/dist/` contains:
+After a map build, `build/dist/` contains:
 
-- `sl-base.img`, `sl-admin.img`, `sl-contour.img`, `sl-road.img`,
-  `sl-protected-areas.img` — the five map layers (each a self-contained
-  gmapsupp image)
+- `sl-base.img`, `sl-admin.img`, `sl-contour.img`, `sl-water.img`,
+  `sl-forest.img`, `sl-road.img`, `sl-protected-areas.img` — the seven map
+  layers (each a self-contained gmapsupp image)
 - `sl-road_mdr.img`, `sl-road.mdx` — address-search index for the road layer
-- `build/gpi/*.gpi` (from `build_gpi.sh`) — POI proximity alerts
 
-Copy all of them to the `Garmin` folder on the device/SD card.
+Copy all of these map outputs to the `Garmin` folder on the device/SD card.
+Running `build_gpi.sh` separately creates `build/gpi/*.gpi` POI proximity
+alerts, which can be copied to the same folder.
 
 ## Testing
 
@@ -259,6 +277,14 @@ Copy all of them to the `Garmin` folder on the device/SD card.
   protected-area Osmosis extraction, strips all way tags with osmium, and
   validates relation tags and tag-free ways; writes the filtered PBF and XML
   audit copy to `build/tmp/protected-areas/`.
+- `test/test_forest_extraction.sh [input.osm.pbf]` — extracts non-protected
+  forest-cover relations, preserves tags on selected member polygons, strips
+  unrelated member-way tags, and validates the results; writes the filtered PBF
+  and XML audit copy to `build/tmp/forest/`.
+- `test/test_water_extraction.sh [input.osm.pbf]` — runs the water-body and
+  waterway extraction used by the water layer, creates `water=water_line`
+  shoreline ways, and writes the three inputs plus combined PBF to
+  `build/tmp/water-extraction/`.
 
 ## Troubleshooting
 

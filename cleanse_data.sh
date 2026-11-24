@@ -45,7 +45,7 @@ osmosis_pg_auth() {
 
 recreate_db() {
     log "Recreating scratch database: $PG_DB_NAME"
-    dropdb -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" --if-exists "$PG_DB_NAME"
+    dropdb -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" --if-exists --force "$PG_DB_NAME"
     createdb -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" "$PG_DB_NAME"
     psql_db -c 'CREATE EXTENSION postgis' -c 'CREATE EXTENSION hstore'
     need_file "$PGSNAPSHOT_SCHEMA"
@@ -91,7 +91,7 @@ teardown_db() {
         log "--keep-db given; scratch database '$PG_DB_NAME' left in place"
     else
         log "Dropping scratch database: $PG_DB_NAME"
-        dropdb -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" --if-exists "$PG_DB_NAME"
+        dropdb -h "$PG_HOST" -p "$PG_PORT" -U "$PG_USER" --if-exists --force "$PG_DB_NAME"
     fi
 }
 

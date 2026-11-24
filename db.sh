@@ -43,7 +43,7 @@ PGADMIN_SERVERS_JSON="$BUILD_DIR/pgadmin-servers.json"
 # write_pgadmin_servers_json — pre-register the pod's PostgreSQL server in
 # pgAdmin (host 127.0.0.1:5432 inside the pod's shared network; trust auth,
 # so no password is stored).
-write_pgadmin_servers_json() {
+write_pgadmin_servers_json() {  
     mkdir -p "$BUILD_DIR"
     cat > "$PGADMIN_SERVERS_JSON" <<EOF
 {

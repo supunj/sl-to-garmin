@@ -77,8 +77,6 @@ ExtendedLabels=Y
 String1=0x04,Map Background
 FontStyle=SmallFont
 CustomColor=No
-FontStyle=SmallFont
-FontStyle=SmallFont
 Xpm="0 0 2 0"
 "0 c #d9dbca"
 "1 c #4f4f4a"
@@ -590,7 +588,7 @@ String1=0x04,Sea
 ExtendedLabels=Y
 FontStyle=Normal
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="0 0 1 0"
 "1 c #AAD3DF"
 [end]
@@ -621,7 +619,7 @@ String1=0x04,Waterways Areas
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="0 0 1 0"
 "1 c #AAD3DF"
 [end]
@@ -632,7 +630,7 @@ String1=0x04,Water / Lakes
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="0 0 1 0"
 "1 c #AAD3DF"
 [end]
@@ -697,7 +695,7 @@ String1=0x04,Small Lakes
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="0 0 1 0"
 "1 c #AAD3DF"
 [end]
@@ -718,7 +716,7 @@ String1=0x04,Waterfalls
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="0 0 1 0"
 "1 c #AAD3DF"
 [end]
@@ -740,7 +738,7 @@ String1=0x04,Drydocks / Locks
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="0 0 1 0"
 "1 c #AAD3DF"
 [end]
@@ -751,7 +749,7 @@ String1=0x04,Glaciers
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4DA0D7
+DaycustomColor: #4DA0D7
 Xpm="0 0 1 0"
 "1 c #DDECEC"
 [end]
@@ -1295,7 +1293,7 @@ String1=0x04,Intermittent Water
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#4D80B3
+DaycustomColor: #4D80B3
 Xpm="32 32 2 1"
 "0 c none"
 "1 c #AAD3DF"
@@ -1771,7 +1769,7 @@ String1=0x04,Bridleway / Service
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#626262
+DaycustomColor: #626262
 [end]
 
 [_line]
@@ -1910,17 +1908,39 @@ FontStyle=SmallFont
 CustomColor=No
 [end]
 
+;[_line]
+;Type=0x1F00
+;UseOrientation=Y
+;String1=0x04,Canal / River
+;ExtendedLabels=Y
+;FontStyle=SmallFont
+;CustomColor=Day
+;DaycustomColor:#4D80B3
+;LineWidth=5
+;BorderWidth=1
+;Xpm="0 0 2 0"
+;"0 c #AAD3DF"
+;"1 c #00AEEF"
+;[end]
+
 [_line]
-Type=0x1f
+Type=0x1F00
 UseOrientation=Y
-LineWidth=7
-Xpm="0 0 1 0"
-"1 c #AAD3DF"
 String1=0x04,Canal / River
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
 DaycustomColor:#4D80B3
+Xpm="32 7 2 1"
+"0 c #AAD3DF"
+"1 c #00AEEF"
+"11111111111111111111111111111111"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"00000000000000000000000000000000"
+"11111111111111111111111111111111"
 [end]
 
 [_line]
@@ -1928,7 +1948,7 @@ Type=0x18
 UseOrientation=Y
 LineWidth=2
 Xpm="0 0 1 0"
-"1 c #AAD3DF"
+"1 c #00AEEF"
 String1=0x04,Stream / Drain
 ExtendedLabels=Y
 FontStyle=SmallFont
@@ -1940,7 +1960,7 @@ Type=0x26
 UseOrientation=Y
 LineWidth=2
 Xpm="32 2 2  1"
-"! c #AAD3DF"
+"! c #00AEEF"
 "  c none"
 "!!!!!  !!  !!!!!  !!  !!!!!  !! "
 "!!!!!  !!  !!!!!  !!  !!!!!  !! "
@@ -2007,7 +2027,7 @@ String1=0x04,Admin boundary
 ExtendedLabels=Y
 FontStyle=Normal
 CustomColor=Day
-DaycustomColor:#BD30B4
+DaycustomColor: #BD30B4
 [end]
 
 [_line]
@@ -2022,7 +2042,7 @@ String1=0x04,Admin boundary
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#BD30B4
+DaycustomColor: #BD30B4
 [end]
 
 [_line]
@@ -2207,7 +2227,7 @@ Type=0x10403
 UseOrientation=N
 LineWidth=2
 Xpm="32 2 2  1"
-"! c #aad3df"
+"! c #00AEEF"
 "  c none"
 "!!!!!  !!  !!!!!  !!  !!!!!  !! "
 "!!!!!  !!  !!!!!  !!  !!!!!  !! "
@@ -2283,7 +2303,7 @@ String1=0x04,Contour Medium
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#996633
+DaycustomColor: #996633
 [end]
 
 [_line]
@@ -2296,7 +2316,7 @@ String1=0x04,Contour Major
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#996633
+DaycustomColor: #996633
 [end]
 
 ;--------- Highway bridges ------------
@@ -2397,7 +2417,7 @@ String1=0x04,Bridleway / Service Bridge
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#626262
+DaycustomColor: #626262
 [end]
 
 [_line]
@@ -2676,7 +2696,7 @@ String1=0x04,Bridleway / Service Tunnel
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=Day
-DaycustomColor:#626262
+DaycustomColor: #626262
 Xpm="32 7 4 1"
 "0 c #f2f2f2"
 "1 c #C5C5C5"
@@ -2845,5 +2865,18 @@ Xpm="32 5 2 1"
 "00110011001100110011001100110011"
 [end]
 
-;0x10e00,0x10e01,0x10e02,0x10e03,0x10e04,0x10e05,0x10e06,0x10e07,0x10e08,0x10e09,0x10e0a,0x10e0b,0x10e0c,0x10e0d,0x10e0e,0x10e0f - Used
-;0x10e10,0x10e11,0x10e12,0x10e13,0x10e14,0x10e15,0x10e16,0x10e17,0x10e18,0x10e19,0x10e1a,0x10e1b,0x10e1c,0x10e1d,0x10e1e,0x10e1f
+[_line]
+Type=0x10E00
+UseOrientation=Y
+String1=0x04,Water Line
+ExtendedLabels=Y
+FontStyle=SmallFont
+CustomColor=Day
+DaycustomColor: #996633
+Xpm="32 1 2 1"
+"0 c #00AEEF"
+"1 c #FFFFFF"
+"00000000000000000000000000000000"
+[end]
+
+;0x10e1f

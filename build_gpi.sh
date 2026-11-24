@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # build_gpi.sh — build Garmin POI (.gpi) files from the source OSM extract.
 #
-# For each line of config/tags.conf (format: category:key.value,key.value
-# [:extra_gpsbabel_options]), extract matching nodes and convert them to
-# build/gpi/<category>.gpi with icons/<device>/<category>.bmp as the bitmap.
+# For each line of config/tags.conf (format:
+# category:display_name:key.value,key.value[:extra_gpsbabel_options]), extract
+# matching nodes and convert them to build/gpi/<category>.gpi with
+# icons/<device>/<category>.bmp as the bitmap and display_name as the
+# Garmin-visible category.
 #
 # Usage: ./build_gpi.sh [--device <type>] [-h|--help]
 #
@@ -18,7 +20,7 @@ GPI_DIR="$BUILD_DIR/gpi"
 NODES_PBF="$POI_DIR/poi-nodes.osm.pbf"
 ICON_DIR="$PROJECT_ROOT/icons/$DEVICE"
 
-usage() { sed -n '2,11p' "$0"; exit "${1:-0}"; }
+usage() { sed -n '2,13p' "$0"; exit "${1:-0}"; }
 
 parse_args() {
     while [ $# -gt 0 ]; do
@@ -47,14 +49,14 @@ extract_nodes() {
         --write-pbf "$NODES_PBF"
 }
 
-# build_one_gpi <category> <key.value,key.value,...> [extra gpsbabel opts]
+# build_one_gpi <category> <display_name> <key.value,key.value,...> [extra gpsbabel opts]
 build_one_gpi() {
-    local category="$1" keys="$2" extra="${3:-}"
+    local category="$1" display_name="$2" keys="$3" extra="${4:-}"
     local icon="$ICON_DIR/$category.bmp"
     local osm_file="$POI_DIR/$category.osm"
     need_file "$icon"
 
-    log "Building POI category: $category"
+    log "Building POI category: $display_name"
     "$OSMOSIS" \
         --read-pbf file="$NODES_PBF" \
         --tf reject-ways \
@@ -63,7 +65,7 @@ build_one_gpi() {
         --node-key-value keyValueList="$keys" \
         --write-xml "$osm_file"
 
-    local out_opts="garmin_gpi,descr,languagecode=EN,units=s,writecodec=utf8,category=$category,bitmap=$icon,sleep=1"
+    local out_opts="garmin_gpi,descr,languagecode=EN,units=s,writecodec=utf8,category=$display_name,bitmap=$icon,sleep=1"
     [ -n "$extra" ] && out_opts="$out_opts,$extra"
     gpsbabel \
         -i osm -f "$osm_file" \
@@ -79,12 +81,12 @@ main() {
     [ -d "$ICON_DIR" ] || die "no icon set for device '$DEVICE': $ICON_DIR"
     mkdir -p "$POI_DIR" "$GPI_DIR"
     extract_nodes
-    local line category keys extra
+    local line category display_name keys extra
     while IFS= read -r line; do
         # skip blank lines and comments
         [[ "$line" =~ ^[[:space:]]*$ || "$line" =~ ^[[:space:]]*# ]] && continue
-        IFS=: read -r category keys extra <<< "$line"
-        build_one_gpi "$category" "$keys" "$extra"
+        IFS=: read -r category display_name keys extra <<< "$line"
+        build_one_gpi "$category" "$display_name" "$keys" "$extra"
     done < "$TAGS_CONF"
     log "Done. GPI files:"
     ls -lh "$GPI_DIR"

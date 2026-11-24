@@ -311,17 +311,19 @@ route=ferry {set mkgmap:numbers=false; set mkgmap:ferry=1; add mkgmap:toll=yes}
 route=ferry & (motorcar=no | motor_vehicle=no) [0x1b road_class=0 road_speed=0 resolution 23]
 route=ferry [0x1a road_class=3 road_speed=0 resolution 19]
 
-(waterway=river | waterway=canal) & intermittent=yes [0x26 resolution 20]
-(waterway=stream | waterway=drain) & intermittent=yes [0x26 resolution 22]
+waterway=river & intermittent=yes [0x26 resolution 20]
+(waterway=stream | waterway=canal | waterway=drain) & intermittent=yes [0x26 resolution 22]
 
-waterway=canal [0x1f resolution 21]
 waterway=river [0x1f resolution 18]
-waterway=rapids|waterway=waterfall [0x1f resolution 22]
-waterway=stream | waterway=drain [0x18 resolution 22]
+waterway=canal [0x18 resolution 21]
+waterway=rapids | waterway=waterfall [0x1f resolution 22]
+waterway=stream | waterway=canal | waterway=drain [0x18 resolution 22]
 
 # mop up any remaining water lines
 waterway=* & waterway!=no & (area=no | (is_closed()=false & mkgmap:mp_created!=true))
     {add name='${waterway|subst:"_=> "}'} [0x26 resolution 24]
+
+water=water_line [0x10e00 resolution 18]
 
 include 'inc/contour_lines';
 
